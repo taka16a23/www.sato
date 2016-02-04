@@ -3,10 +3,11 @@
 from collections import namedtuple
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext
 from django.template import loader
 from informations.models import INFO_CATEGORIES, Information
 from emergency.models import Emergency
-
+from django.shortcuts import render_to_response
 # from datetime import datetime, timedelta
 from calendar import (MONDAY, TUESDAY, WEDNESDAY, THURSDAY,
                       FRIDAY, SATURDAY, SUNDAY)
@@ -361,4 +362,4 @@ def home(request):
         list_garbage_events(tomorrow, tomorrow))
     context['tomorrowSchedules'] = list(list_main_events(tomorrow, tomorrow))
     context['emergencies'] = list(Emergency.objects.filter(publish=True))
-    return render(request, 'home/home.html', context)
+    return render_to_response('home/home.html', context, context_instance=RequestContext(request))

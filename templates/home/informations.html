@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<div id="informations" class="mainContent">
+  <h2>
+    <span class="rss"><a href="/informations/feed/" title="rss"><img src="{% static "feedIcon28x28.png" %}" alt="rss"/></a></span>
+    <span class="infolist"><a href="/informations">一覧</a></span>
+    <a class="title" href="/informations" title="最新情報一覧">最新情報</a>
+  </h2>
+  <ol>
+    {% for info in info_list %}
+    <li>
+      <a href="{{ info.url }}" target="_blank" title="詳細を見る">
+        <span class="Category {{ info.category_class }}">{{ info.category }}</span>
+        <span class="Date">{{ info.date }}</span>
+        <span class="Title">{{ info.title }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</div>

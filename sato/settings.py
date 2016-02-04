@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'home',
     'informations',
     'emergency',
+    'about',
 ]
 
 MIDDLEWARE_CLASSES = [

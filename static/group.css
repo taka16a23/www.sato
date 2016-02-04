@@ -1,0 +1,42 @@
+#main {
+    background-color: #E6F3EC;
+    border-radius: 20px;
+}
+
+#groupMaps h2 {
+	position: relative;
+	padding: .75em 1em .75em 1.5em;
+	border: 1px solid #ccc;
+  background-color: white;
+  width: 90%;
+  top: 20px;
+  margin-bottom: 30px;
+}
+#groupMaps h2::after {
+	position: absolute;
+	top: .5em;
+	left: .5em;
+	content: '';
+	width: 6px;
+	height: -webkit-calc(100% - 1em);
+	height: calc(100% - 1em);
+	background-color: #2c7046;
+	border-radius: 4px;
+}
+
+#groupMaps {
+    /* height: 1330px; */
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+.groupMap {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    float: left;
+}
+
+#groupMaps iframe {
+    width: 350px;
+    height: 300px;
+}

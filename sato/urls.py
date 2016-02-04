@@ -93,6 +93,7 @@ urlpatterns = [
     url(r'^$', home.views.home),
     url(r'^admin/', admin.site.urls),
     url(r'^informations/feed/$', InformationFeed()),
+    url(r'^about/', include('about.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

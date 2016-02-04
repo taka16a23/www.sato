@@ -1,0 +1,11 @@
+{% load staticfiles %} 
+<div id="today" class="mainContent">
+  <h2>今日の情報</h2>
+  {% include "home/tearOffCalendar.html" %}
+  <hr />
+  {% include "home/todayGarbageCollection.html" %}
+  <hr />
+  {% include "home/todaySchedules.html" %}
+  <hr />
+  {% include "home/todayHallBooking.html" %}
+</div>

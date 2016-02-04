@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>里自治会</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "reset.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "base.css" %}">
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    {% include 'base/header.html' %}
+    <div id="middle"  class="clearfix">
+      <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      </head>
+      <div id="highPriorityArea">
+        {% include 'emergency/emergency.html' %}
+      </div>      
+      {% include 'base/links.html' %}
+      <div id="main">
+        {% block main %}
+        {% endblock %}
+      </div>
+    </div>
+
+    {% include 'base/footer.html' %}
+    {% include 'base/pagetop.html' %}
+  </body>
+</html>

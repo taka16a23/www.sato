@@ -1,0 +1,26 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+<div id="tomorrowGarbageCollection" class="tomorrow garbageCollection">
+  <h4>明日のゴミ収集</h4>
+  <ul>
+    {% if tomorrowGarbageCollection %}
+      {% for event in tomorrowGarbageCollection %}
+    <li>
+      <p>
+        <a href="http://www.city.otsu.lg.jp/machi/gomi/calendar/1389250930014.html" target="_blank" title="大津市のページへ移動" >
+          <img src="{{ STATIC_PREFIX }}{{ event.image }}"/>
+        </a>
+      </p>
+    </li>
+      {% endfor %}
+    {% else %}
+    <li>
+      <p>
+        <a href="http://www.city.otsu.lg.jp/machi/gomi/calendar/1389250930014.html" target="_blank" title="大津市のページへ移動">
+          ゴミ収集はありません
+        </a>
+      </p>
+    </li>
+    {% endif %}
+  </ul>
+</div>

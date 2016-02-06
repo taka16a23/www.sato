@@ -17,7 +17,7 @@ from django.conf.urls import url, patterns, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 import home.views
-
+import formats.views
 
 from django.contrib.syndication.views import Feed
 from informations.models import Information, INFO_CATEGORIES
@@ -94,6 +94,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^informations/feed/$', InformationFeed()),
     url(r'^about/', include('about.urls')),
+    url(r'^formats/', formats.views.formats),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

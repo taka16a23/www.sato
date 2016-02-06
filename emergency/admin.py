@@ -33,6 +33,8 @@ class EmergencyAdmin(admin.ModelAdmin):
     Responsibility:
     """
     list_display = ('title', 'publish', 'mtime', 'description')
+    list_editable = ('publish',)
+
     actions = [make_unpublish, 'delete_selected']
 
 

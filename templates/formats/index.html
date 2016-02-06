@@ -1,0 +1,9 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static "formats.css" %}">
+{% endblock %}
+{% block main %}
+{% include "formats/formats.html" %}
+{% endblock %}
+

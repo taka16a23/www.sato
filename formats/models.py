@@ -10,11 +10,14 @@ class SatoFormat(models.Model):
     SatoFormat is a models.Model.
     Responsibility:
     """
-    title = models.CharField(u'書式名', max_length=50, blank=False)
+    title = models.CharField(u'書式名', max_length=255, blank=False)
     description = models.TextField(u'概要', blank=True)
     file = models.FileField(u'PDF', upload_to='formats', blank=True)
     form = models.URLField(u'フォームアドレス', max_length=200, blank=True)
-    sortid = models.IntegerField(u'並び番号(サイトで昇順に並びます)', default=100)
+    sortid = models.IntegerField(
+        u'並び番号',
+        help_text=u'サイトで昇順に並びます',
+        default=100)
     publish = models.BooleanField(u'公開する', default=True)
 
     class Meta:
@@ -31,10 +34,13 @@ class OtherFormat(models.Model):
     OtherFormat is a models.Model.
     Responsibility:
     """
-    title = models.CharField(u'書式名', max_length=50, blank=False)
+    title = models.CharField(u'書式名', max_length=255, blank=False)
     description = models.TextField(u'概要', blank=True)
     url = models.URLField(u'掲載URL', max_length=200, blank=True)
-    sortid = models.IntegerField(u'並び番号(サイトで昇順に並びます)', default=100)
+    sortid = models.IntegerField(
+        u'並び番号',
+        help_text=u'サイトで昇順に並びます',
+        default=100)
     publish = models.BooleanField(u'公開する', default=True)
 
     class Meta:

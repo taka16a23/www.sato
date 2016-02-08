@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<div id="board" class="board_bucket clearfix">
+  <h2>{{ year }}年 回覧板</h2>
+  <ol>
+    {% for board in board_list %}
+    <li>
+      <a href="{{ board.file.url }}" title="{{ board.file.name }}" target="_blank">
+        {% if board.thumbnail %}
+        <img src="{{ board.thumbnail.url }}" alt="{{ board.thumbnail.url }}">
+        {% else%}
+        <img src="{% static "no_pdf_picture.jpg" %}" alt="{% static "no_pdf_picture.jpg" %}">
+        {% endif %}
+      </a>
+      <h6><a href="{{ board.file.url }}" class="board_title" title="{{ board.title }}"  target="_blank">{{ board.title }}</a></h6> 
+    </li>
+    {% endfor %}
+  </ol>
+</div>

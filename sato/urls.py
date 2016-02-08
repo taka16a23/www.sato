@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url, patterns, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib.syndication.views import Feed
+
+from sato import settings
 import home.views
 import formats.views
-
-from django.contrib.syndication.views import Feed
+import board.views
 from informations.models import Information, INFO_CATEGORIES
 import datetime
 
@@ -95,6 +97,14 @@ urlpatterns = [
     url(r'^informations/feed/$', InformationFeed()),
     url(r'^about/', include('about.urls')),
     url(r'^formats/', formats.views.formats),
+    url(r'^board/', board.views.board),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+
+
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}))

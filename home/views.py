@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.template import loader
 from informations.models import INFO_CATEGORIES, Information
 from emergency.models import Emergency
+from django.db.models import Q
 from django.shortcuts import render_to_response
 # from datetime import datetime, timedelta
 from calendar import (MONDAY, TUESDAY, WEDNESDAY, THURSDAY,
@@ -361,5 +362,8 @@ def home(request):
     context['tomorrowGarbageCollection'] = list(
         list_garbage_events(tomorrow, tomorrow))
     context['tomorrowSchedules'] = list(list_main_events(tomorrow, tomorrow))
-    context['emergencies'] = list(Emergency.objects.filter(publish=True))
+    context['emergencies'] = list(Emergency.objects.filter(
+        Q(expires_on__isnull=True)|Q(expires_on__gte=now),
+        Q(published_from__isnull=True)|Q(published_from__lte=now),
+        Q(status=True)).order_by('-published_from'))
     return render_to_response('home/home.html', context, context_instance=RequestContext(request))

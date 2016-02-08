@@ -41,9 +41,13 @@ INSTALLED_APPS = [
     'home',
     'informations',
     'emergency',
-    'about',
     'formats',
     'board',
+    'about',
+    'about.group',
+    'about.contact',
+
+    'captcha',
 ]
 
 MIDDLEWARE_CLASSES = [

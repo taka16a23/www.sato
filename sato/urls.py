@@ -101,7 +101,7 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
-
+urlpatterns += patterns('', url(r'^captcha/', include('captcha.urls')))
 
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)

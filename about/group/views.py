@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-def group(request):
+def groupview(request):
     r"""SUMMARY
 
     group(request)

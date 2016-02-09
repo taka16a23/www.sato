@@ -1,10 +1,11 @@
 {% load staticfiles %}
+{% load startswidth %}
 <div id="linkTree">  
   <script type="text/javascript" src="{% static "acordionMenu.js" %}"></script>
   <div id="informationLinks">
-    <h2 class="selected">過去のお知らせ</h2>
-    <ol style="display: block;">
-      <li class="active">
+    <h2 {% if request.path|startswith:"/informations" %}class="selected"{% endif %}>過去のお知らせ</h2>
+    <ol {% if request.path|startswith:"/informations" %}style="display:block"{% endif %}>
+      <li>
         <p><a href="/informations/">最新情報一覧</a></p>
       </li>
       <li>
@@ -13,8 +14,8 @@
     </ol>
   </div>
   <div id="activityLinks">
-    <h2>活動報告</h2>
-    <ol>
+    <h2 {% if request.path|startswith:"/activity" %}class="selected"{% endif %}>活動報告</h2>
+    <ol {% if request.path|startswith:"/activity" %}style="display:block"{% endif %}>
       <li>
         <p>
           <a href="/activity/index.html">最新の活動</a>
@@ -28,8 +29,8 @@
     </ol>
   </div>
   <div id="securityLinks">
-    <h2>防犯・防災</h2>
-    <ol>
+    <h2 {% if request.path|startswith:"/security" %}class="selected"{% endif %}>防犯・防災</h2>
+    <ol {% if request.path|startswith:"/security" %}style="display:block"{% endif %}>
       <li>
         <p>
           <a href="/security/">防災統合情報</a>
@@ -43,9 +44,9 @@
     </ol>
   </div>
   <div id="boardLinks">
-    <h2>回覧板</h2>
-    <ol>
-      <li>
+    <h2 {% if request.path|startswith:"/board" %}class="selected"{% endif %}>回覧板</h2>
+    <ol {% if request.path|startswith:"/board" %}style="display:block"{% endif %}>
+      <li {% if request.path|startswith:"/board" %}class="active"{% endif %}>
         <p>
           <a href="/board/?year=2016">2016年</a>
         </p>
@@ -53,8 +54,8 @@
     </ol>
   </div>
   <div id="aboutLinks">
-    <h2>自治会案内</h2>
-    <ol>
+    <h2 {% if request.path|startswith:"/about" %}class="selected"{% endif %}>自治会案内</h2>
+    <ol {% if request.path|startswith:"/about" %}style="display:block"{% endif %}>
       <li>
         <p>
           <a href="/about/rule.html">会則</a>
@@ -65,7 +66,7 @@
           <a href="/about/greeding.html">会長挨拶</a>
         </p>
       </li>
-      <li>
+      <li {% if request.path|startswith:"/about/group" %}class="active"{% endif %}>
         <p>
           <a href="/about/group/">ブロックと組</a>
         </p>
@@ -75,9 +76,9 @@
           <a href="/about/QA.html">よくある質問</a>
         </p>
       </li>
-      <li>
+      <li {% if request.path|startswith:"/about/contact" %}class="active"{% endif %}>
         <p>
-          <a href="/about/contact/">お問い合わせ</a>
+          <a href="/about/contact/">情報提供・お問い合わせ</a>
         </p>
       </li>
     </ol>

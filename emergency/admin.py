@@ -21,7 +21,7 @@ def make_unpublish(modeladmin, request, queryset):
 
     @Error:
     """
-    queryset.update(status=1)
+    queryset.update(status=False)
 
 make_unpublish.short_description = u'非公開にする'
 

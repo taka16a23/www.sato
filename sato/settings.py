@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lib',
     'home',
     'informations',
     'emergency',
@@ -46,7 +47,8 @@ INSTALLED_APPS = [
     'about',
     'about.group',
     'about.contact',
-
+    'security',
+    'activity',
     'captcha',
 ]
 

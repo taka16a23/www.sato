@@ -15,7 +15,7 @@ urlpatterns = patterns(
     (r'^group/', 'about.group.views.groupview'),
     (r'^contact/thankyou/', 'about.contact.views.thankyou'),
     (r'^contact/', 'about.contact.views.contactform'),
-
+    (r'^$', 'about.views.about_view'),
 )
 
 

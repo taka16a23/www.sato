@@ -23,6 +23,7 @@ import home.views
 import formats.views
 import board.views
 from informations.models import Information, INFO_CATEGORIES
+
 import datetime
 
 
@@ -98,6 +99,8 @@ urlpatterns = [
     url(r'^about/', include('about.urls')),
     url(r'^formats/', formats.views.formats),
     url(r'^board/', board.views.board),
+    url(r'^activity/', 'activity.views.activity_view'),
+    url(r'^security/', 'security.views.security_view'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

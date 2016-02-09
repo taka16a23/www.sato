@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.db.models import Q
+from django.template import RequestContext
 
 from board.models import Board
 
@@ -41,4 +42,5 @@ def board(request):
             Q(expires_on__isnull=True),
             Q(published_from__isnull=True)|Q(published_from__year=year),
             Q(status=True)).order_by('-published_from')
-    return render_to_response('board/index.html', context)
+    return render_to_response(
+        'board/index.html', context, context_instance=RequestContext(request))

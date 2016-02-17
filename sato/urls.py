@@ -48,6 +48,7 @@ if settings.DEBUG:
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}))
 
+admin.site.site_title = u'里自治会'
 admin.site.site_header = u'里自治会 ホームページ'
 admin.site.index_title = u'コントロールパネル'
 

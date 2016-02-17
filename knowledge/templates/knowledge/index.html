@@ -1,0 +1,8 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static "bgknowledge.css" %}">
+{% endblock %}
+{% block main %}
+{% include "knowledge/knowledge.html" %}
+{% endblock %}

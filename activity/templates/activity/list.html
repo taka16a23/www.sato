@@ -1,0 +1,19 @@
+<h2>{{ year }}年 活動報告</h2>               
+<div id="activityIndex" class="mainContent clearfix">
+  <ol>
+    {% for link in activities %}
+    <li>
+      <h3><a href="/activity/?id={{ link.id }}">{{ link.title|safe }}</a></h3>
+      <div class="date">
+        <p>{{ link.publish_date|date:'Y年m月d日H:i' }}</p>
+      </div>
+      <div class="description">
+        <p>{{ link.description|safe }}</p>
+      </div>
+      <div class="footer">
+        <a href="/activity/?id={{ link.id }}">もっと読む</a>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</div>

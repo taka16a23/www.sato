@@ -1,0 +1,85 @@
+<div id="weatherAlertArea" class="evacuationInfoEntry clearfix">
+  <h2>気象特別警報・警報・注意報</h2>
+  <div id="weatherAlert" class="weatherAlertEntry">            
+    <p><span>大津市南部</span>{{ warnings_date }}</p>
+    <table id="heavyRainAlert" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <th width="200">記録的短時間大雨情報</th>
+          {% include "secportal/heavyRainAlertEntry.html" %}
+        </tr>
+      </tbody>
+    </table>
+    <table id="mainWeatherAlert" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr class="weatherAlertHead">
+          <td colspan="5" class="specialWarning" scope="col">特別警報</td>
+          <td colspan="6" class="warning" scope="col">警報</td>
+          <td colspan="14" class="advisories" scope="col">注意報</td>
+        </tr>
+        <tr class="weatherAlertHead">
+          <td rowspan="2" width="20" class="specialWarning">暴風雪</td>
+          <td colspan="2" class="specialWarning">大雨</td>
+          <td rowspan="2" width="20" class="specialWarning">暴風</td>
+          <td rowspan="2" width="20" class="specialWarning">大雪</td>
+          <td rowspan="2" width="20" class="warning">暴風雪</td>
+          <td colspan="2" class="warning">大雨</td>
+          <td rowspan="2" width="20" class="warning">洪水</td>
+          <td rowspan="2" width="20" class="warning">暴風</td>
+          <td rowspan="2" width="20" class="warning">大雪</td>
+          <td rowspan="2" width="20" class="advisories">大雨</td>
+          <td rowspan="2" width="20" class="advisories">大雪</td>
+          <td rowspan="2" width="20" class="advisories">風雪</td>
+          <td rowspan="2" width="20" class="advisories">雷</td>
+          <td rowspan="2" width="20" class="advisories">強風</td>
+          <td rowspan="2" width="20" class="advisories">融雪</td>
+          <td rowspan="2" width="20" class="advisories">洪水</td>
+          <td rowspan="2" width="20" class="advisories">濃霧</td>
+          <td rowspan="2" width="20" class="advisories">乾燥</td>
+          <td rowspan="2" width="20" class="advisories">なだれ</td>
+          <td rowspan="2" width="20" class="advisories">低温</td>
+          <td rowspan="2" width="20" class="advisories">霜</td>
+          <td rowspan="2" width="20" class="advisories">着氷</td>
+          <td rowspan="2" width="20" class="advisories">着雪</td>
+        </tr>
+        <tr class="weatherAlertHead">
+          <td width="20" class="specialWarning">土砂災害</td>
+          <td width="20" class="specialWarning">浸水害</td>
+          
+          <td width="20" class="warning">土砂災害</td>
+          <td width="20" class="warning">浸水害</td>
+        </tr>
+        {% include "secportal/weatherAlertLocalEntry.html" %}
+      </tbody>
+    </table>
+  </div>
+  <div id="weatherAlertDetail" class="weatherAlertEntry">
+    <ul>
+      <li>
+        <a href="http://shiga-bousai.jp/announce/weather.php" target="_blank">気象注意報・警報・特別警報等発表状況</a>
+      </li>
+      <li>
+        <a href="http://shiga-bousai.jp/index.php" target="_blank">滋賀県土木防災情報システム</a>
+      </li>
+      <li>
+        <a href="http://www.jma.go.jp/jma/kishou/know/bosai/warning_kind.html" target="_blank">気象警報・注意報の種類</a>
+      </li>
+    </ul>
+    <table cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="specialWarning">特別警報</td>
+          <td>重大な災害が起こるおそれが著しく大きいとき</td>
+        </tr>
+        <tr>
+          <td class="warning">警報</td>
+          <td>重大な災害が起こるおそれのあるとき</td>
+        </tr>
+        <tr>
+          <td class="advisories">注意報</td>
+          <td>大雨や強風などによって災害が起こるおそれのあるとき</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

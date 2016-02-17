@@ -1,18 +1,26 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from board.models import Board
+from board.models import DocumentModel
 
 
-# Register your models here.
-class BoardAdmin(admin.ModelAdmin):
-    r"""BoardAdmin
+@admin.register(DocumentModel)
+class DocumentAdmin(admin.ModelAdmin):
+    r"""DocumentAdmin
 
-    BoardAdmin is a admin.ModelAdmin.
+    DocumentAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('title', 'published_from', 'expires_on', 'status')
+    list_display = ('title', 'status', 'publish_date', 'expiry_date')
     list_editable = ('status', )
-    ordering = ('-published_from', )
+    ordering = ('-publish_date', )
     exclude = ('thumbnail', )
+    radio_fields = {"status": admin.HORIZONTAL}
 
-admin.site.register(Board, BoardAdmin)
+
+
+# For Emacs
+# Local Variables:
+# coding: utf-8
+# End:
+# admin.py ends here

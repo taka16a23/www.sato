@@ -1,0 +1,33 @@
+{% if warnings %}
+<tr class="weatherAlertLocalEntry">
+  <td class="specialWarning">{{ warnings.Em_Snow_storm }}</td>
+  <td class="specialWarning">{{ warnings.Em_Landslide_disaster }}</td>
+  <td class="specialWarning">{{ warnings.Em_Flood_damage }}</td>
+  <td class="specialWarning">{{ warnings.Em_Storm }}</td>
+  <td class="specialWarning">{{ warnings.Em_Heavy_snow }}</td>
+  <td class="warning">{{ warnings.Wa_Snow_storm }}</td>
+  <td class="warning">{{ warnings.Wa_Landslide_disaster }}</td>
+  <td class="warning">{{ warnings.Wa_Flood_damage }}</td>
+  <td class="warning">{{ warnings.Wa_Flood }}</td>
+  <td class="warning">{{ warnings.Wa_Storm }}</td>
+  <td class="warning">{{ warnings.Wa_Heavy_snow }}</td>
+  <td class="advisories">{{ warnings.Ad_Heavy_rain }}</td>
+  <td class="advisories">{{ warnings.Ad_Heavy_snow }}</td>
+  <td class="advisories">{{ warnings.Ad_Gale_and_snow }}</td>
+  <td class="advisories">{{ warnings.Ad_Thunderstorm }}</td>
+  <td class="advisories">{{ warnings.Ad_Gale }}</td>
+  <td class="advisories">{{ warnings.Ad_Snow_melting }}</td>
+  <td class="advisories">{{ warnings.Ad_Flood }}</td>
+  <td class="advisories">{{ warnings.Ad_Dense_fog }}</td>
+  <td class="advisories">{{ warnings.Ad_Dry_air }}</td>
+  <td class="advisories">{{ warnings.Ad_Avalanche }}</td>
+  <td class="advisories">{{ warnings.Ad_Frost }}</td>
+  <td class="advisories">{{ warnings.Ad_Low_temperature }}</td>
+  <td class="advisories">{{ warnings.Ad_Ice_accretion }}</td>
+  <td class="advisories">{{ warnings.Ad_Snow_accretion }}</td>
+</tr>
+{% else %}
+<tr>
+  <td colspan="27">取得できませんでした</td>
+</tr>
+{% endif %}

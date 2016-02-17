@@ -69,21 +69,8 @@
     background-color: #E6F3EC;
 }
 
-#formatSato table tbody td a {
-    display: block;
-}
-
 #formatSato table td:nth-child(3):hover,
 #formatSato table td:nth-child(4):hover {
     background-color: #ecf2fa;
 }
 
-#formatETC table tbody tr > a {
-    display: block;
-}
-
-#formatETC table tbody tr.clickable:hover th,
-#formatETC table tbody tr.clickable:hover td {
-  background: #ecf2fa;
-  cursor: pointer;
-}

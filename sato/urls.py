@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """sato URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,88 +21,22 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.syndication.views import Feed
 
 from sato import settings
-import home.views
-import formats.views
-import board.views
-from informations.models import Information, INFO_CATEGORIES
+# from sato.admin import admin_site
 
 import datetime
 
-
-class InformationFeed(Feed):
-    r"""InformationFeed
-
-    InformationFeed is a Feed.
-    Responsibility:
-    """
-    title = "Test"
-    description = "Test description"
-    link = "/informations/feed/"
-
-    def items(self, ):
-        r"""SUMMARY
-
-        items()
-
-        @Return:
-
-        @Error:
-        """
-        now = datetime.datetime.now()
-        return Information.objects.filter(publish=True).filter(pub_date__lte=now).order_by('-pub_date')[:10]
-
-    def item_title(self, item):
-        r"""SUMMARY
-
-        item_title(item)
-
-        @Arguments:
-        - `item`:
-
-        @Return:
-
-        @Error:
-        """
-        return item.title
-
-    def item_description(self, item):
-        r"""SUMMARY
-
-        item_description(item)
-
-        @Arguments:
-        - `item`:
-
-        @Return:
-
-        @Error:
-        """
-        return {x: name for x, name in INFO_CATEGORIES}.get(item.category, u'')
-
-    def item_link(self, item):
-        r"""SUMMARY
-
-        item_link(item)
-
-        @Arguments:
-        - `item`:
-
-        @Return:
-
-        @Error:
-        """
-        return item.url
-
-
 urlpatterns = [
-    url(r'^$', home.views.home),
-    url(r'^admin/', admin.site.urls),
-    url(r'^informations/feed/$', InformationFeed()),
+    url(r'^$', 'home.views.home'),
+    url(r'^news/', include('news.urls')),
+    url(r'^security/', include('security.urls')),
+    url(r'^activity/', 'activity.views.view'),
+    url(r'^board/', 'board.views.view'),
+    url(r'^formats/', 'formats.views.formats'),
     url(r'^about/', include('about.urls')),
-    url(r'^formats/', formats.views.formats),
-    url(r'^board/', board.views.board),
-    url(r'^activity/', 'activity.views.activity_view'),
-    url(r'^security/', 'security.views.security_view'),
+    url(r'^admin/', admin.site.urls),
+    # url(r'^admin/', include(admin_site.urls)),
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^lab/', include('lab.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
@@ -111,3 +47,14 @@ if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT}))
+
+admin.site.site_header = u'里自治会 ホームページ'
+admin.site.index_title = u'コントロールパネル'
+
+
+
+# For Emacs
+# Local Variables:
+# coding: utf-8
+# End:
+# urls.py ends here

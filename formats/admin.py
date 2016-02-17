@@ -1,8 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from django.contrib import admin
+
+from sato.settings import STATIC_URL
 from formats.models import SatoFormat, OtherFormat
 
 
-# Register your models here.
+@admin.register(SatoFormat)
 class SatoFormatAdmin(admin.ModelAdmin):
     r"""SatoFormatAdmin
 
@@ -13,7 +17,12 @@ class SatoFormatAdmin(admin.ModelAdmin):
     list_editable = ('sortid', 'publish', )
     ordering = ('sortid', )
 
+    class Media:
+        js = (STATIC_URL + 'js/tiny_mce/tiny_mce.js',
+              STATIC_URL + 'js/tiny_mce/simple_tiny_mce.js',)
 
+
+@admin.register(OtherFormat)
 class OtherFormatAdmin(admin.ModelAdmin):
     r"""OtherFormatAdmin
 
@@ -24,6 +33,14 @@ class OtherFormatAdmin(admin.ModelAdmin):
     list_editable = ('sortid', 'publish', )
     ordering = ('sortid', )
 
+    class Media:
+        js = (STATIC_URL + 'js/tiny_mce/tiny_mce.js',
+              STATIC_URL + 'js/tiny_mce/simple_tiny_mce.js',)
 
-admin.site.register(OtherFormat, OtherFormatAdmin)
-admin.site.register(SatoFormat, SatoFormatAdmin)
+
+
+# For Emacs
+# Local Variables:
+# coding: utf-8
+# End:
+# admin.py ends here

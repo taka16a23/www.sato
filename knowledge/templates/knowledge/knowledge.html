@@ -1,0 +1,20 @@
+<div id="backgroundKnowledge" class="clearfix">
+  <h2>防災予備知識</h2>
+  <ul>
+    {% for knowledge in knowledges %}
+    <li>
+      <div class="imageBox">
+        <div class="imageInner">
+          <a href="{{ knowledge.url }}" target="_blank"><img src="{{ knowledge.thumbnail.url }}" class="{% if knowledge.image_status %}vertical{% else %}horizon{% endif %}"/></a>
+        </div>
+      </div>
+      <div class="descriptionBox">
+        <div class="descriptionInner">
+          <h3><a href="{{ knowledge.url }}" target="_blank">{{ knowledge.title }}</a></h3>
+          <p>{{ knowledge.description|safe }}</p>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

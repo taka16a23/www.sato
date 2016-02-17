@@ -25,6 +25,7 @@ SECRET_KEY = 'e#=uh+oj=vsk(az33dfjl%@=y7=4dekkjj^hubdha@4qimak5)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = False
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0:8080', 'localhost:8080', '192.168.1.129']
 
@@ -38,19 +39,45 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party
+    'tinymce',
+    # myapps
     'lib',
+    'news',
     'home',
-    'informations',
     'emergency',
     'formats',
     'board',
     'about',
-    'about.group',
-    'about.contact',
+    'group',
+    'contact',
     'security',
-    'activity',
+    'knowledge',
     'captcha',
+    'lab',
+    'todo',
+    'activity',
+
+    # 'filebrowser',
 ]
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': 'table,spellchecker,paste,searchreplace,media,insertdatetime',
+    'theme': 'advanced',
+    'theme_advanced_buttons1' : "save,newdocument,|,styleselect,formatselect,fontselect,fontsizeselect,|,search,replace,|,cleanup,anchor,|,iespell,code,preview,visualaid,print,fullscreen,help",
+    'theme_advanced_buttons2' : "bold,italic,underline,strikethrough,sub,sup,|,bullist,numlist,|,justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,blockquote,|,tablecontrols",
+    'theme_advanced_buttons3' : "undo,redo,|copy,cut,paste,pastetext,pasteword,removeformat,|,forecolor,backcolor,|,insertdate,inserttime,charmap,hr,link,unlink,image,media,|,emotions,advhr,ltr,rtl",
+    'theme_advanced_toolbar_location' : 'top',
+    'theme_advanced_toolbar_align': 'left',
+    'paste_text_sticky': True,
+    'paste_text_sticky_default' : True,
+    'theme_advanced_resizing' : True,
+    'plugin_insertdate_dateFormat' : "%Y/%m/%d",
+    'plugin_insertdate_timeFormat' : "%H:%M:%S",
+}
+
+# TINYMCE_FILEBROWSER = True
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,7 +95,8 @@ ROOT_URLCONF = 'sato.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', ],
+        'DIRS': ['templates',
+                 'secportal/templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

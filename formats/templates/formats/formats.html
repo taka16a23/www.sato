@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<div id="formatSato">
+  <h1>里自治会関係書式</h1>
+  <table>
+	<thead>
+	  <tr>
+		<th>書類（書式）名</th>
+		<th>概要</th>
+		<th>ダウンロード</th>
+		<th>フォーム</th>
+	  </tr>
+	</thead>
+	<tbody>
+      {% for f in satoformats %}
+	  <tr>
+		<th>{{ f.title }}</th>
+		<td>{{ f.description|safe }}</td>
+		<td>
+          {% if f.file %}
+          <a href="{{ f.file.url }}" target="_blank">
+            <img src="{% static "Adobe_PDF_file_icon_32x32.png" %}"/>
+          </a>
+          {% endif %}
+        </td>
+        <td>
+          {% if f.form %}
+          <a href="f.form">
+            <img src="{% static "penCheckbox.png" %}"/>
+          </a>
+          {% endif%}
+        </td>
+	  </tr>
+      {% endfor %}
+	</tbody>
+  </table>
+</div>
+<div id="formatETC">
+  <h1>自治体等関係書式</h1>
+  <table>
+	<thead>
+	  <tr>
+		<th>書類（書式）名</th>
+		<th>概要</th>
+	  </tr>
+	</thead>
+	<tbody>
+      {% for f in otherformats %}
+	  <tr>
+		<th><a href="{{ f.url }}" target="_blank" title="掲載サイトへ移動">{{ f.title }}</a></th>
+		<td>{{ f.description|safe }}</td>
+	  </tr>
+      {% endfor %}
+	</tbody>
+  </table>
+</div>

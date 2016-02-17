@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <div id="footer">
   <div id="footerWrapper">
     <div id="aboutMe">
@@ -27,52 +28,63 @@
     </div>
     <div id="sitemap" class="footerContent clearfix">
       <div class="sitemapEntry">
-        <h3><a href="/board">おしらせ</a></h3>
-        <ul>
-          <li><a href="/information">2016</a></li>
-        </ul>
+        <h3><a href="/news">おしらせ</a></h3>
+        <ol>
+          {% for news_year in news_uniq_years %}
+          <li><a href="/news/?year={{ news_year }}">{{ news_year }}</a></li>
+          {% endfor %}
+        </ol>
       </div>
       <div class="sitemapEntry">
-        <h3><a href="/board">ご報告</a></h3>
-        <ul>
-          <li><a href="/information">2016</a></li>
-        </ul>
+        <h3><a href="/activity/">ご報告</a></h3>
+        <ol>
+          {% for activity_year in activity_uniq_years %}
+          <li><a href="/activity/?year={{ activity_year }}">{{ activity_year }}</a></li>
+          {% endfor %}
+        </ol>
       </div>
       <div class="sitemapEntry">
         <h3><a href="/board">回覧板</a></h3>
-        <ul>
-          <li><a href="/information">2016</a></li>
-        </ul>
+        <ol>
+          {% for board_year in board_uniq_years %}
+          <li>
+            <a href="/board/?year={{ board_year }}">{{ board_year }}</a>
+          </li>
+          {% endfor %}
+        </ol>
       </div>
       <div class="sitemapEntry">
         <h3><a href="/security">防犯・防災</a></h3>
-        <ul>
-          <li><a href="/">統合情報</a></li>
-          <li><a href="/information">2016</a></li>
-        </ul>
+        <ol>
+          <li><a href="/security/secportal/">統合情報</a></li>
+          <li><a href="/security/secportal/#evacuationMapArea">避難地図</a></li>
+          <li><a href="/security/knowledge/">防災予備知識</a></li>
+        </ol>
       </div>
       <div class="sitemapEntry">
-        <h3><a href="/security">各種申請</a></h3>
-        <ul>
-        </ul>
+        <h3><a href="/formats">各種申請</a></h3>
+        <ol>
+          <li><a href="/formats/#formatSato">里自治会関係書式</a></li>
+          <li><a href="/formats/#formatETC">自治体等関連書式</a></li>
+        </ol>
       </div>
       <div id="query" class="sitemapEntry">
-        <h3><a href="/board">自治会案内</a></h3>
-        <ul>
-          <li><a href="/board">会則</a></li>
-          <li><a href="/board">会長挨拶</a></li>
+        <h3><a href="/about">自治会案内</a></h3>
+        <ol>
+          <li><a href="#">会則</a></li>
+          <li><a href="#">会長挨拶</a></li>
           <li><a href="/about/group/">ブロックと組割</a></li>
-          <li><a href="/board">入会案内</a></li>
-          <li><a href="/board">脱会案内</a></li>
-          <li><a href="/board">よくある質問</a></li>
+          <li><a href="#">入会案内</a></li>
+          <li><a href="#">脱会案内</a></li>
+          <li><a href="#">よくある質問</a></li>
           <li><a href="/about/contact/">情報提供・お問い合わせ</a></li>
-        </ul>
+        </ol>
       </div>
       <div class="sitemapEntry">
         <h3>その他</h3>
-        <ul>
+        <ol>
           <li><a href="/informations/feed/">RSS</a></li>
-        </ul>
+        </ol>
       </div>
     </div>
   </div>

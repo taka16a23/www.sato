@@ -1,11 +1,13 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from emergency.models import Emergency
-from django import forms
 
-# Register your models here.
-admin.site.disable_action('delete_selected')
+from emergency.models import EmergencyEntryModel
+from sato.settings import STATIC_URL
+
+
+# admin.site.disable_action('delete_selected')
 
 def make_unpublish(modeladmin, request, queryset):
     r"""SUMMARY
@@ -21,48 +23,32 @@ def make_unpublish(modeladmin, request, queryset):
 
     @Error:
     """
-    queryset.update(status=False)
+    queryset.update(status=2)
+
 
 make_unpublish.short_description = u'非公開にする'
 
+@admin.register(EmergencyEntryModel)
+class EmergencyEntryAdmin(admin.ModelAdmin):
+    r"""EmergencyEntryAdmin
 
-class EmergencyAdminForm(forms.ModelForm):
-    r"""EmergencyAdminForm
-
-    EmergencyAdminForm is a forms.ModelForm.
+    EmergencyEntryAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    # def __init__(self, *args, **kwargs):
-    #     r"""
-
-    #     @Arguments:
-    #     - `args`:
-    #     - `kwargs`:
-    #     """
-    #     super(EmergencyAdminForm, self).__init__(*args, **kwargs)
-    #     self.fields['status'].widget = admin.widgets.AdminRadioSelect()
-    class Meta:
-        model = Emergency
-        fields = '__all__'
-        widgets = {
-            'title': admin.widgets.AdminTextInputWidget,
-            'description': admin.widgets.AdminTextareaWidget,
-            'published_from': admin.widgets.AdminSplitDateTime,
-            'expires_on': admin.widgets.AdminSplitDateTime,
-            'status': admin.widgets.AdminRadioSelect,}
-
-
-class EmergencyAdmin(admin.ModelAdmin):
-    r"""EmergencyAdmin
-
-    EmergencyAdmin is a admin.Model.
-    Responsibility:
-    """
-    form = EmergencyAdminForm
-    list_display = ('title', 'published_from', 'expires_on', 'status', 'description')
-    # list_editable = ('status',)
-
+    list_display = ('title', 'status', 'publish_date', 'expiry_date', 'body')
+    list_editable = ('status', )
+    ordering = ('-modified', )
+    radio_fields = {"status": admin.HORIZONTAL}
     actions = [make_unpublish, 'delete_selected']
 
+    class Media:
+        js = (STATIC_URL + 'js/tiny_mce/tiny_mce.js',
+              STATIC_URL + 'js/tiny_mce/simple_tiny_mce.js',)
 
-admin.site.register(Emergency, EmergencyAdmin)
+
+
+# For Emacs
+# Local Variables:
+# coding: utf-8
+# End:
+# admin.py ends here

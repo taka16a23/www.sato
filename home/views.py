@@ -1,27 +1,25 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-from collections import namedtuple
-from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
-from django.template import loader
-from informations.models import INFO_CATEGORIES, Information
-from emergency.models import Emergency
-from django.db.models import Q
-from django.shortcuts import render_to_response
-# from datetime import datetime, timedelta
+
+from news.models import PostModel
+from emergency.models import EmergencyEntryModel
+from lib.utils import get_context
+
+import os
+import datetime
+from collections import namedtuple
+import httplib2
 from calendar import (MONDAY, TUESDAY, WEDNESDAY, THURSDAY,
                       FRIDAY, SATURDAY, SUNDAY)
-
-import httplib2
-import os
 
 from apiclient import discovery
 import oauth2client
 from oauth2client import client
 from oauth2client import tools
 
-import datetime
 
 CALID_MAIN = 'satotanakami@gmail.com'
 CALID_GARBAGE = 'c9uc1q8uiftrf0agsvvbpo6dvc@group.calendar.google.com'
@@ -194,73 +192,7 @@ WEEKDAY_JDIC = {MONDAY: u'月',
                 SATURDAY: u'土',
                 SUNDAY: u'日'}
 
-# Create your views here.
-class Info(object):
-    r"""Info
-
-    Info is a object.
-    Responsibility:
-    """
-    categories = {x: name for x, name in INFO_CATEGORIES} # tuple to dict
-
-    def __init__(self, title, category, ctime, url):
-        r"""
-
-        @Arguments:
-        - `args`:
-        - `kwargs`:
-        """
-        self.title = title
-        self._category = category
-        self._ctime = ctime
-        self.url = url
-
-    @property
-    def category(self, ):
-        r"""SUMMARY
-
-        category()
-
-        @Return:
-
-        @Error:
-        """
-        return self.categories.get(self._category)
-
-    @property
-    def category_class(self, ):
-        r"""SUMMARY
-
-        category_class()
-
-        @Return:
-
-        @Error:
-        """
-        return {1: 'categoryImportant',
-                2: 'categoryInfo',
-                3: 'categorySecurity',
-                4: 'categoryReport',
-                5: 'categoryEvent',
-                6: 'categoryWanted',
-                7: 'categoryUpdate',
-        }.get(self._category)
-
-    @property
-    def date(self, ):
-        r"""SUMMARY
-
-        date()
-
-        @Return:
-
-        @Error:
-        """
-        return self._ctime.strftime('%Y/%m/%d')
-
-
 PAST_COUNTS = 7
-MIN_INFO_COUNTS = 8
 
 class Day(object):
     r"""Day
@@ -338,23 +270,10 @@ def home(request):
 
     @Error:
     """
-    context = {}
-    now = datetime.datetime.now()
+    context = get_context(emergency=True)
+    now = context['now']
     context['today'] = Day(now)
-    start = now - datetime.timedelta(PAST_COUNTS)
-    end = now
-    infos = list(Information.objects
-                 .filter(publish=True)
-                 .filter(pub_date__lte=now)
-                 .order_by('-pub_date')[:MIN_INFO_COUNTS])
-    range_infos = list(Information.objects
-                       .filter(publish=True)
-                       .filter(pub_date__gte=start)
-                       .filter(pub_date__lte=end)
-                       .order_by('-pub_date'))
-    if len(infos) < len(range_infos):
-        infos = range_infos
-    context['info_list'] = [Info(i.title, i.category, i.pub_date, i.url) for i in infos]
+    context['newsList'] = PostModel.objects.latest_by_days(PAST_COUNTS)
     context['todayGarbageCollection'] = list(list_garbage_events(now, now))
     context['todaySchedules'] = list(list_main_events(now, now))
     context['todayHallBooking'] = list(list_hall_events(now, now))
@@ -362,8 +281,13 @@ def home(request):
     context['tomorrowGarbageCollection'] = list(
         list_garbage_events(tomorrow, tomorrow))
     context['tomorrowSchedules'] = list(list_main_events(tomorrow, tomorrow))
-    context['emergencies'] = list(Emergency.objects.filter(
-        Q(expires_on__isnull=True)|Q(expires_on__gte=now),
-        Q(published_from__isnull=True)|Q(published_from__lte=now),
-        Q(status=True)).order_by('-published_from'))
-    return render_to_response('home/home.html', context, context_instance=RequestContext(request))
+    return render_to_response(
+        'home/home.html', context, context_instance=RequestContext(request))
+
+
+
+# For Emacs
+# Local Variables:
+# coding: utf-8
+# End:
+# views.py ends here

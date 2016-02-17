@@ -1,0 +1,29 @@
+<div id="riverAlertArea" class="evacuationInfoEntry clearfix">
+  <div id="riverDescription" class="riverAlertEntry">
+    <h2>大戸川(石居橋)の様子</h2>
+    <p>{{ camdate|date:'Y年m月d日H:i' }} 現在</p>
+    <ul>
+      <li>
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <th>場所</th>
+              <td><a href="https://www.google.com/maps/place/34°56'39.3&#34;N+135°55'33.5&#34;E/@34.9398157,135.9206506,15z" target="_blank">北緯34度56分39.3秒<br/>東経135度55分33.5秒</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <a href="http://shiga-bousai.jp/rain/rain_graph03.php?id1=6&id2=4&id3=1&id4=13&sid=21302" target="_blank">黒津(大戸川左岸)の雨量計</a>
+      </li>
+      <li>
+        <a href="http://www.pref.shiga.lg.jp/h/chisui/files/11siryou_1.pdf" target="_blank">大戸川流域の主な災害</a>
+      </li>
+    </ul>  
+  </div>
+  <div id="riverCam" class="riverAlertEntry">
+    <a href="http://c.shiga-bousai.jp/shigapref/pc/camDetail_6191FF05.html" target="_blank" title="滋賀県河川防災カメラ">
+      <img src="http://c.shiga-bousai.jp/shigapref/pc/cameraData/images/6191FF05/{{ camdate|date:'YmdHi'}}.jpg"/>
+    </a>
+  </div>
+</div>

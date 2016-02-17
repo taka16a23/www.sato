@@ -23,10 +23,10 @@
     display: block;
 }
 
-/****************/
-/* informations */
-/****************/
-#informations {
+/********/
+/* news */
+/********/
+#news {
     float: left;
     width: 546px;
     -moz-box-shadow: 1px 1px 3px #bbb;
@@ -35,21 +35,21 @@
     overflow: hidden;
 }
 
-#informations h2 a {
+#news h2 a {
     display: block;
     color: white;
 }
 
-#informations h2 .title {
+#news h2 .title {
     float: left;
 }
 
-#informations h2 .rss {
+#news h2 .rss {
     float: right;
     width: 28px;
 }
 
-#informations h2 .infolist {
+#news h2 .newslist {
     float: right;
     position: relative;
     top: 4px;
@@ -58,36 +58,36 @@
     font-weight: bold;
 }                   
                     
-#informations h2 .infolist a {
+#news h2 .newslist a {
     font-size: 14px;
 }
 
-#informations h2 .infolist a:before {
+#news h2 .newslist a:before {
     position : relative;
     content: url("/static/arrowWhite.png");
     top: 2px;
 }                   
 
 
-#informations > ol {
+#news > ol {
     display: block;
     list-style-type: none;
     overflow: hidden;
 }
 
-#informations > ol > li {
+#news > ol > li {
     overflow: hidden;
     padding: 0;
 }
 
-#informations > ol > li a {
+#news > ol > li a {
     display: block;
     padding: 5px 10px;
     overflow: hidden;
     position: relative;
 }
 
-#informations > ol > li .Category {
+#news > ol > li .Category {
     display: table-cell;
     width: 6em;
     vertical-align: middle;
@@ -103,7 +103,7 @@
     
 }
 
-#informations > ol > li .Date {
+#news > ol > li .Date {
     display: table-cell;
     width: 7em;
     padding-left: 10px;
@@ -111,7 +111,7 @@
     color: #0B5426;
 }
 
-#informations > ol > li .Title {
+#news > ol > li .Title {
     display: table-cell;
     vertical-align: middle;
     font-weight: bold;
@@ -119,11 +119,11 @@
     color: #0B5426;
 }
 
-#informations > ol > li:hover {
+#news > ol > li:hover {
     background-color: #EAEDEA !important;
 }
 
-#informations > ol > li:hover .Title {
+#news > ol > li:hover .Title {
     text-decoration: underline !important;
 }
 
@@ -131,7 +131,7 @@
 /*     background-color: #fff1e1; */
 /* } */
 
-#informations > ol > li:nth-child(even) {
+#news > ol > li:nth-child(even) {
     background-color: #E6F3EC;
 }
 

@@ -27,7 +27,7 @@ DEBUG = True
 # DEBUG = False
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0:8080', 'localhost:8080', '192.168.1.129']
+ALLOWED_HOSTS = ['0.0.0.0:8080', 'localhost:8080', '192.168.1.129', '*']
 
 
 # Application definition
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'group',
     'contact',
     'security',
+    'secportal',
     'knowledge',
     'captcha',
     'lab',
@@ -104,6 +105,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static', # for {{ STATIC_URL }}
             ],
         },
     },
@@ -159,7 +161,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-# STATIC_ROOT = 'staticfiles'
+# STATIC_ROOT = '/data/work/sato/static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),

@@ -4,7 +4,7 @@
   <div id="masthead">
     <div id="mastheadImage">
       <a href="/" title="ホーム" alt="ホーム">
-        <img src="{% static "headerImage.jpg" %}"/>
+        <img src="{{ STATIC_URL }}images/headerImage.jpg"/>
       </a>
     </div>
   </div>
@@ -13,7 +13,6 @@
       <li>
         <a href="/" title="ホーム">
           <i class="fa fa-home fa-2x"></i>
-          <!-- <img src="{% static "homeIcon.png" %}" alt="ホーム"/> -->
         </a>
       </li>
       <li{% if request.path|startswith:"/news" %} class="active"{% endif %}><a href="/news"><span>お知らせ</span></a></li>

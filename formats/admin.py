@@ -18,8 +18,8 @@ class SatoFormatAdmin(admin.ModelAdmin):
     ordering = ('sortid', )
 
     class Media:
-        js = (STATIC_URL + 'js/tiny_mce/tiny_mce.js',
-              STATIC_URL + 'js/tiny_mce/simple_tiny_mce.js',)
+        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
+              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
 
 
 @admin.register(OtherFormat)
@@ -34,8 +34,8 @@ class OtherFormatAdmin(admin.ModelAdmin):
     ordering = ('sortid', )
 
     class Media:
-        js = (STATIC_URL + 'js/tiny_mce/tiny_mce.js',
-              STATIC_URL + 'js/tiny_mce/simple_tiny_mce.js',)
+        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
+              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
 
 
 

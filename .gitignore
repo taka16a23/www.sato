@@ -1,2 +1,3 @@
 /media/boards/
-*.pyc$
+/static/
+*.pyc

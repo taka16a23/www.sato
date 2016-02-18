@@ -7,7 +7,7 @@ from django.apps import AppConfig
 
 class BoardConfig(AppConfig):
     name = 'board'
-    verbose_name = u'回覧板の管理'
+    verbose_name = u'回覧板ページの管理'
 
 
 

@@ -7,7 +7,7 @@ from django.apps import AppConfig
 
 class ActivityConfig(AppConfig):
     name = 'activity'
-    verbose_name = u'活動記録の管理'
+    verbose_name = u'活動記録ページの管理'
 
 
 

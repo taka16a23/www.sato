@@ -7,7 +7,7 @@ from django.apps import AppConfig
 
 class NewsConfig(AppConfig):
     name = 'news'
-    verbose_name = u'お知らせの管理'
+    verbose_name = u'お知らせページの管理'
 
 
 

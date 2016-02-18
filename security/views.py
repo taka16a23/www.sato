@@ -4,10 +4,10 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from lib.utils import get_context
+from security.models import SecKnowledgeModel
 
 import datetime
 from collections import namedtuple
-
 import requests
 from lxml import html
 
@@ -151,6 +151,25 @@ def secportal_view(request):
         print(err)
     return render_to_response(
         'secportal/index.html', context,
+        context_instance=RequestContext(request))
+
+def knowledge_view(request):
+    r"""SUMMARY
+
+    knowledge_view(request)
+
+    @Arguments:
+    - `request`:
+
+    @Return:
+
+    @Error:
+    """
+    context = get_context()
+    context['knowledges'] = SecKnowledgeModel.objects.filter(publish=True).order_by('sortid')
+    return render_to_response(
+        'knowledge/index.html',
+        context,
         context_instance=RequestContext(request))
 
 

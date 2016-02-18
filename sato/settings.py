@@ -41,21 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third party
     'tinymce',
+    'captcha',
+
     # myapps
     'lib',
     'news',
     'home',
+    'activity',
     'emergency',
     'formats',
     'board',
     'about',
-    'group',
-    'contact',
     'security',
-    'captcha',
     'lab',
     'todo',
-    'activity',
 
     # 'filebrowser',
 ]

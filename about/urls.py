@@ -11,9 +11,9 @@ from django.conf.urls import patterns, url
 urlpatterns = patterns(
     '',
     # url(r'^$', views.index, name='index'),
-    (r'^group/', 'group.views.groupview'),
-    (r'^contact/thankyou/', 'contact.views.thankyou'),
-    (r'^contact/', 'contact.views.contactform'),
+    (r'^group/', 'about.views.group_view'),
+    (r'^contact/thankyou/', 'about.views.thankyou'),
+    (r'^contact/', 'about.views.contactform'),
     (r'^$', 'about.views.about_view'),
 )
 

@@ -4,11 +4,12 @@ r"""forms -- DESCRIPTION
 
 """
 from django.forms import ModelForm
-from contact.models import ContactModel
-from captcha.fields import CaptchaField
+from about.models import ContactPostModel
+# もしスパムがひどい用ならコメントアウト
+# from captcha.fields import CaptchaField
 
 
-class ContactForm(ModelForm):
+class ContactPostForm(ModelForm):
     r"""ContactForm
 
     ContactForm is a ModelForm.
@@ -17,7 +18,7 @@ class ContactForm(ModelForm):
     # もしスパムがひどい用ならコメントアウト
     # captcha = CaptchaField()
     class Meta:
-        model = ContactModel
+        model = ContactPostModel
         exclude = ('created', 'finished', )
 
 

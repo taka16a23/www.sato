@@ -42,8 +42,8 @@ class EmergencyEntryAdmin(admin.ModelAdmin):
     actions = [make_unpublish, 'delete_selected']
 
     class Media:
-        js = (STATIC_URL + 'js/tiny_mce/tiny_mce.js',
-              STATIC_URL + 'js/tiny_mce/simple_tiny_mce.js',)
+        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
+              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
 
 
 

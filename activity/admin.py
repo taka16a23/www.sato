@@ -14,8 +14,8 @@ class ActivityPostAdmin(admin.ModelAdmin):
     Responsibility:
     """
     class Media:
-        js = (STATIC_URL + 'js/tiny_mce/tiny_mce.js',
-              STATIC_URL + 'js/tiny_mce/full_tiny_mce.js',)
+        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
+              STATIC_URL + 'tiny_mce/full_tiny_mce.js',)
 
     list_display = ('title', 'status', 'publish_date', 'expiry_date', 'description')
     list_editable = ('status', )

@@ -8,7 +8,7 @@
         {% if board.thumbnail %}
         <img src="{{ board.thumbnail.url }}" alt="{{ board.thumbnail.url }}">
         {% else%}
-        <img src="{% static "no_pdf_picture.jpg" %}" alt="{% static "no_pdf_picture.jpg" %}">
+        <img src="{% static "images/no_pdf_picture.jpg" %}" alt="{% static "no_pdf_picture.jpg" %}">
         {% endif %}
       </a>
       <h6><a href="{{ board.file.url }}" class="board_title" title="{{ board.title }}"  target="_blank">{{ board.title }}</a></h6> 

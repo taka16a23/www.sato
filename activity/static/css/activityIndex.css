@@ -1,0 +1,58 @@
+#main {
+    background-color: #E6F3EC;
+    border-radius: 20px;
+}
+
+#main > h2 {
+	position: relative;
+	padding: .75em 1em .75em 1.5em;
+	border: 1px solid #ccc;
+  background-color: white;
+  /* width: 667px; */
+  top: 20px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#main > h2::after {
+	position: absolute;
+	top: .5em;
+	left: .5em;
+	content: '';
+	width: 6px;
+	height: -webkit-calc(100% - 1em);
+	height: calc(100% - 1em);
+	background-color: #2c7046;
+	border-radius: 4px;
+}
+
+#activityIndex {
+    margin-left: 20px;
+    margin-right: 20px;
+    letter-spacing: 1px;
+}
+
+#activityIndex li > h3 {
+    font-size: 2em;
+}
+
+#activityIndex > ol > li {
+    border-bottom: dotted 1px #ccc;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+#activityIndex .date {
+    font-weight: bold;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+#activityIndex .description {
+    margin-bottom: 5px;
+}
+
+#activityIndex a:hover {
+    text-decoration: underline;
+}

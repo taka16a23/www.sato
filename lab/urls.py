@@ -12,6 +12,7 @@ urlpatterns = patterns(
     '',
     # url(r'^$', views.index, name='index'),
     # (r'^$', 'lab.views.lab_view'),
+    url('^server/', 'lab.views.server_view'),
 )
 
 

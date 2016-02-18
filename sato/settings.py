@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'group',
     'contact',
     'security',
-    'secportal',
     'knowledge',
     'captcha',
     'lab',

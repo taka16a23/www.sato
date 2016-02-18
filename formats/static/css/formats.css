@@ -1,0 +1,76 @@
+#main h1 {
+    margin-bottom: 5px;
+}
+
+#main table {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+#main table,
+#main td,
+#main th {
+    border-collapse: collapse;
+    border:1px solid #333;
+    line-height: 1.5;
+    }
+
+#main table thead {
+    text-align: center;
+}
+
+#main table thead {
+	border-right: 1px solid #333;
+	border-left: 1px solid #333;
+	background: #04162e;
+}
+
+#main table thead th {
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: middle;
+	color: #fff;
+}
+
+#main table tbody th {
+	width: 14em;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: middle;
+	border-bottom: 1px solid #333;
+	background: #efefef;
+    text-align: left;
+}
+
+#main table td {
+	padding: 5px;
+	vertical-align: middle;
+	border-bottom: 1px solid #333;
+}
+
+#main table td:nth-child(2) {
+	width: 350px;
+}
+
+#main table td:nth-child(3) {
+	width: 7.7em;
+  text-align: center;
+}
+
+#main table td:nth-child(4) {
+	width: 6em;
+  text-align: center;
+}
+
+#main table tbody tr:nth-child(even) td {
+    background-color: #E6F3EC;
+}
+
+#formatSato table td:nth-child(3):hover,
+#formatSato table td:nth-child(4):hover {
+    background-color: #ecf2fa;
+}
+

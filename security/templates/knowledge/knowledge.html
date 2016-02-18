@@ -5,7 +5,7 @@
     <li>
       <div class="imageBox">
         <div class="imageInner">
-          <a href="{{ knowledge.url }}" target="_blank"><img src="{{ knowledge.thumbnail.url }}" class="{% if knowledge.image_status %}vertical{% else %}horizon{% endif %}"/></a>
+          <a href="{{ knowledge.url }}" target="_blank"><img src="{{ knowledge.thumbnail.url }}" class="{% if knowledge.image_status = 1 %}vertical{% else %}horizon{% endif %}"/></a>
         </div>
       </div>
       <div class="descriptionBox">

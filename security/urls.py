@@ -7,7 +7,7 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns(
     '',
-    (r'^secportal/', 'secportal.views.secportal_view'),
+    (r'^secportal/', 'security.views.secportal_view'),
     (r'^knowledge/', 'knowledge.views.knowledge_view'),
     (r'^$', 'security.views.security_view'),
 )

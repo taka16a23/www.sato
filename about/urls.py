@@ -4,16 +4,13 @@ r"""urls -- DESCRIPTION
 
 """
 from django.conf.urls import patterns, url
-# from about.group.views import groupview
-# from about.contact.views import contactform
-
 
 urlpatterns = patterns(
     '',
     # url(r'^$', views.index, name='index'),
     (r'^group/', 'about.views.group_view'),
-    (r'^contact/thankyou/', 'about.views.thankyou'),
-    (r'^contact/', 'about.views.contactform'),
+    (r'^solve/', 'about.views.solve_view'),
+    (r'^thankyou/', 'about.views.thankyou'),
     (r'^$', 'about.views.about_view'),
 )
 

@@ -1,0 +1,67 @@
+<div id="faq" class="mainContent">
+  <h2>よくある質問</h2>
+  <div class="subContent">
+    <p>※よくあるご質問でお探しの情報が見つからない場合は、<a href="#contact">お問い合わせフォーム</a>よりお問い合わせいただけます</p>
+    <div id="qalist">
+      <ol>
+        {% for qa in qalist %}
+        <li>
+          <a href="#qaId{{ qa.id }}">{{ qa.question|safe }}</a>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div id="qa">
+      <ol>
+        {% for qa in qalist %}
+        <li>
+          <div id="qaId{{ qa.id }}" class="question">
+            <h3>{{ qa.question|safe }}</h3>
+          </div>
+          <div class="answer">
+            {{ qa.answer|safe }}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</div>
+<div id="contact" class="mainContent">
+  <h2>情報提供・お問い合わせ</h2>
+  <div class="subContent">
+    <p>※お問合せいただく前に、こちらの「<a href="#faq">よくある質問</a>」を一度ご確認ください。</p>
+    <p>３日以内にこちらから連絡がない場合は、*** にて、ご連絡をお願いいたします。</p>
+    <div id="contactForm">
+      <form action="#contact" method="POST">  
+        {% csrf_token %}
+        <div class="form">
+          <p>{{ contactForm.name.label }}</p>
+          <p>{{ contactForm.name }} (例 田中美里</p>
+          <p>{{ contactForm.name.errors }}</p>
+        </div>
+        <div class="form">
+          <p>{{ contactForm.email.label }}</p>
+          <p>{{ contactForm.email }} (例 email@example.com</p>
+          <p>{{ contactForm.errors.email }}</p>
+        </div>           
+        <div class="form">
+          <p>{{ contactForm.body.label }}</p>
+          <p>{{ contactForm.body }}</p>
+          <p>{{ contactForm.errors.body }}</p>
+        </div>           
+        <input type="submit" value="送信" />
+        <input type="reset" name="reset" value="リセット">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <script> -->
+<!--     $(function () { -->
+<!--         {% if anchor %} -->
+<!--             $(document.body).animate({ -->
+<!--                 'scrollTop':   $('#{{ anchor }}').offset().top -->
+<!--             }, 100); -->
+<!--         {% endif %} -->
+<!--     }); -->
+<!-- </script> -->

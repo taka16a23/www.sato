@@ -7,10 +7,10 @@ from lib.utils import get_context
 
 
 # Create your views here.
-def formats(request):
+def formats_view(request):
     r"""SUMMARY
 
-    formats(request)
+    formats_view(request)
 
     @Arguments:
     - `request`:

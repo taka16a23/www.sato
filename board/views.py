@@ -10,7 +10,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 
-def view(request):
+def board_view(request):
     r"""SUMMARY
 
     board(request)

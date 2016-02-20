@@ -3,17 +3,15 @@
 r"""urls -- DESCRIPTION
 
 """
-from django.conf.urls import patterns, url
-# from about.group.views import groupview
-# from about.contact.views import contactform
+from django.conf.urls import url
 
+from lab import views
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     # url(r'^$', views.index, name='index'),
     # (r'^$', 'lab.views.lab_view'),
-    url('^server/', 'lab.views.server_view'),
-)
+    url('^server/', views.server_view),
+]
 
 
 

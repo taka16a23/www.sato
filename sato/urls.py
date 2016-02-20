@@ -19,19 +19,25 @@ from django.conf.urls import url, patterns, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.syndication.views import Feed
+from django.views.static import serve as static_serve
 
 from sato import settings
 # from sato.admin import admin_site
+from home.views import home_view
+from activity.views import activity_view
+from board.views import board_view
+from formats.views import formats_view
+
 
 import datetime
 
 urlpatterns = [
-    url(r'^$', 'home.views.home'),
+    url(r'^$', home_view),
     url(r'^news/', include('news.urls')),
     url(r'^security/', include('security.urls')),
-    url(r'^activity/', 'activity.views.view'),
-    url(r'^board/', 'board.views.view'),
-    url(r'^formats/', 'formats.views.formats'),
+    url(r'^activity/', activity_view),
+    url(r'^board/', board_view),
+    url(r'^formats/', formats_view),
     url(r'^about/', include('about.urls')),
     url(r'^admin/', admin.site.urls),
     # url(r'^admin/', include(admin_site.urls)),
@@ -40,13 +46,13 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
-urlpatterns += patterns('', url(r'^captcha/', include('captcha.urls')))
+urlpatterns += [url(r'^captcha/', include('captcha.urls'))]
 
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-        'document_root': settings.MEDIA_ROOT}))
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', static_serve,
+            {'document_root': settings.MEDIA_ROOT}), ]
 
 admin.site.site_title = u'里自治会'
 admin.site.site_header = u'里自治会 ホームページ'

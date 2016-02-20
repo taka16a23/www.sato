@@ -12,10 +12,10 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 
-def view(request):
+def activity_view(request):
     r"""SUMMARY
 
-    view(request)
+    activity_view(request)
 
     @Arguments:
     - `request`:

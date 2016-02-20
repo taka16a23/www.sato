@@ -3,16 +3,18 @@
 r"""urls -- DESCRIPTION
 
 """
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
-urlpatterns = patterns(
-    '',
+from about import views
+
+
+urlpatterns = [
     # url(r'^$', views.index, name='index'),
-    (r'^group/', 'about.views.group_view'),
-    (r'^solve/', 'about.views.solve_view'),
-    (r'^thankyou/', 'about.views.thankyou'),
-    (r'^$', 'about.views.about_view'),
-)
+    url(r'^group/', views.group_view),
+    url(r'^solve/', views.solve_view),
+    url(r'^thankyou/', views.thankyou),
+    url(r'^$', views.about_view),
+]
 
 
 

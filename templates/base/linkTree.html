@@ -3,7 +3,7 @@
 <div id="linkTree">  
   <script type="text/javascript" src="{% static "js/acordionMenu.js" %}"></script>
   <div id="newsLinks">
-    <h2 {% if request.path|startswith:"/news" %}class="selected"{% endif %}>過去のお知らせ</h2>
+    <h2 {% if request.path|startswith:"/news" %}class="selected"{% endif %}>過去のおしらせ</h2>
     <ol {% if request.path|startswith:"/news" %}style="display:block"{% endif %}>
       {% for news_year in news_uniq_years %}
       <li>
@@ -76,12 +76,12 @@
       </li>
       <li>
         <p>
-          <a href="/about/QA.html">よくある質問</a>
+          <a href="/about/solve/#faq">よくある質問</a>
         </p>
       </li>
       <li {% if request.path|startswith:"/about/contact" %}class="active"{% endif %}>
         <p>
-          <a href="/about/contact/">情報提供・お問い合わせ</a>
+          <a href="/about/solve/#contact">情報提供・お問い合わせ</a>
         </p>
       </li>
     </ol>

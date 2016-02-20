@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from lib.utils import get_context
 
 from about.forms import ContactPostForm
+from about.models import QAModel
 
 
 def about_view(request):
@@ -43,17 +44,36 @@ def group_view(request):
         'group/index.html', context, context_instance=RequestContext(request))
 
 
-def contactform(request):
+def solve_view(request):
+    r"""SUMMARY
+
+    solve_view(request)
+
+    @Arguments:
+    - `request`:
+
+    @Return:
+
+    @Error:
+    """
     context = get_context()
+    print(request.get_full_path())
     form = ContactPostForm(request.POST)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/contact/thankyou/')
-    context['form'] = ContactPostForm()
+        return HttpResponseRedirect('/about/thankyou/')
+    if request.method == 'POST':
+        form = ContactPostForm(request.POST)
+        context['anchor'] = 'contact'
+    else:
+        form = ContactPostForm()
+    context['contactForm'] = form
+    context['qalist'] = QAModel.objects.published()
     return render_to_response(
-        'contact/index.html',
+        'about/solve/index.html',
         context,
         context_instance=RequestContext(request))
+
 
 def thankyou(request):
     r"""SUMMARY
@@ -67,7 +87,7 @@ def thankyou(request):
 
     @Error:
     """
-    return render_to_response('contact/thankyou.html', )
+    return render_to_response('about/solve/thankyou.html', )
 
 
 

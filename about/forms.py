@@ -4,6 +4,7 @@ r"""forms -- DESCRIPTION
 
 """
 from django.forms import ModelForm
+from django import forms
 from about.models import ContactPostModel
 # もしスパムがひどい用ならコメントアウト
 # from captcha.fields import CaptchaField
@@ -17,6 +18,11 @@ class ContactPostForm(ModelForm):
     """
     # もしスパムがひどい用ならコメントアウト
     # captcha = CaptchaField()
+    error_css_class = 'error'
+    required_css_class = 'required'
+
+    email = forms.CharField(widget=forms.TextInput(attrs={'size': 40,}))
+
     class Meta:
         model = ContactPostModel
         exclude = ('created', 'finished', )

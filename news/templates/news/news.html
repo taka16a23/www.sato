@@ -1,1 +1,18 @@
-<h1>工事中</h1>
+{% load staticfiles %}
+<div id="news" class="mainContent">
+  <h2>{{ year }}年 おしらせ一覧</h2>
+  <div class="subContent">
+    <ol>
+      {% for news in newsList %}
+      <li>
+        <a href="{{ news.url }}" target="_blank" title="詳細を見る">
+          <span class="Category {{ news.as_class_key }}">{{ news.as_category_name }}</span>
+          <span class="Date">{{ news.publish_date|date:'m月d日' }}</span>
+          <span class="Title">{{ news.title }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
+

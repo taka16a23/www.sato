@@ -258,10 +258,10 @@ class Day(object):
         return WEEKDAY_JDIC.get(self._date.weekday())
 
 
-def home(request):
+def home_view(request):
     r"""SUMMARY
 
-    home(request)
+    home_view(request)
 
     @Arguments:
     - `request`:

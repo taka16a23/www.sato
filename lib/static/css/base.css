@@ -410,19 +410,20 @@ ol {
     vertical-align: middle;
 }
 
+#address a:hover {
+    text-decoration: underline;
+}
+
 #zip p:before {
     content: "〒 ";
 }
 
 #phone p:before {
-    content: "\f095  電話番号: ";
-    font: normal normal normal 14px/1 FontAwesome;
-    margin-right: 2px;
-    vertical-align: middle;
+    content: "電話番号: ";
 }
 
 #fax p:before {
-    content: "\f1ac  FAX: ";
+    content: "FAX: ";
     font: normal normal normal 14px/1 FontAwesome;
     margin-right: 2px;
     vertical-align: middle;

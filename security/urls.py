@@ -3,14 +3,15 @@
 r"""urls -- DESCRIPTION
 
 """
-from django.conf.urls import patterns, url
+from django.conf.urls import url, include
 
-urlpatterns = patterns(
-    '',
-    (r'^secportal/', 'security.views.secportal_view'),
-    (r'^knowledge/', 'security.views.knowledge_view'),
-    (r'^$', 'security.views.security_view'),
-)
+from security import views
+
+urlpatterns = [
+    url(r'^secportal/', views.secportal_view),
+    url(r'^knowledge/', views.knowledge_view),
+    url(r'^$', views.security_view),
+]
 
 
 

@@ -2,3 +2,5 @@
 /static/
 *.pyc
 local_settings.py
+/data/media/
+/data/static/

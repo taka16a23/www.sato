@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e#=uh+oj=vsk(az33dfjl%@=y7=4dekkjj^hubdha@4qimak5)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0:8080', 'localhost:8080', '192.168.1.129', '*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -93,8 +93,17 @@ ROOT_URLCONF = 'sato.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates',
-                 'secportal/templates', ],
+        'DIRS': [
+            # 'templates',
+                 '/var/www/sato/templates',
+                 '/var/www/sato/formats/templates',
+                 '/var/www/sato/about/templates',
+                 '/var/www/sato/home/templates',
+                 '/var/www/sato/activity/templates',
+                 '/var/www/sato/news/templates',
+                 '/var/www/sato/security/templates',
+                 # 'secportal/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -158,7 +167,7 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-# STATIC_ROOT = '/data/work/sato/static'
+STATIC_ROOT = '/var/www/static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),

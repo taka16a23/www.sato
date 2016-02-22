@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
-from django.http import HttpResponse
 from django.template import RequestContext
 
 from news.models import PostModel
-from emergency.models import EmergencyEntryModel
 from lib.utils import get_context
 
 import os
@@ -26,7 +24,7 @@ CALID_GARBAGE = 'c9uc1q8uiftrf0agsvvbpo6dvc@group.calendar.google.com'
 CALID_HALL = '6m5ne5kcfmkek4t0ba37o95olo@group.calendar.google.com'
 
 SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
-CLIENT_SECRET_FILE = 'client_secret.json'
+CLIENT_SECRET_FILE = '/var/www/static/client_secret.json'
 APPLICATION_NAME = 'Google Calendar API Python Quickstart'
 
 Namespace = namedtuple(
@@ -43,8 +41,7 @@ def get_credentials():
     Returns:
         Credentials, the obtained credential.
     """
-    home_dir = os.path.expanduser('~')
-    credential_dir = os.path.join(home_dir, '.credentials')
+    credential_dir = os.path.join('/var/www/', '.credentials')
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
     credential_path = os.path.join(credential_dir,
@@ -70,7 +67,11 @@ def list_events(calendar_id, start, end, max_results=10):
     Creates a Google Calendar API service object and outputs a list of the next
     10 events on the user's calendar.
     """
-    credentials = get_credentials()
+    try:
+        credentials = get_credentials()
+    except AttributeError as err:
+        print(err)
+        return []
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('calendar', 'v3', http=http)
 

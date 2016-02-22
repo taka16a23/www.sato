@@ -424,9 +424,6 @@ ol {
 
 #fax p:before {
     content: "FAX: ";
-    font: normal normal normal 14px/1 FontAwesome;
-    margin-right: 2px;
-    vertical-align: middle;
 }
 
 

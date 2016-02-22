@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.syndication.views import Feed
 from django.views.static import serve as static_serve
+from django.conf.urls.static import static
 
 from sato import settings
 # from sato.admin import admin_site
@@ -28,8 +29,6 @@ from activity.views import activity_view
 from board.views import board_view
 from formats.views import formats_view
 
-
-import datetime
 
 urlpatterns = [
     url(r'^$', home_view),

@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     # third party
     'tinymce',
     'captcha',
-
+    'django_cron',
     # myapps
     'lib',
     'news',

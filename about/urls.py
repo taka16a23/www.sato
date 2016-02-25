@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^group/', views.group_view),
     url(r'^solve/', views.solve_view),
     url(r'^thankyou/', views.thankyou),
+    url(r'^rule/', views.rule),
+    url(r'^greeding/', views.greeding),
     url(r'^$', views.about_view),
 ]
 

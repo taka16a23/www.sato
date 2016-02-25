@@ -12,9 +12,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -23,11 +25,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e#=uh+oj=vsk(az33dfjl%@=y7=4dekkjj^hubdha@4qimak5)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+if socket.gethostname() in ('ki', ):
+    DEBUG = False
+else:
+    DEBUG = True
+
 TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+ADMINS = (('Atami', 'takahiroatsumi0517@gmail.com'), )
 
 
 # Application definition
@@ -42,6 +49,10 @@ INSTALLED_APPS = [
     # third party
     'tinymce',
     'captcha',
+    'django_cron',
+    'django_extensions',
+    'grappelli',
+    'filebrowser',
 
     # myapps
     'lib',
@@ -55,8 +66,6 @@ INSTALLED_APPS = [
     'security',
     'lab',
     'todo',
-
-    # 'filebrowser',
 ]
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -126,7 +135,7 @@ WSGI_APPLICATION = 'sato.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'satodb.sqlite3'),
+        'NAME': os.path.join(DATA_DIR, 'satodb.sqlite3'),
     }
 }
 
@@ -167,15 +176,23 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_ROOT = '/var/www/static'
+STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+# STATICFILES_DIRS = (
+    # os.path.join(BASE_DIR, "static"),
+# )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# FILEBROWSER_DIRECTORY = os.path.join(MEDIA_ROOT, 'uploads')
+# FILEBROWSER_VERSIONS_BASEDIR = MEDIA_ROOT
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

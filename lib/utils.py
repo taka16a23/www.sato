@@ -40,7 +40,7 @@ def get_context(emergency=False):
     if emergency:
         context['emergencies'] = EmergencyEntryModel.objects.published().order_by(
             '-publish_date')
-    now = timezone.now()
+    now = datetime.datetime.now()
     context['now'] = now
     # news
     news_uniq_years = displayable_uniq_year(NewsPostModel)

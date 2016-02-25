@@ -11,6 +11,11 @@ __all__ = [ ]
 
 default_app_config = 'about.apps.AboutConfig'
 
+ZIP = u'520-2276'
+ADDRESS = u'滋賀県大津市里5丁目7-22'
+PHONE_NUMBER = u'077-XXX-XXXX'
+FAX = u'077-XXX-XXXX'
+
 
 
 # For Emacs

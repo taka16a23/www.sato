@@ -90,6 +90,40 @@ def thankyou(request):
     return render_to_response('about/solve/thankyou.html', )
 
 
+def rule(request):
+    r"""SUMMARY
+
+    rule(request)
+
+    @Arguments:
+    - `request`:
+
+    @Return:
+
+    @Error:
+    """
+    context = get_context()
+    return render_to_response(
+        'about/index.html', context, context_instance=RequestContext(request))
+
+
+def greeding(request):
+    r"""SUMMARY
+
+    greeding(request)
+
+    @Arguments:
+    - `request`:
+
+    @Return:
+
+    @Error:
+    """
+    context = get_context()
+    return render_to_response(
+        'about/index.html', context, context_instance=RequestContext(request))
+
+
 
 # For Emacs
 # Local Variables:

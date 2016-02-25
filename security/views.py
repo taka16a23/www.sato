@@ -129,7 +129,7 @@ def secportal_view(request):
     @Error:
     """
     context = get_context(emergency=True)
-    now = context['now']
+    now = datetime.datetime.now()
     # 取得先より時間がすすんでいると画像が取得できない
     # 数十秒過去に調整
     # TODO: (Atami) [2016/02/14]

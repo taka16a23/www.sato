@@ -15,12 +15,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, patterns, include
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.contrib.syndication.views import Feed
 from django.views.static import serve as static_serve
-from django.conf.urls.static import static
 
 from sato import settings
 # from sato.admin import admin_site
@@ -29,6 +27,7 @@ from activity.views import activity_view
 from board.views import board_view
 from formats.views import formats_view
 
+from filebrowser.sites import site
 
 urlpatterns = [
     url(r'^$', home_view),
@@ -38,8 +37,9 @@ urlpatterns = [
     url(r'^board/', board_view),
     url(r'^formats/', formats_view),
     url(r'^about/', include('about.urls')),
+    url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
-    # url(r'^admin/', include(admin_site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^lab/', include('lab.urls')),
 ]

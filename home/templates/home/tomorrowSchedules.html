@@ -6,7 +6,7 @@
     <li>
       <p>
         <a href="{{ event.url }}" target="_blank" title="詳細を見る">
-          {% if event.starttime %}{{event.starttime}}{% endif %} {{ event.title }}
+          {% if event.is_start_today %}{{event.start|date:'R'}}{% endif %} {{ event.summary }}
         </a>
       </p>
     </li>

@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     'tinymce',
     'captcha',
     'django_cron',
+    'django_extensions',
+    'grappelli',
+    'filebrowser',
+
     # myapps
     'lib',
     'news',
@@ -62,8 +66,6 @@ INSTALLED_APPS = [
     'security',
     'lab',
     'todo',
-
-    # 'filebrowser',
 ]
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -186,6 +188,9 @@ STATICFILES_FINDERS = (
 
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# FILEBROWSER_DIRECTORY = os.path.join(MEDIA_ROOT, 'uploads')
+# FILEBROWSER_VERSIONS_BASEDIR = MEDIA_ROOT
 
 try:
     from local_settings import *

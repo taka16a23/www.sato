@@ -3,11 +3,13 @@
 r"""util -- DESCRIPTION
 
 """
+import django.utils.timezone as timezone
+
 from activity.models import PostModel
 from board.models import DocumentModel
 from news.models import PostModel as NewsPostModel
 from emergency.models import EmergencyEntryModel
-import django.utils.timezone as timezone
+import about
 
 import datetime
 
@@ -42,6 +44,8 @@ def get_context(emergency=False):
             '-publish_date')
     now = datetime.datetime.now()
     context['now'] = now
+    # about
+    context['about'] = about
     # news
     news_uniq_years = displayable_uniq_year(NewsPostModel)
     if not now.year in news_uniq_years:

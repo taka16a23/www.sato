@@ -7,6 +7,16 @@ from django.core.management import BaseCommand, CommandError
 from home import controllers
 
 from dateutil import parser as dateparser
+from argparse import HelpFormatter
+
+
+# from http://stackoverflow.com/questions/3853722/python-argparse-how-to-insert-newline-in-the-help-text
+class SmartFormatter(HelpFormatter):
+    def _split_lines(self, text, width):
+        # this is the RawTextHelpFormatter._split_lines
+        if text.startswith('R|'):
+            return text[2:].splitlines()
+        return HelpFormatter._split_lines(self, text, width)
 
 
 class Command(BaseCommand):
@@ -29,6 +39,7 @@ class Command(BaseCommand):
 
         @Error:
         """
+        parser.formatter_class = SmartFormatter
         parser.add_argument('-m', '--main',
                             dest='main',
                             action='store_true',
@@ -50,17 +61,18 @@ class Command(BaseCommand):
                             default=250,
                             type=int,
                             # (yas-expand-link "argparse_other_options" t)
-                            help='Sync event counts from start date.')
+                            help='Sync event counts from start date. defau')
         parser.add_argument('-s', '--start',
                             dest='start',
                             action='store',
                             default='',
-                            help='''Sync from start date.
-                            2010/6/30 23:15:22
-                            2010-06-30
-                            20100630
-                            Mon, 27 Oct 2008 21:24:07 +0900 (JST)
-                            ''')
+                            help='''R|Sync from start date.
+2010/6/30 23:15:22
+2010-06-30
+20100630
+Mon, 27 Oct 2008 21:24:07 +0900 (JST)
+'''
+        )
         # (yas-expand-link "argparse_add_argument" t)
 
     def handle(self, *args, **options):

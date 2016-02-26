@@ -188,6 +188,7 @@ def list_main_events(start=None, counts=250, showdeleted=True):
 
     @Error:
     """
+    # google calendar が utc と localtime で管理している為2日戻す
     start = start or datetime.datetime.utcnow() - relativedelta(days=2)
     return list_events(
         calid=CALID_MAIN, time_min=start, max_results=counts,

@@ -10,6 +10,7 @@ import datetime
 from collections import namedtuple
 import requests
 from lxml import html
+import urlparse
 
 
 def security_view(request):
@@ -116,6 +117,57 @@ def ceil(src, range):
     return ((int)(src / range) + 1 ) * range
 
 
+BASEURL = 'http://shiga-bousai.jp'
+
+def get_graph(suburl, xpath):
+    r"""SUMMARY
+
+    get_graph(suburl, xpath)
+
+    @Arguments:
+    - `suburl`:
+    - `xpath`:
+
+    @Return:
+
+    @Error:
+    """
+    page_url = urlparse.urljoin(BASEURL, suburl)
+    res = requests.get(page_url)
+    if not res.ok:
+        return ''
+    soup = html.fromstring(res.text)
+    return urlparse.urljoin(BASEURL, soup.xpath(xpath)[0].attrib.get('src', ''))
+
+
+def url_rain_graph():
+    r"""SUMMARY
+
+    url_rain_graph()
+
+    @Return:
+
+    @Error:
+    """
+    return get_graph(
+        'rain/rain_graph03.php?id1=6&id2=4&id3=1&id4=13&sid=21302',
+        '//*[@id="mainContentsLeftColumn"]/img')
+
+
+def url_river_graph():
+    r"""SUMMARY
+
+    url_river_graph()
+
+    @Return:
+
+    @Error:
+    """
+    return get_graph(
+        'wl/wl_graph02.php?interval=60&id1=7&id2=4&id3=1&id4=13&sid=12056&page=2',
+        '//*[@id="mainContentsLeftColumn"]/a[1]/img')
+
+
 def secportal_view(request):
     r"""SUMMARY
 
@@ -149,6 +201,8 @@ def secportal_view(request):
             context['warnings'] = get_weather_warnings(soup)
     except StandardError as err:
         print(err)
+    context['rainGraph'] = url_rain_graph()
+    context['riverGraph'] = url_river_graph()
     return render_to_response(
         'secportal/index.html', context,
         context_instance=RequestContext(request))

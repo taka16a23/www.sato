@@ -172,7 +172,44 @@
 }
 
 #riverDescription table td {
-    padding-left: 5px;
+    padding: 5px;
+}
+
+#riverAlertArea p {
+    width: 500px;
+    float: right;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#riverGraph {
+    overflow: hidden;
+    width: 460px;
+    margin-left: 470px;
+}
+
+#rainGraph a {
+    width: 460px;
+    position: relative;
+    height: 100px;
+}
+
+#rainGraph .mainGraph {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#rainGraph .explainImage {
+    position: absolute;
+    top: 30;
+    left: 25;
+}
+
+#evacuationInfoArea a:hover {
+    text-decoration: underline;
 }
 
 /******************/

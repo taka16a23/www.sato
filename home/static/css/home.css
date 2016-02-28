@@ -173,7 +173,7 @@
 }
 
 #agenda h2 a {
-    display: block;
+    /* display: block; */
     color: white;
 }
 
@@ -182,6 +182,23 @@
     height: 350;
     border-width:0;
     padding: 5px;
+}
+
+a#refresh {
+    float: right;
+    margin-top: 5px;
+}
+
+input[type=submit]{
+    font-family: FontAwesome;
+    color: white;
+    background: #2c7046;
+    background: -moz-linear-gradient(top,  #2c7046 0%, #2c7046 49%, #28653f 50%, #2c7046 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #2c7046 0%,#2c7046 49%,#28653f 50%,#2c7046 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #2c7046 0%,#2c7046 49%,#28653f 50%,#2c7046 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c7046', endColorstr='#2c7046',GradientType=0 ); /* IE6-9 */
+    border: 0;
+    cursor: pointer;
 }
 
 /******************/

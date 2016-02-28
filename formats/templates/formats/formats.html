@@ -18,14 +18,14 @@
 		<td>
           {% if f.file %}
           <a href="{{ f.file.url }}" target="_blank">
-            <img src="{% static "images/Adobe_PDF_file_icon_32x32.png" %}"/>
+            <i class="fa fa-download"></i>
           </a>
           {% endif %}
         </td>
         <td>
           {% if f.form %}
           <a href="f.form">
-            <img src="{% static "images/penCheckbox.png" %}"/>
+            <i class="fa fa-pencil-square-o"></i>
           </a>
           {% endif%}
         </td>

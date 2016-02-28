@@ -51,6 +51,12 @@
 	border-bottom: 1px solid #333;
 }
 
+#main table td a .fa {
+    font-size: 27px;
+    color: black;
+    margin-top: 5px;
+}
+
 #main table td:nth-child(2) {
 	width: 350px;
 }

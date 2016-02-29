@@ -12,7 +12,7 @@ class TodoAdmin(admin.ModelAdmin):
     Responsibility:
     """
     list_display = ('title', 'description', 'created', 'category', 'finished')
-    filter_horizontal = ('finished',)
+    # filter_horizontal = ('finished',)
     list_editable = ('finished', )
     list_filter = ('finished', )
 

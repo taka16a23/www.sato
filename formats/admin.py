@@ -12,8 +12,9 @@ class SatoFormatAdmin(admin.ModelAdmin):
     SatoFormatAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('title', 'description', 'file', 'form', 'sortid', 'publish')
+    list_display = ('title', 'short_description', 'file', 'form', 'sortid', 'publish')
     list_editable = ('sortid', 'publish', )
+    exclude = ('short_description', )
     ordering = ('sortid', )
 
 
@@ -24,8 +25,9 @@ class OtherFormatAdmin(admin.ModelAdmin):
     OtherFormatAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('title', 'description', 'sortid', 'publish')
+    list_display = ('title', 'short_description', 'sortid', 'publish')
     list_editable = ('sortid', 'publish', )
+    exclude = ('short_description', )
     ordering = ('sortid', )
 
 

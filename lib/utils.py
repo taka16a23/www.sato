@@ -3,12 +3,10 @@
 r"""util -- DESCRIPTION
 
 """
-import django.utils.timezone as timezone
-
 from activity.models import PostModel
 from board.models import DocumentModel
 from news.models import PostModel as NewsPostModel
-from emergency.models import EmergencyEntryModel
+from security.models import EmergencyEntryModel
 import about
 
 import datetime

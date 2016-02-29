@@ -63,7 +63,6 @@ INSTALLED_APPS = [
     'news',
     'home',
     'activity',
-    'emergency',
     'formats',
     'board',
     'about',

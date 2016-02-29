@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from sato.settings import STATIC_URL
 from activity.models import PostModel
 
 
@@ -13,16 +12,20 @@ class ActivityPostAdmin(admin.ModelAdmin):
     PostAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    class Media:
-        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
-              STATIC_URL + 'tiny_mce/full_tiny_mce.js',)
 
     list_display = ('title', 'status', 'publish_date', 'expiry_date', 'description')
+    list_display_links = ("title",)
     list_editable = ('status', )
     ordering = ('-modified', )
     exclude = ('description', )
     radio_fields = {"status": admin.HORIZONTAL}
+    date_hierarchy = 'publish_date'
     list_filter = ('status', 'publish_date', 'expiry_date', )
+
+    fieldsets = ((None, {
+        "fields": ["title", "status", ("publish_date", "expiry_date"), 'body'],
+    }),
+    )
 
 
 

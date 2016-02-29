@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from sato.settings import STATIC_URL
 from about.models import ContactPostModel
 from about.models import QAModel
 
@@ -29,10 +28,6 @@ class QAAdmin(admin.ModelAdmin):
     list_display = ('question', 'answer', 'status', )
     list_editable = ('status', )
     radio_fields = {'status': admin.HORIZONTAL,}
-
-    class Media:
-        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
-              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
 
 
 

@@ -47,12 +47,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # third party
-    'tinymce',
     'captcha',
     'django_cron',
     'django_extensions',
     'grappelli',
     'filebrowser',
+    'easy_thumbnails',
+    'filer',
+    'mptt',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # myapps
     'lib',
@@ -68,22 +72,35 @@ INSTALLED_APPS = [
     'todo',
 ]
 
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': 'table,spellchecker,paste,searchreplace,media,insertdatetime',
-    'theme': 'advanced',
-    'theme_advanced_buttons1' : "save,newdocument,|,styleselect,formatselect,fontselect,fontsizeselect,|,search,replace,|,cleanup,anchor,|,iespell,code,preview,visualaid,print,fullscreen,help",
-    'theme_advanced_buttons2' : "bold,italic,underline,strikethrough,sub,sup,|,bullist,numlist,|,justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,blockquote,|,tablecontrols",
-    'theme_advanced_buttons3' : "undo,redo,|copy,cut,paste,pastetext,pasteword,removeformat,|,forecolor,backcolor,|,insertdate,inserttime,charmap,hr,link,unlink,image,media,|,emotions,advhr,ltr,rtl",
-    'theme_advanced_toolbar_location' : 'top',
-    'theme_advanced_toolbar_align': 'left',
-    'paste_text_sticky': True,
-    'paste_text_sticky_default' : True,
-    'theme_advanced_resizing' : True,
-    'plugin_insertdate_dateFormat' : "%Y/%m/%d",
-    'plugin_insertdate_timeFormat' : "%H:%M:%S",
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'office2013',
+        # 'skin': 'kama',
+        # 'skin': 'moonocolor',
+        # 'skin': 'flat',
+        # 'skin': 'moono-dark',
+        # 'skin': 'moono_blue',
+        # 'toolbar': 'full',
+        'toolbar': [['Save', 'NewPage', 'Templates', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField',  '-', 'Source', 'Blockquote', 'Anchor', 'CreateDiv', '-', 'Print', 'Preview', 'Maximize', ],
+                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'HorizontalRule', '-', 'BidiLtr', 'BidiRtl', 'Language', '-', 'Table', 'Link', 'Unlink', 'Image', 'Slideshow', 'SpecialChar', 'HorizontalRule', 'PageBreak', 'Smiley', 'wenzgmap', 'Iframe'],
+                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor',]
+        ],
+        'extraPlugins': 'quicktable,slideshow,wenzgmap,attach,uploadimage,lineheight,filetools,stylesheetparser,imagerotate,tableresize,image2,autogrow,colordialog,imagepaste,autoembed',
+        'allowedContent': True,
+        # 'height': 400,
+        # 'width': 00,
+    },
+    'simple': {
+        'skin': 'office2013',
+        'toolbar': [['Save', 'NewPage', 'Templates', 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', '-', 'Link', 'Unlink', 'SpecialChar', 'PageBreak', 'Smiley', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Source', 'Print', 'Maximize', ],
+                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor',]
+        ],
+        'extraPlugins': 'slideshow,attach,lineheight,autogrow,colordialog,autoembed',
+        'allowedContent': True,
+        'height': 100,
+    },
 }
-
-# TINYMCE_FILEBROWSER = True
 
 
 MIDDLEWARE_CLASSES = [
@@ -96,6 +113,14 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
 
 ROOT_URLCONF = 'sato.urls'
 
@@ -191,6 +216,8 @@ MEDIA_URL = '/media/'
 
 # FILEBROWSER_DIRECTORY = os.path.join(MEDIA_ROOT, 'uploads')
 # FILEBROWSER_VERSIONS_BASEDIR = MEDIA_ROOT
+
+THUMBNAIL_HIGH_RESOLUTION = True
 
 try:
     from local_settings import *

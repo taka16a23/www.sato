@@ -15,10 +15,6 @@ class SecKnowledgeAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'url', 'thumbnail', 'sortid', 'publish')
     ordering = ('sortid', )
 
-    class Media:
-        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
-              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
-
 
 
 # For Emacs

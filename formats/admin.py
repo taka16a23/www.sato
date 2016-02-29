@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 
-from sato.settings import STATIC_URL
 from formats.models import SatoFormat, OtherFormat
 
 
@@ -17,10 +16,6 @@ class SatoFormatAdmin(admin.ModelAdmin):
     list_editable = ('sortid', 'publish', )
     ordering = ('sortid', )
 
-    class Media:
-        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
-              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
-
 
 @admin.register(OtherFormat)
 class OtherFormatAdmin(admin.ModelAdmin):
@@ -32,10 +27,6 @@ class OtherFormatAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'sortid', 'publish')
     list_editable = ('sortid', 'publish', )
     ordering = ('sortid', )
-
-    class Media:
-        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
-              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
 
 
 

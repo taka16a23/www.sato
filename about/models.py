@@ -3,8 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
 from django.db.models.query import QuerySet
+
+from ckeditor.fields import RichTextField
 
 from core.managers import ManagerAbstract
 
@@ -85,7 +86,7 @@ class QAModel(models.Model):
     objects = FAQManager()
 
     question = models.CharField(u'質問', max_length=255)
-    answer = models.TextField(u'回答', )
+    answer = RichTextField(u'回答', config_name='simple')
     created = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(
         u'ステータス',

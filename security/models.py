@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 IMAGE_VERTICAL = 1
@@ -19,7 +20,7 @@ class SecKnowledgeModel(models.Model):
     Responsibility:
     """
     title = models.CharField(u'タイトル', max_length=255)
-    description = models.TextField(u'説明文', blank=True)
+    description = RichTextField(u'説明文', config_name='simple', blank=True)
     url = models.URLField('URL', max_length=200, blank=False)
     thumbnail = models.ImageField(
         u'サムネイル',

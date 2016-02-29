@@ -41,10 +41,6 @@ class EmergencyEntryAdmin(admin.ModelAdmin):
     radio_fields = {"status": admin.HORIZONTAL}
     actions = [make_unpublish, 'delete_selected']
 
-    class Media:
-        js = (STATIC_URL + 'tiny_mce/tiny_mce.js',
-              STATIC_URL + 'tiny_mce/simple_tiny_mce.js',)
-
 
 
 # For Emacs

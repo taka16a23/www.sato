@@ -1,8 +1,6 @@
 /data/
 /data/media/
 /data/static/
-/data/satodb.sqlite3
-data/satodb.sqlite3
 /media/
 /static/
 *.pyc

@@ -9,6 +9,8 @@ from ckeditor.fields import RichTextField
 
 from core.managers import ManagerAbstract
 
+from BeautifulSoup import BeautifulSoup
+
 
 class ContactPostModel(models.Model):
     r"""ContactModel
@@ -87,12 +89,31 @@ class QAModel(models.Model):
 
     question = models.CharField(u'質問', max_length=255)
     answer = RichTextField(u'回答', config_name='simple')
+    description = models.TextField(u'概要', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(
         u'ステータス',
         choices=FAQ_STATUS_CHOICES,
         default=FAQ_STATUS_PUBLISHED,
         help_text=u'下書きを選択すると、サイトの管理ユーザーのみが見られる状態になります。')
+
+    def save(self, *args, **kwargs):
+        r"""SUMMARY
+
+        save()
+
+        @Return:
+
+        @Error:
+        """
+        text = u''
+        try:
+            text = u''.join(BeautifulSoup(self.answer).findAll(text=True))
+        except Exception as err:
+            # TODO: (Atami) [2016/02/17]
+            print(err)
+        self.description = text[:300]
+        super(QAModel, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = u'よくある質問'

@@ -25,8 +25,9 @@ class QAAdmin(admin.ModelAdmin):
     QAAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('question', 'answer', 'status', )
+    list_display = ('question', 'description', 'status', )
     list_editable = ('status', )
+    exclude = ('description', )
     radio_fields = {'status': admin.HORIZONTAL,}
 
 

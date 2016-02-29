@@ -8,7 +8,6 @@ from core.models import DisplayableModel
 from core.managers import DisplayableManager
 from ckeditor_uploader.fields import RichTextUploadingField
 
-
 from BeautifulSoup import BeautifulSoup
 
 

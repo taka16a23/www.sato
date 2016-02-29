@@ -46,7 +46,8 @@ class SecKnowledgeAdmin(admin.ModelAdmin):
     SecKnowledgeAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('title', 'description', 'url', 'thumbnail', 'sortid', 'publish')
+    list_display = ('title', 'short_description', 'url', 'thumbnail', 'sortid', 'publish')
+    exclude = ('description', )
     ordering = ('sortid', )
 
 

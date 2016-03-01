@@ -6,8 +6,8 @@ r"""urls -- DESCRIPTION
 from django.conf.urls import url, patterns, include
 from django.contrib.syndication.views import Feed
 
-from news.models import PostModel
-from news.views import view
+from publish.models import NewsPostModel
+from publish.views import news_view
 
 
 class NewsFeed(Feed):
@@ -29,7 +29,7 @@ class NewsFeed(Feed):
 
         @Error:
         """
-        return PostModel.objects.published().order_by('-publish_date')[:10]
+        return NewsPostModel.objects.published().order_by('-publish_date')[:10]
 
     def item_title(self, item):
         r"""SUMMARY
@@ -76,7 +76,7 @@ class NewsFeed(Feed):
 
 urlpatterns = [
     url('^feed/', NewsFeed()),
-    url('^$', view),
+    url('^$', news_view),
 ]
 
 

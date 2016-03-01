@@ -23,15 +23,15 @@ from django.views.static import serve as static_serve
 from sato import settings
 # from sato.admin import admin_site
 from home.views import home_view
-from activity.views import activity_view
-from board.views import board_view
+from publish.views import activity_view
+from publish.views import board_view
 from formats.views import formats_view
 
 from filebrowser.sites import site
 
 urlpatterns = [
     url(r'^$', home_view),
-    url(r'^news/', include('news.urls')),
+    url(r'^news/', include('publish.urls')),
     url(r'^security/', include('security.urls')),
     url(r'^activity/', activity_view),
     url(r'^board/', board_view),

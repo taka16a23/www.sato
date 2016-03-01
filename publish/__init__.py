@@ -4,12 +4,13 @@ r"""Name: __init__.py
 
 
 """
+
 __revision__ = "$Revision$"
 __version__ = "0.0.1"
 
 __all__ = [ ]
 
-default_app_config = 'news.apps.NewsConfig'
+default_app_config = 'publish.apps.PublishConfig'
 
 
 

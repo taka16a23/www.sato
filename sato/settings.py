@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # third party
     'captcha',
-    'django_cron',
     'django_extensions',
     'grappelli',
     'filebrowser',
@@ -57,14 +57,13 @@ INSTALLED_APPS = [
     'mptt',
     'ckeditor',
     'ckeditor_uploader',
+    'adminsortable2',
 
     # myapps
     'lib',
-    'news',
     'home',
-    'activity',
     'formats',
-    'board',
+    'publish',
     'about',
     'security',
     'lab',

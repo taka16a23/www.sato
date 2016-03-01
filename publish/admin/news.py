@@ -4,7 +4,20 @@ r"""news -- DESCRIPTION
 
 """
 from django.contrib import admin
-from publish.models import NewsPostModel
+from publish.models import NewsPostModel, NewsCategoryModel
+from adminsortable2.admin import SortableAdminMixin
+
+
+@admin.register(NewsCategoryModel)
+class NewsCategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
+    r"""NewsCategoryAdmin
+
+    NewsCategoryAdmin is a admin.ModelAdmin.
+    Responsibility:
+    """
+    list_display = ('name', 'fgcolor', 'bgcolor', )
+    list_editable = ('fgcolor', 'bgcolor', )
+    exclude = ['sortid', ]
 
 
 @admin.register(NewsPostModel)

@@ -9,7 +9,7 @@ from django.db import models
 
 from core.models import DisplayableModel
 from core.managers import DisplayableQuerySet, ManagerAbstract
-
+from colorfield.fields import ColorField
 
 NEWS_IMPORTANT = 1
 NEWS_INFORMATION = 2
@@ -40,6 +40,37 @@ CATEGORY_CLASS_KEYS = {
 }
 
 MIN_NEWS_COUNTS = 8
+
+
+class NewsCategoryModel(models.Model):
+    r"""NewsCategoryModel
+
+    NewsCategoryModel is a models.Model.
+    Responsibility:
+    """
+    name = models.CharField(u'カテゴリー名',
+                            max_length=8,
+                            help_text=u'8文字以内',
+                            null=False,
+                            blank=False)
+    fgcolor = ColorField(u'文字色', default='#ffffff')
+    bgcolor = ColorField(u'背景色', default='#ff0000')
+    sortid = models.IntegerField(
+        u' ',
+        help_text=u'サイトで昇順に並びます',
+        default=0,
+        blank=False,
+        null=False,
+        db_index=True)
+
+    class Meta:
+        verbose_name = u'お知らせカテゴリー'
+        verbose_name_plural = u'お知らせカテゴリー'
+        ordering = ['sortid', ]
+
+    def __unicode__(self):
+        return self.name
+
 
 
 class NewsPostQuerySet(DisplayableQuerySet):
@@ -93,10 +124,7 @@ class NewsPostModel(DisplayableModel):
     objects = NewsPostManager()
 
     title = models.CharField(u'タイトル', max_length=200, blank=False)
-    category = models.IntegerField(
-        u'お知らせの種類',
-        choices=NEWS_CATEGORIES,
-        blank=False, default=2)
+    category = models.ForeignKey(NewsCategoryModel, null=False)
     url = models.URLField('URL', max_length=200, blank=False)
 
     class Meta:

@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'adminsortable2',
+    'colorfield',
 
     # myapps
     'base',

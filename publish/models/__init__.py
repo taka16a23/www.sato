@@ -6,11 +6,11 @@ r"""Name: __init__.py
 """
 from publish.models.activity import ActivityPostModel
 from publish.models.board import DocumentModel, validate_file_pdf
-from publish.models.news import NewsPostModel
+from publish.models.news import NewsPostModel, NewsCategoryModel
 
 
 __all__ = ['ActivityPostModel', 'DocumentModel',
-           'validate_file_pdf', 'NewsPostModel', ]
+           'validate_file_pdf', 'NewsPostModel', 'NewsCategoryModel', ]
 
 
 

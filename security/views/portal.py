@@ -1,67 +1,51 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+r"""portal -- DESCRIPTION
 
-from lib.utils import get_context
-from security.models import SecKnowledgeModel
-
+"""
 import datetime
 from collections import namedtuple
 import requests
 from lxml import html
 import urlparse
 
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
-def security_view(request):
-    r"""SUMMARY
-
-    security_view(request)
-
-    @Arguments:
-    - `request`:
-
-    @Return:
-
-    @Error:
-    """
-    context = get_context()
-    return render_to_response(
-        'security/index.html', context, context_instance=RequestContext(request))
+from lib.utils import get_context
 
 
-# for security portal
 WeatherWarnings = namedtuple(
     'WeatherWarnings',
     (
         # Em = Emergency
-        'Em_Snow_storm', # 暴風雪特別警報
+        'Em_Snow_storm',         # 暴風雪特別警報
         'Em_Landslide_disaster', # 土砂災害特別警報
-        'Em_Flood_damage', # 浸水害特別警報
-        'Em_Storm', # 暴風特別警報
-        'Em_Heavy_snow', # 大雪特別警報
+        'Em_Flood_damage',       # 浸水害特別警報
+        'Em_Storm',              # 暴風特別警報
+        'Em_Heavy_snow',         # 大雪特別警報
         # Wa = Warning
-        'Wa_Snow_storm', # 暴風雪警報
+        'Wa_Snow_storm',         # 暴風雪警報
         'Wa_Landslide_disaster', # 土砂災害警報
-        'Wa_Flood_damage', # 浸水害警報
-        'Wa_Flood', # 洪水警報
-        'Wa_Storm', # 暴風警報
-        'Wa_Heavy_snow', # 大雪警報
+        'Wa_Flood_damage',       # 浸水害警報
+        'Wa_Flood',              # 洪水警報
+        'Wa_Storm',              # 暴風警報
+        'Wa_Heavy_snow',         # 大雪警報
         # Ad = Advisory
-        'Ad_Heavy_rain', # 大雨注意報
-        'Ad_Heavy_snow', # 大雪注意報
-        'Ad_Gale_and_snow', # 風雪注意報
-        'Ad_Thunderstorm', # 雷注意報
-        'Ad_Gale', #強風注意報
-        'Ad_Snow_melting', # 融雪注意報
-        'Ad_Flood', # 洪水注意報
-        'Ad_Dense_fog', # 濃霧注意報
-        'Ad_Dry_air', # 乾燥注意報
-        'Ad_Avalanche', # なだれ注意報
-        'Ad_Low_temperature', # 低温注意報
-        'Ad_Frost', # 霜注意報
-        'Ad_Ice_accretion', # 着氷注意報
-        'Ad_Snow_accretion', # 着雪注意報
+        'Ad_Heavy_rain',         # 大雨注意報
+        'Ad_Heavy_snow',         # 大雪注意報
+        'Ad_Gale_and_snow',      # 風雪注意報
+        'Ad_Thunderstorm',       # 雷注意報
+        'Ad_Gale',               #強風注意報
+        'Ad_Snow_melting',       # 融雪注意報
+        'Ad_Flood',              # 洪水注意報
+        'Ad_Dense_fog',          # 濃霧注意報
+        'Ad_Dry_air',            # 乾燥注意報
+        'Ad_Avalanche',          # なだれ注意報
+        'Ad_Low_temperature',    # 低温注意報
+        'Ad_Frost',              # 霜注意報
+        'Ad_Ice_accretion',      # 着氷注意報
+        'Ad_Snow_accretion',     # 着雪注意報
     ))
 
 
@@ -207,29 +191,10 @@ def secportal_view(request):
         'secportal/index.html', context,
         context_instance=RequestContext(request))
 
-def knowledge_view(request):
-    r"""SUMMARY
-
-    knowledge_view(request)
-
-    @Arguments:
-    - `request`:
-
-    @Return:
-
-    @Error:
-    """
-    context = get_context()
-    context['knowledges'] = SecKnowledgeModel.objects.filter(publish=True).order_by('sortid')
-    return render_to_response(
-        'knowledge/index.html',
-        context,
-        context_instance=RequestContext(request))
-
 
 
 # For Emacs
 # Local Variables:
 # coding: utf-8
 # End:
-# views.py ends here
+# portal.py ends here

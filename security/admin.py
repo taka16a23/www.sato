@@ -3,6 +3,7 @@
 from django.contrib import admin
 
 from security.models import SecKnowledgeModel, EmergencyEntryModel
+from adminsortable2.admin import SortableAdminMixin
 
 def make_unpublish(modeladmin, request, queryset):
     r"""SUMMARY
@@ -38,17 +39,25 @@ class EmergencyEntryAdmin(admin.ModelAdmin):
     radio_fields = {"status": admin.HORIZONTAL}
     actions = [make_unpublish, 'delete_selected']
 
+    class Media:
+        css = {'all': ('css/admin_sato.css', ),}
+
+    fieldsets = ((None, {
+        "fields": ["title", "status", ("publish_date", "expiry_date"), 'body'],
+    }),
+    )
+
 
 @admin.register(SecKnowledgeModel)
-class SecKnowledgeAdmin(admin.ModelAdmin):
+class SecKnowledgeAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""SecKnowledgeAdmin
 
     SecKnowledgeAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('title', 'short_description', 'url', 'thumbnail', 'sortid', 'publish')
-    exclude = ('description', )
-    ordering = ('sortid', )
+    list_display = ('title', 'short_description', 'url', 'thumbnail', 'publish')
+    list_editable = ('publish', )
+    exclude = ['sortid', 'short_description', ]
 
 
 

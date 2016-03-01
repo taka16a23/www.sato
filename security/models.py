@@ -70,15 +70,24 @@ class SecKnowledgeModel(models.Model):
         u'サムネイル',
         upload_to='knowledge/',
         blank=True, null=True)
-    image_status = models.IntegerField(
-        u'画像の状態',
-        choices=IMAGE_STATUS,
-        default=IMAGE_VERTICAL)
+    # image_status = models.IntegerField(
+    #     u'画像の状態',
+    #     choices=IMAGE_STATUS,
+    #     default=IMAGE_VERTICAL)
     sortid = models.IntegerField(
-        u'並び番号',
+        u' ',
         help_text=u'サイトで昇順に並びます',
-        default=100)
+        default=0,
+        blank=False,
+        null=False,
+        db_index=True,
+    )
     publish = models.BooleanField(u'公開する', default=True)
+
+    class Meta:
+        verbose_name = u'防災予備知識'
+        verbose_name_plural = u'防災予備知識'
+        ordering = ['sortid', ]
 
     def save(self, *args, **kwargs):
         r"""SUMMARY
@@ -97,10 +106,6 @@ class SecKnowledgeModel(models.Model):
             print(err)
         self.short_description = text[:300]
         super(SecKnowledgeModel, self).save(*args, **kwargs)
-
-    class Meta:
-        verbose_name = u'防災予備知識'
-        verbose_name_plural = u'防災予備知識'
 
     def __unicode__(self):
         return self.title

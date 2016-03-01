@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 
-from lib.utils import get_context
+from base.utils import get_context
 
 from about.forms import ContactPostForm
 from about.models import QAModel

@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'adminsortable2',
 
     # myapps
-    'lib',
+    'base',
     'home',
     'formats',
     'publish',

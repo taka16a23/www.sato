@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 from publish.models import NewsPostModel
-from lib.utils import get_context
+from base.utils import get_context
 
 
 def news_view(request):

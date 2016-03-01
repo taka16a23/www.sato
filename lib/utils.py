@@ -3,9 +3,7 @@
 r"""util -- DESCRIPTION
 
 """
-from activity.models import PostModel
-from board.models import DocumentModel
-from news.models import PostModel as NewsPostModel
+from publish.models import ActivityPostModel, DocumentModel, NewsPostModel
 from security.models import EmergencyEntryModel
 import about
 
@@ -51,7 +49,7 @@ def get_context(emergency=False):
     news_uniq_years.sort()
     context['news_uniq_years'] = news_uniq_years
     # activity
-    activity_uniq_years = displayable_uniq_year(PostModel)
+    activity_uniq_years = displayable_uniq_year(ActivityPostModel)
     if not now.year in activity_uniq_years:
         activity_uniq_years.append(now.year)
     activity_uniq_years.sort()

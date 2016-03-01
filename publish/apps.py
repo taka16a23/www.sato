@@ -5,9 +5,9 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class ActivityConfig(AppConfig):
-    name = 'activity'
-    verbose_name = u'活動記録ページの管理'
+class PublishConfig(AppConfig):
+    name = 'publish'
+    verbose_name = u'情報提供'
 
 
 

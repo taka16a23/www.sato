@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from news.models import PostModel
+from publish.models import NewsPostModel
 from lib.utils import get_context
 from home.models import GarbageEvent, MainEvent, HallEvent
 
@@ -100,7 +100,7 @@ def home_view(request):
     context = get_context(emergency=True)
     now = context['now']
     context['today'] = Day(now)
-    context['newsList'] = PostModel.objects.latest_by_days(PAST_COUNTS)
+    context['newsList'] = NewsPostModel.objects.latest_by_days(PAST_COUNTS)
     context['todayGarbageCollection'] = GarbageEvent.objects.filter(
         date=now)
     start = datetime.datetime.combine(now, datetime.time.min)

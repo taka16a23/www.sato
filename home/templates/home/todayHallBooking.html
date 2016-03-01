@@ -5,7 +5,7 @@
       {% for event in todayHallBooking %}
     <li>
       <p>
-        <a href="{{ event.url }}" target="_blank" title="詳細を見る">
+        <a href="https://calendar.google.com/calendar/embed?src=6m5ne5kcfmkek4t0ba37o95olo%40group.calendar.google.com&ctz=Asia/Tokyo" target="_blank" title="詳細を見る">
           {% if event.is_today_start %}{{event.start|date:'H:i'}}{% endif %} {{ event.summary }}
         </a>
       </p>

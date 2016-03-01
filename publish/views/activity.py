@@ -12,7 +12,7 @@ from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 
 from publish.models import ActivityPostModel
-from lib.utils import get_context
+from base.utils import get_context
 
 
 def activity_view(request):

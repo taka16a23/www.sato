@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response
 from formats.models import SatoFormat, OtherFormat
 from django.template import RequestContext
-from lib.utils import get_context
+from base.utils import get_context
 
 
 # Create your views here.

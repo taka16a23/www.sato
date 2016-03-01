@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from publish.models import NewsPostModel
-from lib.utils import get_context
+from base.utils import get_context
 from home.models import GarbageEvent, MainEvent, HallEvent
 
 import datetime
@@ -101,7 +101,7 @@ def home_view(request):
     now = context['now']
     context['today'] = Day(now)
     context['newsList'] = NewsPostModel.objects.latest_by_days(PAST_COUNTS)
-    context['todayGarbageCollection'] = GarbageEvent.objects.filter(
+    context['todayGarbageCollection'] = GarbageEvent.objects.confirmed().filter(
         date=now)
     start = datetime.datetime.combine(now, datetime.time.min)
     end = datetime.datetime.combine(now, datetime.time.max)
@@ -111,7 +111,7 @@ def home_view(request):
         start, end).confirmed().order_by('start')
     tomorrow = now + datetime.timedelta(1)
     start, end = start + datetime.timedelta(1), end + datetime.timedelta(1)
-    context['tomorrowGarbageCollection'] = GarbageEvent.objects.filter(
+    context['tomorrowGarbageCollection'] = GarbageEvent.objects.confirmed().filter(
         date=tomorrow)
     context['tomorrowSchedules'] = MainEvent.objects.between_events(
         start, end).confirmed().order_by('start')

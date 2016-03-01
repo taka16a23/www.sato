@@ -6,7 +6,7 @@ r"""knowledge -- DESCRIPTION
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from lib.utils import get_context
+from base.utils import get_context
 from security.models import SecKnowledgeModel
 
 

@@ -10,7 +10,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from publish.models import DocumentModel
-from lib.utils import get_context
+from base.utils import get_context
 
 
 def board_view(request):

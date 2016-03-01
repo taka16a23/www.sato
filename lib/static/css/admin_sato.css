@@ -1,0 +1,11 @@
+.datetime span {
+    margin-right: 10px;
+}
+
+.datetime br {
+    display: none;
+}
+
+.datetime input {
+    margin-left: 13px !important;
+}

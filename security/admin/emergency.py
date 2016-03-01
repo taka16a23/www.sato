@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from django.contrib import admin
+r"""emergency -- DESCRIPTION
 
-from security.models import SecKnowledgeModel, EmergencyEntryModel
-from adminsortable2.admin import SortableAdminMixin
+"""
+from django.contrib import admin
+from security.models import EmergencyEntryModel
+
 
 def make_unpublish(modeladmin, request, queryset):
     r"""SUMMARY
@@ -48,21 +50,9 @@ class EmergencyEntryAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(SecKnowledgeModel)
-class SecKnowledgeAdmin(SortableAdminMixin, admin.ModelAdmin):
-    r"""SecKnowledgeAdmin
-
-    SecKnowledgeAdmin is a admin.ModelAdmin.
-    Responsibility:
-    """
-    list_display = ('title', 'short_description', 'url', 'thumbnail', 'publish')
-    list_editable = ('publish', )
-    exclude = ['sortid', 'short_description', ]
-
-
 
 # For Emacs
 # Local Variables:
 # coding: utf-8
 # End:
-# admin.py ends here
+# emergency.py ends here

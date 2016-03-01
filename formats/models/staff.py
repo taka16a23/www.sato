@@ -16,7 +16,7 @@ class StaffFormat(models.Model):
     Responsibility:
     """
     title = models.CharField(u'書式名', max_length=255, blank=False)
-    description = RichTextField(u'概要', config_name='simple', blank=True)
+    description = RichTextField(u'説明', config_name='simple', blank=True)
     short_description = models.TextField(u'概要', blank=True, null=True)
     file = models.FileField(u'ファイル', upload_to='formats', blank=True)
     sortid = models.IntegerField(
@@ -56,7 +56,6 @@ class StaffFormat(models.Model):
 
     def __unicode__(self):
         return self.title
-
 
 
 

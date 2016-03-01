@@ -16,7 +16,7 @@ class OtherFormat(models.Model):
     Responsibility:
     """
     title = models.CharField(u'書式名', max_length=255, blank=False)
-    description = RichTextField(u'概要', config_name='simple', blank=True)
+    description = RichTextField(u'説明', config_name='simple', blank=True)
     short_description = models.TextField(u'概要', blank=True, null=True)
     url = models.URLField(u'掲載URL', max_length=200, blank=True)
     sortid = models.IntegerField(

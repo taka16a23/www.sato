@@ -91,6 +91,13 @@ class QAModel(models.Model):
     answer = RichTextField(u'回答', config_name='simple')
     description = models.TextField(u'概要', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
+    sortid = models.IntegerField(
+        u' ',
+        help_text=u'サイトで昇順に並びます',
+        default=0,
+        blank=False,
+        null=False,
+        db_index=True,)
     status = models.IntegerField(
         u'ステータス',
         choices=FAQ_STATUS_CHOICES,
@@ -118,6 +125,7 @@ class QAModel(models.Model):
     class Meta:
         verbose_name = u'よくある質問'
         verbose_name_plural = u'よくある質問'
+        ordering = ['sortid', ]
 
     def __unicode__(self):
         return self.question

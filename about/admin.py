@@ -5,6 +5,8 @@ from django.contrib import admin
 from about.models import ContactPostModel
 from about.models import QAModel
 
+from adminsortable2.admin import SortableAdminMixin
+
 
 @admin.register(ContactPostModel)
 class ContactAdmin(admin.ModelAdmin):
@@ -19,7 +21,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 @admin.register(QAModel)
-class QAAdmin(admin.ModelAdmin):
+class QAAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""QAAdmin
 
     QAAdmin is a admin.ModelAdmin.
@@ -27,7 +29,7 @@ class QAAdmin(admin.ModelAdmin):
     """
     list_display = ('question', 'description', 'status', )
     list_editable = ('status', )
-    exclude = ('description', )
+    exclude = ('sortid', 'description', )
     radio_fields = {'status': admin.HORIZONTAL,}
 
 

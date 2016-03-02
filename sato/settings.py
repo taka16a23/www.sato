@@ -88,7 +88,7 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': 'quicktable,slideshow,wenzgmap,attach,uploadimage,lineheight,filetools,stylesheetparser,imagerotate,tableresize,image2,autogrow,colordialog,imagepaste,autoembed',
         'allowedContent': True,
         # 'height': 400,
-        # 'width': 00,
+        'width': 750,
     },
     'simple': {
         'skin': 'office2013',

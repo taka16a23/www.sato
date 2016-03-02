@@ -58,6 +58,33 @@ class DisplayableQuerySet(QuerySet):
             Q(publish_date__gte=start)|Q(publish_date__isnull=True),
             Q(publish_date__lte=end)|Q(publish_date__isnull=True))
 
+    def by_fiscal_year(self, year):
+        r"""SUMMARY
+
+        by_fiscal_year(year)
+
+        @Arguments:
+        - `year`:
+
+        @Return:
+
+        @Error:
+        """
+        return self.filter(Q(fiscal_year=year))
+
+    def uniq_fiscal_years(self, ):
+        r"""SUMMARY
+
+        uniq_fiscal_years()
+
+        @Return:
+
+        @Error:
+        """
+        years = [d['fiscal_year'] for d in self.values('fiscal_year').distinct()]
+        years.sort()
+        return years
+
 
 class DisplayableManager(ManagerAbstract):
     r"""DisplayableManager

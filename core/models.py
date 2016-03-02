@@ -20,7 +20,7 @@ class TimeStampModel(models.Model):
     modified = models.DateTimeField(null=True, editable=False)
 
     def save(self, *args, **kwargs):
-        r"""SUMMARY
+        """SUMMARY
 
         save()
 
@@ -38,8 +38,8 @@ class TimeStampModel(models.Model):
 DISPLAY_STATUS_DRAFT = 1
 DISPLAY_STATUS_PUBLISHED = 2
 DISPLAY_STATUS_CHOICES = (
-    (DISPLAY_STATUS_DRAFT, u'下書き'),
     (DISPLAY_STATUS_PUBLISHED, u'公開'),
+    (DISPLAY_STATUS_DRAFT, u'下書き'),
 )
 
 
@@ -92,10 +92,10 @@ class DisplayableModel(TimeStampModel):
         abstract = True
 
     status = models.IntegerField(
-        u'ステータス',
+        u'状態',
         choices=DISPLAY_STATUS_CHOICES,
         default=DISPLAY_STATUS_PUBLISHED,
-        help_text=u'下書きを選択すると、サイトの管理ユーザーのみが見られる状態になります。')
+        help_text=u'下書きを選択すると、管理ユーザーのみが見られる状態になります。')
 
     publish_date = models.DateTimeField(
         u'公開開始',
@@ -105,6 +105,8 @@ class DisplayableModel(TimeStampModel):
         u'有効期限',
         help_text=u'公開を選択すると、ここで設定した日時以降は公開されません',
         blank=True, null=True)
+    fiscal_year = models.PositiveSmallIntegerField(
+        u'年度', db_index=True)
 
     def save(self, ):
         r"""SUMMARY
@@ -117,6 +119,10 @@ class DisplayableModel(TimeStampModel):
         """
         if self.publish_date is None:
             self.publish_date = datetime.datetime.now()
+        year = self.publish_date.year
+        if self.publish_date.month in (1, 2, 3):
+            year -= 1
+        self.fiscal_year = year
         super(DisplayableModel, self).save()
 
     def publish_date_since(self, ):

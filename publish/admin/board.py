@@ -23,6 +23,11 @@ class DocumentAdmin(admin.ModelAdmin):
     class Media:
         css = {'all': ('css/admin_sato.css', ),}
 
+    fieldsets = ((None, {
+        'fields': ['title', ('publish_date', 'expiry_date'), 'file', 'status'],
+    }),
+    )
+
 
 
 # For Emacs

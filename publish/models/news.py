@@ -11,33 +11,6 @@ from core.models import DisplayableModel
 from core.managers import DisplayableQuerySet, ManagerAbstract
 from colorfield.fields import ColorField
 
-NEWS_IMPORTANT = 1
-NEWS_INFORMATION = 2
-NEWS_SECURITY = 3
-NEWS_ACTIVITY = 4
-NEWS_WANTED = 5
-NEWS_UPDATE = 6
-
-
-NEWS_CATEGORIES = (
-    (NEWS_IMPORTANT, u'重要'),
-    (NEWS_INFORMATION, u'お知らせ'),
-    (NEWS_SECURITY, u'防犯'),
-    (NEWS_ACTIVITY, u'ご報告'),
-    (NEWS_WANTED, u'募集'),
-    (NEWS_UPDATE, u'更新'),
-)
-
-NEWS_CATEGORIES_DIC = {integer: name for integer, name in NEWS_CATEGORIES}
-
-CATEGORY_CLASS_KEYS = {
-    NEWS_IMPORTANT: 'categoryImportant',
-    NEWS_INFORMATION: 'categoryInfo',
-    NEWS_SECURITY: 'categorySecurity',
-    NEWS_ACTIVITY: 'categoryReport',
-    NEWS_WANTED: 'categoryWanted',
-    NEWS_UPDATE: 'categoryUpdate',
-}
 
 MIN_NEWS_COUNTS = 8
 
@@ -125,7 +98,10 @@ class NewsPostModel(DisplayableModel):
 
     title = models.CharField(u'タイトル', max_length=200, blank=False)
     category = models.ForeignKey(NewsCategoryModel, null=False)
-    url = models.URLField('URL', max_length=200, blank=False)
+    url = models.SlugField(
+        'URL',
+        help_text=u'http://sato.jp の後に続くURLを入力してください。<br/>(例) /activity/?id=1',
+        max_length=200, blank=False)
 
     class Meta:
         verbose_name = u'お知らせ'
@@ -133,28 +109,6 @@ class NewsPostModel(DisplayableModel):
 
     def __unicode__(self):
         return unicode(self.title)
-
-    def as_class_key(self, ):
-        r"""SUMMARY
-
-        as_class_key()
-
-        @Return:
-
-        @Error:
-        """
-        return CATEGORY_CLASS_KEYS.get(self.category)
-
-    def as_category_name(self, ):
-        r"""SUMMARY
-
-        as_category_name()
-
-        @Return:
-
-        @Error:
-        """
-        return NEWS_CATEGORIES_DIC.get(self.category, u'')
 
 
 

@@ -15,7 +15,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
     Responsibility:
     """
     list_display = ('title', 'status', 'publish_date', 'expiry_date', 'description')
-    list_display_links = ("title",)
+    list_display_links = ('title', )
     list_editable = ('status', )
     ordering = ('-modified', )
     exclude = ('description', )
@@ -27,7 +27,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
         css = {'all': ('css/admin_sato.css', ),}
 
     fieldsets = ((None, {
-        "fields": ["title", "status", ("publish_date", "expiry_date"), 'body'],
+        'fields': ['title', ('publish_date', 'expiry_date'), 'body', 'status', ],
     }),
     )
 

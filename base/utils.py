@@ -9,21 +9,6 @@ import about
 
 import datetime
 
-def displayable_uniq_year(model):
-    r"""SUMMARY
-
-    displayable_uniq_year(model)
-
-    @Arguments:
-    - `model`:
-
-    @Return:
-
-    @Error:
-    """
-    return [d.year for d in model.objects.published().datetimes(
-        'publish_date', 'year')]
-
 
 def get_context(emergency=False):
     r"""SUMMARY
@@ -43,19 +28,19 @@ def get_context(emergency=False):
     # about
     context['about'] = about
     # news
-    news_uniq_years = displayable_uniq_year(NewsPostModel)
+    news_uniq_years = NewsPostModel.objects.published().uniq_fiscal_years()
     if not now.year in news_uniq_years:
         news_uniq_years.append(now.year)
     news_uniq_years.sort()
     context['news_uniq_years'] = news_uniq_years
     # activity
-    activity_uniq_years = displayable_uniq_year(ActivityPostModel)
+    activity_uniq_years = ActivityPostModel.objects.published().uniq_fiscal_years()
     if not now.year in activity_uniq_years:
         activity_uniq_years.append(now.year)
     activity_uniq_years.sort()
     context['activity_uniq_years'] = activity_uniq_years
     # board
-    board_uniq_years = displayable_uniq_year(DocumentModel)
+    board_uniq_years = DocumentModel.objects.published().uniq_fiscal_years()
     if not now.year in board_uniq_years:
         board_uniq_years.append(now.year)
     board_uniq_years.sort()

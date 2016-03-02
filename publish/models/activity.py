@@ -26,7 +26,11 @@ class ActivityPostModel(DisplayableModel):
         verbose_name_plural = u'活動報告'
 
     title = models.CharField(u'題名', max_length=200)
-    body = RichTextUploadingField(u'本文', blank=True, null=True)
+    body = RichTextUploadingField(
+        u'本文',
+        help_text=u'入力ボックスの横幅が改行の大体の目安です',
+        config_name='activity',
+        blank=True, null=True)
     description = models.TextField(u'記事の説明', blank=True, null=True)
 
     def save(self, *args, **kwargs):

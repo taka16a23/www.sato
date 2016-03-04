@@ -58,6 +58,23 @@ class DisplayableQuerySet(QuerySet):
             Q(publish_date__gte=start)|Q(publish_date__isnull=True),
             Q(publish_date__lte=end)|Q(publish_date__isnull=True))
 
+    def by_year(self, year):
+        r"""SUMMARY
+
+        by_year(year)
+
+        @Arguments:
+        - `year`:
+
+        @Return:
+
+        @Error:
+        """
+        start = datetime.datetime(int(year), 1, 1)
+        end = datetime.datetime.combine(
+            datetime.datetime(start.year, 12, 31), datetime.time.max)
+        return self.range_by_publish_date(start, end)
+
 
 class DisplayableManager(ManagerAbstract):
     r"""DisplayableManager

@@ -1,0 +1,12 @@
+#main {
+    background-color: #E6F3EC;
+    border-radius: 20px;
+}
+
+#main iframe {
+    width: 700px;
+    height: 500px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+
+}

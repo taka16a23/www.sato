@@ -7,12 +7,12 @@
 	position: relative;
 	padding: .75em 1em .75em 1.5em;
 	border: 1px solid #ccc;
-  background-color: white;
-  /* width: 667px; */
-  top: 20px;
-  margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
+    background-color: white;
+    /* width: 667px; */
+    top: 20px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #main > .mainContent > h2::after {
@@ -116,4 +116,31 @@
     text-decoration: underline;
 }
 
+#taglist {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#taglist a {
+    background-color: #A9A9A9;
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px 3px 8px;
+    border-radius: 10px 10px 10px 10px;
+    line-height: 2.4em;
+    white-space: nowrap;
+}
+
+#taglist a:hover {
+    background-color: #686868;
+}
+
+#taglist .tagactive {
+    background-color: #686868;
+}
+
+#taglist i {
+    vertical-align: middle;
+}
 

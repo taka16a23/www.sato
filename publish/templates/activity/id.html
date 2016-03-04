@@ -8,12 +8,8 @@
   <div id="activityBody" class="clearfix">
     {{ activity_post.body|safe }}
   </div>
+  {% include "activity/taglist.html" %}
   <div id="activityFooter">
-    <!-- <div id="tags"> -->
-      <!-- <a href="#">tes</a> -->
-      <!-- <a href="#">hello</a> -->
-      <!-- <a href="#">world</a> -->
-    <!-- </div> -->
     <div id="paginate">      
       {% with activity_post.get_previous_by_publish_date as prev %}
       {% if prev %}

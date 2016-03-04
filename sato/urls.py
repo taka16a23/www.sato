@@ -23,17 +23,20 @@ from django.views.static import serve as static_serve
 from sato import settings
 # from sato.admin import admin_site
 from home.views import home_view
-from publish.views import activity_view
+from publish.views import activity_view, activity_list_view
 from publish.views import board_view
-from formats.views import formats_view
+from publish.views import news_view
+from publish.newsfeed import NewsFeed
 
 from filebrowser.sites import site
 
 urlpatterns = [
     url(r'^$', home_view),
-    url(r'^news/', include('publish.urls')),
+    url(r'^news/feed/', NewsFeed()),
+    url(r'^news/', news_view),
     url(r'^security/', include('security.urls')),
-    url(r'^activity/', activity_view),
+    url(r'^activity/(?P<postid>\d+)', activity_view),
+    url(r'^activity/', activity_list_view),
     url(r'^board/', board_view),
     url(r'^formats/', include('formats.urls')),
     url(r'^about/', include('about.urls')),
@@ -43,7 +46,6 @@ urlpatterns = [
     url(r'^lab/', include('lab.urls')),
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': 'django.conf'}),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

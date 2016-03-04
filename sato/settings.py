@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'adminsortable2',
     'colorfield',
+    'datetimewidget',
 
     # myapps
     'base',
@@ -74,6 +75,23 @@ INSTALLED_APPS = [
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
+        'skin': 'office2013',
+        # 'skin': 'kama',
+        # 'skin': 'moonocolor',
+        # 'skin': 'flat',
+        # 'skin': 'moono-dark',
+        # 'skin': 'moono_blue',
+        # 'toolbar': 'full',
+        'toolbar': [['Save', 'NewPage', 'Templates', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField',  '-', 'Source', 'Blockquote', 'Anchor', 'CreateDiv', '-', 'Print', 'Preview', 'Maximize', ],
+                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'HorizontalRule', '-', 'BidiLtr', 'BidiRtl', 'Language', '-', 'Table', 'Link', 'Unlink', 'Image', 'Slideshow', 'SpecialChar', 'HorizontalRule', 'PageBreak', 'Smiley', 'wenzgmap', 'Iframe'],
+                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor',]
+        ],
+        'extraPlugins': 'quicktable,slideshow,wenzgmap,attach,uploadimage,lineheight,filetools,stylesheetparser,imagerotate,tableresize,image2,autogrow,colordialog,imagepaste,autoembed',
+        'allowedContent': True,
+        # 'height': 400,
+        # 'width': 750,
+    },
+    'activity': {
         'skin': 'office2013',
         # 'skin': 'kama',
         # 'skin': 'moonocolor',

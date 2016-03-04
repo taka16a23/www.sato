@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^security/', include('security.urls')),
     url(r'^activity/', activity_view),
     url(r'^board/', board_view),
-    url(r'^formats/', formats_view),
+    url(r'^formats/', include('formats.urls')),
     url(r'^about/', include('about.urls')),
     url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
@@ -43,6 +43,7 @@ urlpatterns = [
     url(r'^lab/', include('lab.urls')),
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': 'django.conf'}),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

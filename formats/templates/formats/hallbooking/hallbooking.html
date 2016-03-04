@@ -1,0 +1,305 @@
+<h2>里公民館使用申込詳細</h2>
+<div id="hallbooking" class="subContent">
+  <div id="hallRent">
+    <h3>使 用 料</h3>
+	<table cellpadding="7" cellspacing="0">
+      <thead>
+        <tr>
+          <th>室名</th>
+          <th>イ.08:00~12:00</th>
+          <th>ロ.12:00~17:00</th>
+          <th>ハ.17:00~22:00</th>
+        <tr>
+      </thead>
+	  <tbody>
+		<tr>
+		  <th>
+			<p>１F　ホール</p>
+		  </th>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>１F　調理室</p>
+		  </th>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>２F　和　室</p>
+		  </th>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		  <td>
+			<p>５,０００円</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>&nbsp;</p>
+		  </th>
+		  <td>
+			<p>&nbsp;</p>
+		  </td>
+		  <td>
+			<p>&nbsp;</p>
+		  </td>
+		  <td>
+			<p>&nbsp;</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>全　　館</p>
+		  </th>
+		  <td>
+			<p>１５,０００円</p>
+		  </td>
+		  <td>
+			<p>１７,０００円</p>
+		  </td>
+		  <td>
+			<p>１７,０００円</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>全館一日</p>
+		  </th>
+		  <td>
+			<p>&nbsp;</p>
+		  </td>
+		  <td>
+			<p>&nbsp;</p>
+		  </td>
+		  <td>
+			<p>５０,０００円</p>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+  </div>
+  <div id="ReguraryHallBooking">
+    <h3>定期貸館料(ホール)</h3>
+    <p>定期貸館は、１ヶ月単位とします。</p>
+    <table cellspacing="0">
+      <tbody>
+		<tr>
+		  <th>
+			<p>週1回</p>
+		  </th>
+		  <td>
+			<p>１０,０００円</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>週2回</p>
+		  </th>
+		  <td>
+			<p>１８,０００円</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>週3回</p>
+		  </th>
+		  <td>
+			<p>２４,０００円</p>
+		  </td>
+		</tr>
+	  </tbody>
+    </table>
+  </div>
+  <div id="airconditionRent">
+    <h3>ホールエアコン使用料</h3>
+    <table cellspacing="0">
+      <tbody>
+		<tr>
+		  <th>
+			<p>冷房：６月～９月</p>
+		  </th>
+		  <td>
+			<p>１,０００円／月</p>
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+			<p>暖房：１１月～３月</p>
+		  </th>
+		  <td>
+			<p>１,０００円／月</p>
+		  </td>
+		</tr>
+	  </tbody>
+    </table>
+  </div>
+  <div id="descriptionHallBooking">
+    <p>町内団体使用の場合は無料。</p>
+    <p>学区自治連団体等については、貸館料金は相談の上決定する。</p>
+    <p>町内冠婚葬祭の場合は、一律５０,０００円とする。</p>
+  </div>
+  <div id="hallBookingCalendar">
+    <iframe src="https://calendar.google.com/calendar/embed?showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=6m5ne5kcfmkek4t0ba37o95olo%40group.calendar.google.com&amp;color=%23B1365F&amp;ctz=Asia%2FTokyo" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+  </div>
+</div>
+<div id="hallBookingForm">
+  <h2>里公民館使用申込</h2>
+  <div class="form">
+    <p>『*』は必須項目です。</p>
+    <p>３日以内にこちらから連絡がない場合は、電話番号 {{about.PHONE_NUMBER}} にて、ご連絡をお願いいたします。</p>
+    <form method="POST" id="" action="#hallBookingForm">
+      {% csrf_token %}
+      <table>
+        <tbody>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.orgname.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.orgname }}
+		    </td>
+            <td>
+              {{ hallBookingForm.orgname.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.name.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.name }}
+		    </td>
+            <td>
+              {{ hallBookingForm.name.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.address.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.address }}
+		    </td>
+            <td>
+              {{ hallBookingForm.address.errors }}
+            </td>
+		  </tr>          
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.phone.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.phone }}
+		    </td>
+            <td>
+              {{ hallBookingForm.phone.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.email.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.email }}
+		    </td>
+            <td>
+              {{ hallBookingForm.email.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.purpose.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.purpose }}
+		    </td>
+            <td>
+              {{ hallBookingForm.purpose.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*使用日時</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.startyear }}{{hallBookingForm.startmonth}}{{hallBookingForm.startday}}{{hallBookingForm.starthour}}{{hallBookingForm.startminutes}} から
+		    </td>
+            <td>
+              {{hallBookingForm.non_field_errors}}
+
+              <!-- {{hallBookingForm.startyear.errors}}{{hallBookingForm.startmonth.errors}}{{hallBookingForm.startday.errors}}{{hallBookingForm.starthour.errors}}{{hallBookingForm.startminutes.errors}} -->
+            </td>
+		  </tr>          
+		  <tr>
+		    <th>
+		    </th>
+		    <td>
+              {{hallBookingForm.endhour}}{{hallBookingForm.endminutes}} まで
+		    </td>
+            <td>
+              <!-- {{hallBookingForm.endhour.errors}}{{hallBookingForm.endminutes.errors}} -->
+            </td>
+		  </tr>          
+		  <tr>
+		    <th>
+              <p>{{ hallBookingForm.room.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.room }}
+		    </td>
+            <td>
+              {{ hallBookingForm.room.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>{{ hallBookingForm.matter.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.matter }}
+		    </td>
+            <td>
+              {{ hallBookingForm.matter.errors }}
+            </td>
+		  </tr>
+          <tr>
+            <th>
+              <p>{{ hallBookingForm.body.label }}</p>
+            </th>
+            <td>
+              {{ hallBookingForm.body }}
+            </td>
+            <td>
+              {{ hallBookingForm.body.errors }}
+            </td>
+          </tr>
+	    </tbody>
+      </table>
+      <div id="inputButton">
+        <input type="submit" value="送信" />
+        <input type="reset" name="reset" value="リセット">
+      </div>
+    </form>
+  </div>
+</div>

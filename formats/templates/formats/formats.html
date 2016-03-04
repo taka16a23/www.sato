@@ -7,7 +7,7 @@
 		<th>書類（書式）名</th>
 		<th>概要</th>
 		<th>ダウンロード</th>
-		<th>フォーム</th>
+		<th>Web申込</th>
 	  </tr>
 	</thead>
 	<tbody>
@@ -24,7 +24,7 @@
         </td>
         <td>
           {% if f.form %}
-          <a href="f.form">
+          <a href="{{ f.form }}">
             <i class="fa fa-pencil-square-o"></i>
           </a>
           {% endif%}

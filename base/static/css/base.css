@@ -299,14 +299,23 @@ ol {
 }
 
 #linkTree li:hover {
-    background-color: #EAEDEA;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#EAEDEA), to(#D5D6D5));
-    background-image: -webkit-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: -moz-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: -ms-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: -o-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: linear-gradient(to bottom, #EAEDEA, #D5D6D5);
-    text-decoration: underline;
+    background-color: #E8E9E8;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#E8E9E8), to(#D4D6D4));
+    background-image: -webkit-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: -moz-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: -ms-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: -o-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: linear-gradient(to bottom, #E8E9E8, #D4D6D4);
+}
+
+#linkTree .active {
+    background-color: #E8E9E8;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#E8E9E8), to(#D4D6D4));
+    background-image: -webkit-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: -moz-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: -ms-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: -o-linear-gradient(top, #E8E9E8, #D4D6D4);
+    background-image: linear-gradient(to bottom, #E8E9E8, #D4D6D4);
 }
 
 #linkTree h2{
@@ -326,17 +335,6 @@ ol {
     outline: none;
     background-color: #2C7046;
     position: relative;
-}
-
-#linkTree .active {
-    background-color: #EAEDEA;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#EAEDEA), to(#D5D6D5));
-    background-image: -webkit-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: -moz-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: -ms-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: -o-linear-gradient(top, #EAEDEA, #D5D6D5);
-    background-image: linear-gradient(to bottom, #EAEDEA, #D5D6D5);
-    text-decoration: underline;
 }
 
 #linkTree h2.selected:before {

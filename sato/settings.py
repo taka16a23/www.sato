@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'adminsortable2',
     'colorfield',
-    'datetimewidget',
 
     # myapps
     'base',

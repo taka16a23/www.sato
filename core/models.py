@@ -140,7 +140,8 @@ class DisplayableModel(TimeStampModel):
         @Error:
         """
         concrete_model = base_concrete_model(DisplayableModel, self)
-        nexts = concrete_model.objects.published().filter(id__gt=self.id)
+        nexts = concrete_model.objects.published().filter(
+            publish_date__gt=self.publish_date).order_by('publish_date')
         if nexts:
             return nexts[0]
         return False
@@ -155,7 +156,8 @@ class DisplayableModel(TimeStampModel):
         @Error:
         """
         concrete_model = base_concrete_model(DisplayableModel, self)
-        prevs = concrete_model.objects.published().filter(id__lt=self.id).order_by('-id')
+        prevs = concrete_model.objects.published().filter(
+            publish_date__lt=self.publish_date).order_by('-publish_date')
         if prevs:
             return prevs[0]
         return False

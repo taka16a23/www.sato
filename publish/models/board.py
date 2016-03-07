@@ -15,6 +15,7 @@ from django.db import models
 from core.models import DisplayableModel
 from core.managers import DisplayableManager
 from django.core.files import File
+from publish.models.news import NewsPostModel
 
 
 def validate_file_pdf(value):
@@ -55,7 +56,7 @@ class DocumentModel(DisplayableModel):
     objects = DisplayableManager()
 
     title = models.CharField(u'タイトル', max_length=255)
-    file = models.FileField(
+    file = models.FileField('PDF',
         upload_to='boards/',
         validators=[validate_file_pdf],
         null=False, blank=False)
@@ -63,6 +64,7 @@ class DocumentModel(DisplayableModel):
         u'サムネイル',
         upload_to='boards/',
         blank=True, null=True)
+    news = models.ForeignKey(NewsPostModel, null=True, on_delete=models.SET_NULL)
 
     def make_thumbnail(self, ):
         r"""SUMMARY

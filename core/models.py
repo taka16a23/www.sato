@@ -106,7 +106,7 @@ class DisplayableModel(TimeStampModel):
         help_text=u'公開を選択すると、ここで設定した日時以降は公開されません',
         blank=True, null=True)
 
-    def save(self, ):
+    def save(self, **kwargs):
         r"""SUMMARY
 
         save()
@@ -117,7 +117,7 @@ class DisplayableModel(TimeStampModel):
         """
         if self.publish_date is None:
             self.publish_date = datetime.datetime.now()
-        super(DisplayableModel, self).save()
+        super(DisplayableModel, self).save(**kwargs)
 
     def publish_date_since(self, ):
         r"""SUMMARY

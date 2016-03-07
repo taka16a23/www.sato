@@ -8,6 +8,10 @@ from publish.models import NewsPostModel, NewsCategoryModel
 from adminsortable2.admin import SortableAdminMixin
 
 
+
+PRIMARY_CATEGORIES = [u'お知らせ', u'回覧']
+
+
 @admin.register(NewsCategoryModel)
 class NewsCategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""NewsCategoryAdmin
@@ -18,6 +22,29 @@ class NewsCategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('name', 'fgcolor', 'bgcolor', )
     list_editable = ('fgcolor', 'bgcolor', )
     exclude = ['sortid', ]
+
+    def get_actions(self, request):
+        actions = super(NewsCategoryAdmin, self).get_actions(request)
+        if actions.has_key('delete_selected'):
+            del actions['delete_selected']
+        return actions
+
+    def has_delete_permission(self, request, obj=None):
+        r"""SUMMARY
+
+        has_delete_permission(request, obj=None)
+
+        @Arguments:
+        - `request`:
+        - `obj`:
+
+        @Return:
+
+        @Error:
+        """
+        if obj is not None and obj.name in PRIMARY_CATEGORIES:
+            return False
+        return super(NewsCategoryAdmin, self).has_delete_permission(request, obj=None)
 
 
 @admin.register(NewsPostModel)

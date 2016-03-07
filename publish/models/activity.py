@@ -12,6 +12,24 @@ from django.utils.safestring import mark_safe
 from core.models import DisplayableModel
 from core.managers import DisplayableManager, DisplayableQuerySet
 from ckeditor_uploader.fields import RichTextUploadingField
+from publish.models.news import NewsPostModel
+
+
+class TagModel(models.Model):
+    r"""TagModel
+
+    TagModel is a models.Model.
+    Responsibility:
+    """
+    name = models.CharField(
+        u'タグ', unique=True, max_length=200, blank=False, null=False)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u'活動タグ'
+        verbose_name_plural = u'活動タグ'
 
 
 class ActivityPostQuerySet(DisplayableQuerySet):
@@ -53,19 +71,6 @@ class ActivityPostManager(DisplayableManager):
         return ActivityPostQuerySet(self.model)
 
 
-class TagModel(models.Model):
-    r"""TagModel
-
-    TagModel is a models.Model.
-    Responsibility:
-    """
-    name = models.CharField(
-        u'タグ', unique=True, max_length=200, blank=False, null=False)
-
-    def __unicode__(self):
-        return self.name
-
-
 class ActivityPostModel(DisplayableModel):
     r"""ActivityPostModel
 
@@ -89,6 +94,7 @@ class ActivityPostModel(DisplayableModel):
         TagModel,
         help_text=mark_safe('当てはまる項目をすべて選んでください<br>'),
         blank=True, related_name="tagging")
+    news = models.ForeignKey(NewsPostModel, null=True, on_delete=models.SET_NULL)
 
     def save(self, *args, **kwargs):
         r"""SUMMARY
@@ -110,6 +116,18 @@ class ActivityPostModel(DisplayableModel):
 
     def __unicode__(self):
         return self.title
+
+    @models.permalink
+    def get_absolute_url(self, ):
+        r"""SUMMARY
+
+        get_absolute_url()
+
+        @Return:
+
+        @Error:
+        """
+        return ('activityid', (), {'postid': str(self.id),})
 
 
 

@@ -27,6 +27,7 @@ from publish.views import activity_view, activity_list_view
 from publish.views import board_view
 from publish.views import news_view
 from publish.newsfeed import NewsFeed
+from django.views.generic.base import RedirectView
 
 from filebrowser.sites import site
 
@@ -35,7 +36,7 @@ urlpatterns = [
     url(r'^news/feed/', NewsFeed()),
     url(r'^news/', news_view),
     url(r'^security/', include('security.urls')),
-    url(r'^activity/(?P<postid>\d+)', activity_view),
+    url(r'^activity/(?P<postid>\d+)', activity_view, name='activityid'),
     url(r'^activity/', activity_list_view),
     url(r'^board/', board_view),
     url(r'^formats/', include('formats.urls')),
@@ -46,6 +47,7 @@ urlpatterns = [
     url(r'^lab/', include('lab.urls')),
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()

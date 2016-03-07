@@ -13,7 +13,7 @@
     <div id="paginate">      
       {% with activity_post.get_previous_by_publish_date as prev %}
       {% if prev %}
-      <a href="/activity/?id={{ prev.id }}" title="前へ" class="activityPrev activityFootContent">
+      <a href="{{ prev.get_absolute_url }}" title="前へ" class="activityPrev activityFootContent">
         <i class="fa fa-arrow-circle-o-left fa-4x pull-left"></i>
         <span>{{ prev.title|safe }}</span>
       </a>
@@ -29,7 +29,7 @@
       </a>
       {% with activity_post.get_next_by_publish_date as next %}
       {% if next %}
-      <a href="/activity/?id={{ next.id }}" title="次へ" class="activityNext activityFootContent">
+      <a href="{{ next.get_absolute_url }}" title="次へ" class="activityNext activityFootContent">
         <i class="fa fa-arrow-circle-o-right fa-4x pull-right"></i>
         <span>{{ next.title|safe }}</span>
       </a>

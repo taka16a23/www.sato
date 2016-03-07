@@ -51,6 +51,7 @@ class NewsCategoryModel(models.Model):
     name = models.CharField(u'カテゴリー名',
                             max_length=8,
                             help_text=u'8文字以内',
+                            unique=True,
                             null=False,
                             blank=False)
     fgcolor = ColorField(u'文字色', default='#ffffff')

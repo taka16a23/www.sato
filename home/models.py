@@ -94,8 +94,8 @@ class GarbageEvent(models.Model):
     """
     objects = EventManager()
 
-    gid = models.CharField(max_length=1024, unique=True)
-    summary = models.CharField(max_length=255, null=True, blank=True)
+    gid = models.TextField()
+    summary = models.CharField(max_length=254, null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     url = models.URLField(null=True, blank=True)
     status = models.IntegerField(
@@ -180,7 +180,7 @@ class MainEvent(models.Model):
     """
     objects = MainEventManager()
 
-    gid = models.CharField(max_length=1024, unique=True)
+    gid = models.TextField()
     summary = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     start = models.DateTimeField(null=True)
@@ -215,8 +215,8 @@ class HallEvent(models.Model):
     """
     objects = MainEventManager()
 
-    gid = models.CharField(max_length=1024, unique=True)
-    summary = models.CharField(max_length=255, null=True, blank=True)
+    gid = models.TextField()
+    summary = models.CharField(max_length=254, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     start = models.DateTimeField(null=True)
     end = models.DateTimeField(null=True)

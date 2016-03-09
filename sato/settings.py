@@ -92,10 +92,10 @@ CKEDITOR_CONFIGS = {
         # 'skin': 'moono_blue',
         # 'toolbar': 'full',
         'toolbar': [['Save', 'NewPage', 'Templates', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField',  '-', 'Source', 'Blockquote', 'Anchor', 'CreateDiv', '-', 'Print', 'Preview', 'Maximize', ],
-                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'HorizontalRule', '-', 'BidiLtr', 'BidiRtl', 'Language', '-', 'Table', 'Link', 'Unlink', 'Image', 'Slideshow', 'SpecialChar', 'HorizontalRule', 'PageBreak', 'Smiley', 'wenzgmap', 'Iframe'],
-                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor',]
+                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'HorizontalRule', '-', 'BidiLtr', 'BidiRtl', 'Language', '-', 'Table', 'Link', 'Unlink', 'Image', 'Slideshow', 'SpecialChar', 'HorizontalRule', 'PageBreak', 'Smiley', 'wenzgmap', 'Iframe', 'Timestamp'],
+                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor']
         ],
-        'extraPlugins': 'quicktable,slideshow,wenzgmap,attach,uploadimage,lineheight,filetools,stylesheetparser,imagerotate,tableresize,image2,autogrow,colordialog,imagepaste,autoembed',
+        'extraPlugins': 'quicktable,slideshow,wenzgmap,attach,uploadimage,lineheight,filetools,stylesheetparser,imagerotate,tableresize,image2,autogrow,colordialog,imagepaste,autoembed,timestamp',
         'allowedContent': True,
         # 'height': 400,
         # 'width': 750,
@@ -109,20 +109,20 @@ CKEDITOR_CONFIGS = {
         # 'skin': 'moono_blue',
         # 'toolbar': 'full',
         'toolbar': [['Save', 'NewPage', 'Templates', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField',  '-', 'Source', 'Blockquote', 'Anchor', 'CreateDiv', '-', 'Print', 'Preview', 'Maximize', ],
-                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'HorizontalRule', '-', 'BidiLtr', 'BidiRtl', 'Language', '-', 'Table', 'Link', 'Unlink', 'Image', 'Slideshow', 'SpecialChar', 'HorizontalRule', 'PageBreak', 'Smiley', 'wenzgmap', 'Iframe'],
-                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor',]
+                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'HorizontalRule', '-', 'BidiLtr', 'BidiRtl', 'Language', '-', 'Table', 'Link', 'Unlink', 'Image', 'Slideshow', 'SpecialChar', 'HorizontalRule', 'PageBreak', 'Smiley', 'wenzgmap', 'Iframe', 'Timestamp'],
+                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor', 'timestamp']
         ],
-        'extraPlugins': 'quicktable,slideshow,wenzgmap,attach,uploadimage,lineheight,filetools,stylesheetparser,imagerotate,tableresize,image2,autogrow,colordialog,imagepaste,autoembed',
+        'extraPlugins': 'quicktable,slideshow,wenzgmap,attach,uploadimage,lineheight,filetools,stylesheetparser,imagerotate,tableresize,image2,autogrow,colordialog,imagepaste,autoembed,timestamp',
         'allowedContent': True,
         # 'height': 400,
         'width': 750,
     },
     'simple': {
         'skin': 'office2013',
-        'toolbar': [['Save', 'NewPage', 'Templates', 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', '-', 'Link', 'Unlink', 'SpecialChar', 'PageBreak', 'Smiley', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Source', 'Print', 'Maximize', ],
-                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor',]
+        'toolbar': [['Save', 'NewPage', 'Templates', 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', '-', 'Link', 'Unlink', 'SpecialChar', 'PageBreak', 'Smiley', '-', 'Find', 'Replace', '-', 'SelectAll', '-', 'Source', 'Print', 'Maximize', 'Timestamp'],
+                    ['Undo', 'Redo', '-', 'Styles', 'Format', 'Font', 'FontSize', 'lineheight', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'TextColor', 'BGColor', 'timestamp']
         ],
-        'extraPlugins': 'slideshow,attach,lineheight,autogrow,colordialog,autoembed',
+        'extraPlugins': 'slideshow,attach,lineheight,autogrow,colordialog,autoembed,timestamp',
         'allowedContent': True,
         'height': 100,
     },

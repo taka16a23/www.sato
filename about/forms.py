@@ -5,7 +5,7 @@ r"""forms -- DESCRIPTION
 """
 from django.forms import ModelForm
 from django import forms
-from about.models import ContactPostModel, ContactedModel
+from about.models import ContactedModel
 # もしスパムがひどい用ならコメントアウト
 # from captcha.fields import CaptchaField
 

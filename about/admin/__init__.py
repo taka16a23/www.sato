@@ -3,11 +3,11 @@
 r"""Name: __init__.py
 
 """
-from about.admin.contact import ContactAdmin, ContactReceiverAdmin, ContactedAdmin
+from about.admin.contact import ContactReceiverAdmin, ContactedAdmin
 from about.admin.qa import QAAdmin
 
 
-__all__ = ['ContactAdmin', 'QAAdmin', 'ContactReceiverAdmin', 'ContactedAdmin', ]
+__all__ = ['QAAdmin', 'ContactReceiverAdmin', 'ContactedAdmin', ]
 
 
 

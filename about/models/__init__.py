@@ -3,10 +3,10 @@
 r"""Name: __init__.py
 
 """
-from about.models.contact import ContactPostModel
+from about.models.contact import ContactPostModel, ContactReceiverModel, ContactedModel
 from about.models.faq import QAModel
 
-__all__ = ['ContactPostModel', 'QAModel', ]
+__all__ = ['ContactPostModel', 'QAModel', 'ContactReceiverModel', 'ContactedModel', ]
 
 
 

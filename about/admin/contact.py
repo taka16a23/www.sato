@@ -4,19 +4,7 @@ r"""contact -- DESCRIPTION
 
 """
 from django.contrib import admin
-from about.models import ContactPostModel, ContactReceiverModel, ContactedModel
-
-
-@admin.register(ContactPostModel)
-class ContactAdmin(admin.ModelAdmin):
-    r"""ContactAdmin
-
-    ContactAdmin is a admin.ModelAdmin.
-    Responsibility:
-    """
-    list_display = ('name', 'created', 'email', 'body',  'finished')
-    list_editable = ('finished', )
-    # radio_fields = {"finished": admin.HORIZONTAL}
+from about.models import ContactReceiverModel, ContactedModel
 
 
 @admin.register(ContactReceiverModel)
@@ -39,7 +27,7 @@ class ContactedAdmin(admin.ModelAdmin):
     ContactedAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('id', 'name', 'email', 'status')
+    list_display = ('id', 'name', 'created', 'email', 'status')
     list_editable = ('status', )
     exclude = ('created', 'modified', )
     readonly_fields = ('id', )

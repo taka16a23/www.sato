@@ -31,7 +31,7 @@
         <h3><a href="/news">おしらせ</a></h3>
         <ol>
           {% for news_year in news_uniq_years %}
-          <li><a href="/news/?year={{ news_year }}">{{ news_year }}</a></li>
+          <li><a href="/news/?year={{ news_year }}">{{ news_year }}年</a></li>
           {% endfor %}
         </ol>
       </div>
@@ -39,7 +39,7 @@
         <h3><a href="/activity/">ご報告</a></h3>
         <ol>
           {% for activity_year in activity_uniq_years %}
-          <li><a href="/activity/?year={{ activity_year }}">{{ activity_year }}</a></li>
+          <li><a href="/activity/?year={{ activity_year }}">{{ activity_year }}年</a></li>
           {% endfor %}
         </ol>
       </div>
@@ -48,7 +48,7 @@
         <ol>
           {% for board_year in board_uniq_years %}
           <li>
-            <a href="/board/?year={{ board_year }}">{{ board_year }}</a>
+            <a href="/board/?year={{ board_year }}">{{ board_year }}年</a>
           </li>
           {% endfor %}
         </ol>

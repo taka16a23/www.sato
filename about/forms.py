@@ -5,7 +5,7 @@ r"""forms -- DESCRIPTION
 """
 from django.forms import ModelForm
 from django import forms
-from about.models import ContactPostModel
+from about.models import ContactPostModel, ContactedModel
 # もしスパムがひどい用ならコメントアウト
 # from captcha.fields import CaptchaField
 
@@ -21,11 +21,14 @@ class ContactPostForm(ModelForm):
     error_css_class = 'error'
     required_css_class = 'required'
 
+    # name = forms.CharField(label='お名前', max_length=50)
     email = forms.CharField(widget=forms.TextInput(attrs={'size': 40,}))
+    # body = forms.CharField(
+        # label=u'内容', required=True, widget=forms.Textarea())
 
     class Meta:
-        model = ContactPostModel
-        exclude = ('created', 'finished', )
+        model = ContactedModel
+        exclude = ('created', 'modified', 'status', 'id', )
 
 
 

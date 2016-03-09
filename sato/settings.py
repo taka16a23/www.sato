@@ -12,8 +12,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 
 setup memo
-$apt-get install mysql-server mysql-client libmysqlclient-dev
-$pip install mysql-python
+$ apt-get install mysql-server mysql-client libmysqlclient-dev
+$ pip install mysql-python
 $ mysql -u root -p
 Enret password:
 mysql> CREATE DATABASE sato;
@@ -249,6 +249,16 @@ MEDIA_URL = '/media/'
 # FILEBROWSER_VERSIONS_BASEDIR = MEDIA_ROOT
 
 THUMBNAIL_HIGH_RESOLUTION = True
+
+### Email
+#
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'satotanakami@gmail.com'
+EMAIL_HOST_PASSWORD = 'Mochihi.'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 
 try:
     from local_settings import *

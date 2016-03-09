@@ -57,11 +57,14 @@ def solve_view(request):
     @Error:
     """
     context = get_context()
-    print(request.get_full_path())
     form = ContactPostForm(request.POST)
     if form.is_valid():
-        form.save()
-        return HttpResponseRedirect('/about/thankyou/')
+        obj = form.save()
+        obj.send_notify(
+            u'受付番号:{}番,情報提供・お問合わせがありました'
+            .format(unicode(obj.id)))
+        obj.send_accept(u'里自治会受付完了通知')
+        return HttpResponseRedirect('/about/thankyou/', )
     if request.method == 'POST':
         form = ContactPostForm(request.POST)
         context['anchor'] = 'contact'
@@ -87,7 +90,10 @@ def thankyou(request):
 
     @Error:
     """
-    return render_to_response('about/solve/thankyou.html', )
+    context = get_context()
+    return render_to_response(
+        'about/solve/thankyou.html', context,
+        context_instance=RequestContext(request))
 
 
 def rule(request):

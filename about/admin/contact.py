@@ -28,6 +28,7 @@ class ContactedAdmin(admin.ModelAdmin):
     Responsibility:
     """
     list_display = ('id', 'name', 'created', 'email', 'status')
+    list_display_links = ('name', )
     list_editable = ('status', )
     exclude = ('created', 'modified', )
     readonly_fields = ('id', )

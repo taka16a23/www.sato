@@ -92,9 +92,14 @@ class ActivityPostModel(DisplayableModel):
     description = models.TextField(u'記事の説明', blank=True, null=True)
     tags = models.ManyToManyField(
         TagModel,
+        verbose_name=u'タグ',
         help_text=mark_safe('当てはまる項目をすべて選んでください<br>'),
         blank=True, related_name="tagging")
-    news = models.ForeignKey(NewsPostModel, null=True, on_delete=models.SET_NULL)
+    news = models.ForeignKey(
+        NewsPostModel,
+        verbose_name=u'お知らせカテゴリー',
+        null=True,
+        on_delete=models.SET_NULL)
 
     def save(self, *args, **kwargs):
         r"""SUMMARY
@@ -107,7 +112,9 @@ class ActivityPostModel(DisplayableModel):
         """
         text = u''
         try:
-            text = u''.join(BeautifulSoup(self.body).findAll(text=True))
+            soup = BeautifulSoup(unicode(self.body))
+            [s.extract() for s in soup('script')]
+            text = u''.join([s.replace('&nbsp;', '') for s in soup.findAll(text=True)])
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)

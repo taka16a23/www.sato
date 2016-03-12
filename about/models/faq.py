@@ -9,8 +9,7 @@ from django.db.models.query import QuerySet
 from ckeditor.fields import RichTextField
 
 from core.managers import ManagerAbstract
-
-from BeautifulSoup import BeautifulSoup
+from base.utils import get_plaintext
 
 
 FAQ_STATUS_DRAFT = 1
@@ -93,7 +92,7 @@ class QAModel(models.Model):
         """
         text = u''
         try:
-            text = u''.join(BeautifulSoup(self.answer).findAll(text=True))
+            text = get_plaintext(self.description)
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)

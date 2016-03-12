@@ -6,7 +6,8 @@ r"""other -- DESCRIPTION
 from __future__ import unicode_literals
 from django.db import models
 from ckeditor.fields import RichTextField
-from BeautifulSoup import BeautifulSoup
+from base.utils import get_plaintext
+
 
 
 class OtherFormat(models.Model):
@@ -45,7 +46,7 @@ class OtherFormat(models.Model):
         """
         text = u''
         try:
-            text = u''.join(BeautifulSoup(self.description).findAll(text=True))
+            text = get_plaintext(self.description)
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)

@@ -9,8 +9,7 @@ from django.db import models
 from core.models import DisplayableModel
 from core.managers import DisplayableManager
 from ckeditor.fields import RichTextField
-
-from BeautifulSoup import BeautifulSoup
+from base.utils import get_plaintext
 
 
 class EmergencyEntryModel(DisplayableModel):
@@ -40,7 +39,7 @@ class EmergencyEntryModel(DisplayableModel):
         """
         text = u''
         try:
-            text = u''.join(BeautifulSoup(self.body).findAll(text=True))
+            text = get_plaintext(self.body)
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)

@@ -16,6 +16,10 @@ from core.models import DisplayableModel
 from core.managers import DisplayableManager
 from django.core.files import File
 from publish.models.news import NewsPostModel
+from sato.settings import BASE_DIR
+
+
+NO_IMAGE = os.path.join(BASE_DIR, 'publish/static/images.no_pdf_picture.jpg')
 
 
 def validate_file_pdf(value):
@@ -35,7 +39,7 @@ def validate_file_pdf(value):
     if not hasattr(value.file, 'content_type'):
         return
     if value.file.content_type != 'application/pdf':
-        raise forms.ValidationError(u'Not PDF')
+        raise forms.ValidationError(u'PDF ではありません。PDF ファイルを選択してください。')
 
 @contextlib.contextmanager
 def tempdir(prefix='tmp'):
@@ -88,16 +92,12 @@ class DocumentModel(DisplayableModel):
             cmdline = (
                 u'/usr/bin/convert -resize 200x200 -alpha remove %s[0] %s'
                 % (copied.name, im_path))
-            try:
-                print(cmdline)
-                sbp.check_call(cmdline, shell=True,
-                               stdin=sbp.PIPE, stdout=sbp.PIPE, stderr=sbp.PIPE)
-                with open(im_path, 'rb') as fobj:
-                    self.thumbnail.save(im_name, File(fobj), save=False)
-            except sbp.CalledProcessError as err:
-                print(err)
+            sbp.check_call(cmdline, shell=True,
+                           stdin=sbp.PIPE, stdout=sbp.PIPE, stderr=sbp.PIPE)
+            with open(im_path, 'rb') as fobj:
+                self.thumbnail.save(im_name, File(fobj), save=False)
 
-    def save(self, ):
+    def save(self, *args, **kwargs):
         r"""SUMMARY
 
         save()
@@ -108,9 +108,11 @@ class DocumentModel(DisplayableModel):
         """
         try:
             self.make_thumbnail()
-        except StandardError as err:
+        except sbp.CalledProcessError as err:
             print(err)
-        super(DocumentModel, self).save()
+            with open(NO_IMAGE, 'rb') as fobj:
+                self.thumbnail.save('no_pdf_picture.jpg', File(fobj), save=False)
+        super(DocumentModel, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = u'回覧物'

@@ -54,6 +54,10 @@
     width: 207px;
 }
 
+#backgroundKnowledge > ul > li .descriptionBox a:hover {
+    text-decoration: underline;
+}
+
 #backgroundKnowledge > ul > li .imageBox {
     width: 140px;
     vertical-align: middle;

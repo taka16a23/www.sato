@@ -5,16 +5,46 @@ r"""knowledge -- DESCRIPTION
 """
 from __future__ import unicode_literals
 from django.db import models
+from django.db.models.query import QuerySet
 from ckeditor.fields import RichTextField
 from base.functions import get_plaintext
+from core.managers import ManagerAbstract
 
 
-# string for adminsortable2
-IMAGE_VERTICAL = u'縦'
-IMAGE_HORIZON = u'横'
+class SecKnowledgeQuerySet(QuerySet):
+    r"""SecKnowledgeQuerySet
 
-IMAGE_STATUS = ((IMAGE_VERTICAL, u'縦'),
-                (IMAGE_HORIZON, u'横'),)
+    SecKnowledgeQuerySet is a QuerySet.
+    Responsibility:
+    """
+    def published(self, ):
+        r"""SUMMARY
+
+        name()
+
+        @Return:
+
+        @Error:
+        """
+        return self.filter(published=True)
+
+
+class SecKnowledgeManager(ManagerAbstract):
+    r"""SecKnowledgeManager
+
+    SecKnowledgeManager is a .
+    Responsibility:
+    """
+    def get_query_set(self, ):
+        r"""SUMMARY
+
+        get_query_set()
+
+        @Return:
+
+        @Error:
+        """
+        return SecKnowledgeQuerySet(self.model)
 
 
 class SecKnowledgeModel(models.Model):
@@ -23,6 +53,8 @@ class SecKnowledgeModel(models.Model):
     SecKnowledgeModel is a models.Model.
     Responsibility:
     """
+    objects = SecKnowledgeManager()
+
     title = models.CharField(u'タイトル', max_length=255)
     description = RichTextField(u'説明文', config_name='simple', blank=True)
     short_description = models.TextField(u'概要', blank=True, null=True)
@@ -31,11 +63,7 @@ class SecKnowledgeModel(models.Model):
         u'サムネイル',
         upload_to='knowledge/',
         blank=True, null=True)
-    image_status = models.CharField(
-        u'画像の状態',
-        max_length=5,
-        choices=IMAGE_STATUS,
-        default=IMAGE_VERTICAL)
+    horizontal_image = models.BooleanField(default=False)
     sortid = models.IntegerField(
         u' ',
         help_text=u'サイトで昇順に並びます',
@@ -81,7 +109,7 @@ class SecKnowledgeModel(models.Model):
 
         @Error:
         """
-        return self.image_status == IMAGE_VERTICAL
+        return self.horizontal_image == False
 
 
 

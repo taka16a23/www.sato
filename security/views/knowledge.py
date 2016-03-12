@@ -23,7 +23,7 @@ def knowledge_view(request):
     @Error:
     """
     context = get_context()
-    context['knowledges'] = SecKnowledgeModel.objects.filter(publish=True).order_by('sortid')
+    context['knowledges'] = SecKnowledgeModel.objects.published().order_by('sortid')
     return render_to_response(
         'knowledge/index.html',
         context,

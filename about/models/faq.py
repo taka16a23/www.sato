@@ -9,7 +9,7 @@ from django.db.models.query import QuerySet
 from ckeditor.fields import RichTextField
 
 from core.managers import ManagerAbstract
-from base.utils import get_plaintext
+from base.functions import get_plaintext
 
 
 FAQ_STATUS_DRAFT = 1

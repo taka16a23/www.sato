@@ -9,7 +9,7 @@ from django.db import models
 from core.models import DisplayableModel
 from core.managers import DisplayableManager
 from ckeditor.fields import RichTextField
-from base.utils import get_plaintext
+from base.functions import get_plaintext
 
 
 class EmergencyEntryModel(DisplayableModel):

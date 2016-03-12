@@ -1,5 +1,11 @@
 {% load staticfiles %}
 <div id="board" class="board_bucket clearfix">
+  <div class="otherlink">
+    <a href="http://www.city.otsu.lg.jp/shisei/koho/kohootsu/" target="_blank" title="大津市サイト">おおつ広報</a>
+    <a href="http://www.city.otsu.lg.jp/gikai/tayori/" target="_blank" title="大津市サイト">市議会だより</a>
+    <a href="http://www.pref.shiga.lg.jp/koho/" target="_blank" title="滋賀県サイト">滋賀プラスワン</a>
+    <a href="http://www.shigaken-gikai.jp/g07_Koho.asp" target="_blank" title="滋賀県サイト">滋賀県議会だより</a>
+  </div>
   <h2>{{ year }}年 回覧板</h2>
   <ol>
     {% for board in board_list %}

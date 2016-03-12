@@ -3,9 +3,6 @@
 r"""activity -- DESCRIPTION
 
 """
-
-from BeautifulSoup import BeautifulSoup
-
 from django.db import models
 from django.utils.safestring import mark_safe
 
@@ -13,6 +10,7 @@ from core.models import DisplayableModel
 from core.managers import DisplayableManager, DisplayableQuerySet
 from ckeditor_uploader.fields import RichTextUploadingField
 from publish.models.news import NewsPostModel
+from base.utils import get_plaintext
 
 
 class TagModel(models.Model):
@@ -112,9 +110,7 @@ class ActivityPostModel(DisplayableModel):
         """
         text = u''
         try:
-            soup = BeautifulSoup(unicode(self.body))
-            [s.extract() for s in soup('script')]
-            text = u''.join([s.replace('&nbsp;', '') for s in soup.findAll(text=True)])
+            text = get_plaintext(self.body)
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)

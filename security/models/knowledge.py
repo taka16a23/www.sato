@@ -6,11 +6,12 @@ r"""knowledge -- DESCRIPTION
 from __future__ import unicode_literals
 from django.db import models
 from ckeditor.fields import RichTextField
-from BeautifulSoup import BeautifulSoup
+from base.utils import get_plaintext
 
 
-IMAGE_VERTICAL = 1
-IMAGE_HORIZON = 2
+# string for adminsortable2
+IMAGE_VERTICAL = u'縦'
+IMAGE_HORIZON = u'横'
 
 IMAGE_STATUS = ((IMAGE_VERTICAL, u'縦'),
                 (IMAGE_HORIZON, u'横'),)
@@ -30,10 +31,11 @@ class SecKnowledgeModel(models.Model):
         u'サムネイル',
         upload_to='knowledge/',
         blank=True, null=True)
-    # image_status = models.IntegerField(
-    #     u'画像の状態',
-    #     choices=IMAGE_STATUS,
-    #     default=IMAGE_VERTICAL)
+    image_status = models.CharField(
+        u'画像の状態',
+        max_length=5,
+        choices=IMAGE_STATUS,
+        default=IMAGE_VERTICAL)
     sortid = models.IntegerField(
         u' ',
         help_text=u'サイトで昇順に並びます',
@@ -60,7 +62,7 @@ class SecKnowledgeModel(models.Model):
         """
         text = u''
         try:
-            text = u''.join(BeautifulSoup(self.description).findAll(text=True))
+            text = get_plaintext(self.description)
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)
@@ -69,6 +71,17 @@ class SecKnowledgeModel(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def is_vertical_image(self, ):
+        r"""SUMMARY
+
+        is_vertical_image()
+
+        @Return:
+
+        @Error:
+        """
+        return self.image_status == IMAGE_VERTICAL
 
 
 

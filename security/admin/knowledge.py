@@ -15,7 +15,7 @@ class SecKnowledgeAdmin(SortableAdminMixin, admin.ModelAdmin):
     SecKnowledgeAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('title', 'short_description', 'url', 'thumbnail', 'publish')
+    list_display = ('title', 'short_description', 'thumbnail', 'publish')
     list_editable = ('publish', )
     exclude = ['sortid', 'short_description', ]
 

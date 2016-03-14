@@ -96,7 +96,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
     filter_horizontal = ['tags', ]
 
     list_display = ('title', 'publish_date', 'expiry_date',
-                    'description', '_tags', '_category', 'status', )
+                    'description', '_tags', 'status', )
     list_display_links = ("title", )
     list_editable = ('status', )
     ordering = ('-modified', )
@@ -168,6 +168,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
         if obj is None:
             # created
             form.base_fields['categories'].initial = get_default_category()
+            form.base_fields['news_title'].initial = None
         else:
             # change
             if obj.news is None:

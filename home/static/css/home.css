@@ -212,6 +212,12 @@ input[type=submit]{
     padding: 0;
 }
 
+#dayInfo > p {
+    margin-left: -10px;
+    font-size: 0.8em;
+    float: left;
+}
+
 #today,
 #tomorrow {
     float: right;

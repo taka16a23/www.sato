@@ -4,8 +4,6 @@ r"""board -- DESCRIPTION
 
 """
 import datetime
-from dateutil.relativedelta import relativedelta
-
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
@@ -32,7 +30,8 @@ def board_view(request):
         year = now.year
     context['year'] = year
     start = datetime.datetime(int(year), 1, 1)
-    end = start + relativedelta(years=1) - relativedelta(minutes=1)
+    end = datetime.datetime.combine(
+        datetime.datetime(int(year) + 1, 12, 31), datetime.time.max)
     context['board_list'] = (DocumentModel
                              .objects
                              .published()

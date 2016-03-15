@@ -46,7 +46,7 @@ def activity_list_by_tag(request, context, tagname):
 
     @Error:
     """
-    context['activities'] = ActivityPostModel.objects.by_tagname(tagname)
+    context['activities'] = ActivityPostModel.objects.published().by_tagname(tagname)
     context['activityTitle'] = tagname + u' 活動一覧'
     return render_to_response(
         'activity/index.html',
@@ -54,7 +54,7 @@ def activity_list_by_tag(request, context, tagname):
 
 
 def activity_list_by_year(request, context, year):
-    r"""SUMMARY
+    """SUMMARY
 
     activity_list_by_year(context, year)
 

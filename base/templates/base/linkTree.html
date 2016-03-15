@@ -48,7 +48,7 @@
     <h2 {% if request.path|startswith:"/board" %}class="selected"{% endif %}>回覧板</h2>
     <ol {% if request.path|startswith:"/board" %}style="display:block"{% endif %}>
       {% for board_year in board_uniq_years %}
-      <li {% if request.path|startswith:"/board" %}class="active"{% endif %}>
+      <li>
         <p>
           <a href="/board/?year={{ board_year }}">{{ board_year }}年</a>
         </p>

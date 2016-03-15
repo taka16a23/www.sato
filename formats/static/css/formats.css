@@ -79,6 +79,9 @@
 #formatSato table td:nth-child(4):hover {
     background-color: #ecf2fa;
 }
+#formatSato a:hover {
+    text-decoration: underline;
+}
 
 #formatETC a:hover {
     text-decoration: underline;

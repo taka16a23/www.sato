@@ -5,7 +5,6 @@ r"""util -- DESCRIPTION
 """
 from publish.models import ActivityPostModel, DocumentModel, NewsPostModel
 from security.models import EmergencyEntryModel
-from BeautifulSoup import BeautifulSoup
 
 import about
 
@@ -63,23 +62,6 @@ def get_context(emergency=False):
     board_uniq_years.sort()
     context['board_uniq_years'] = board_uniq_years
     return context
-
-
-def get_plaintext(text):
-    r"""SUMMARY
-
-    get_plaintext(text)
-
-    @Arguments:
-    - `text`:
-
-    @Return:
-
-    @Error:
-    """
-    soup = BeautifulSoup(unicode(text))
-    [s.extract() for s in soup('script')]
-    return u''.join([s.replace('&nbsp;', '') for s in soup.findAll(text=True)])
 
 
 

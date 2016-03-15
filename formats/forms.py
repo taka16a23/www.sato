@@ -104,8 +104,8 @@ class HorizRadioRenderer(forms.RadioSelect.renderer):
         instead of vertically.
     """
     def render(self):
-            """Outputs radios"""
-            return mark_safe(u'\n'.join([u'%s\n' % w for w in self]))
+        """Outputs radios"""
+        return mark_safe(u'\n'.join([u'%s\n' % w for w in self]))
 
 
 class HallBookingForm(Form):

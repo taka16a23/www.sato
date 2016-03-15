@@ -9,7 +9,6 @@ from ckeditor.fields import RichTextField
 from base.functions import get_plaintext
 
 
-
 class OtherFormat(models.Model):
     r"""OtherFormat
 

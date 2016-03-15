@@ -10,7 +10,7 @@ from core.models import DisplayableModel
 from core.managers import DisplayableManager, DisplayableQuerySet
 from ckeditor_uploader.fields import RichTextUploadingField
 from publish.models.news import NewsPostModel
-from base.utils import get_plaintext
+from base.functions import get_plaintext
 
 
 class TagModel(models.Model):
@@ -58,7 +58,7 @@ class ActivityPostManager(DisplayableManager):
     Responsibility:
     """
     def get_query_set(self, ):
-        r"""SUMMARY
+        """SUMMARY
 
         get_query_set()
 

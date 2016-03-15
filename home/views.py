@@ -19,7 +19,6 @@ WEEKDAY_JDIC = {MONDAY: u'月',
                 SATURDAY: u'土',
                 SUNDAY: u'日'}
 
-PAST_COUNTS = 7
 
 class Day(object):
     r"""Day
@@ -100,7 +99,7 @@ def home_view(request):
     context = get_context(emergency=True)
     now = context['now']
     context['today'] = Day(now)
-    context['newsList'] = NewsPostModel.objects.latest_by_days(PAST_COUNTS)
+    context['newsList'] = NewsPostModel.objects.list_recently()
     context['todayGarbageCollection'] = GarbageEvent.objects.confirmed().filter(
         date=now)
     start = datetime.datetime.combine(now, datetime.time.min)

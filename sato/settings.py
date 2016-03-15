@@ -186,13 +186,12 @@ WSGI_APPLICATION = 'sato.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': os.path.join(DATA_DIR, 'satodb.sqlite3'),
         'NAME': 'sato',
         'USER': 'root',
         'PASSWORD': 'toor',
         'HOST': '',
         'PORT': '',
-    }
+    },
 }
 
 

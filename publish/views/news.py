@@ -4,8 +4,6 @@ r"""news -- DESCRIPTION
 
 """
 import datetime
-from dateutil.relativedelta import relativedelta
-
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 

@@ -55,15 +55,15 @@ class NewsPostAdmin(admin.ModelAdmin):
     Responsibility:
     """
     list_display = ('title', 'category', 'status', 'url', 'publish_date', 'expiry_date')
-    list_editable = ('status', )
+    list_editable = ('category', 'status', )
     ordering = ('-modified', )
-    radio_fields = {"status": admin.HORIZONTAL}
+    radio_fields = {'status': admin.HORIZONTAL}
 
-    class Media:
+    class Media(object):
         css = {'all': ('css/admin_sato.css', ),}
 
     fieldsets = ((None, {
-        "fields": ['title', 'url',  'category', ('publish_date', 'expiry_date'), 'status'],
+        'fields': ['title', 'url',  'category', ('publish_date', 'expiry_date'), 'status'],
     }),
     )
 

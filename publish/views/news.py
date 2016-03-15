@@ -14,7 +14,7 @@ from base.utils import get_context
 
 
 def news_view(request):
-    r"""SUMMARY
+    """SUMMARY
 
     news_view(request)
 
@@ -32,12 +32,13 @@ def news_view(request):
         year = now.year
     context['year'] = year
     start = datetime.datetime(int(year), 1, 1)
-    end = start + relativedelta(years=1) - relativedelta(minutes=1)
+    end = datetime.datetime.combine(
+        datetime.datetime(int(year) + 1, 12, 31), datetime.time.max)
     context['newsList'] = (NewsPostModel
-                             .objects
-                             .published()
-                             .range_by_publish_date(start, end)
-                             .order_by('-publish_date'))
+                           .objects
+                           .published()
+                           .range_by_publish_date(start, end)
+                           .order_by('-publish_date'))
     return render_to_response(
         'news/index.html', context, context_instance=RequestContext(request))
 

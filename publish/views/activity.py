@@ -12,7 +12,7 @@ from base.utils import get_context
 
 
 def activity_view(request, postid):
-    r"""SUMMARY
+    """SUMMARY
 
     activity_view(request)
 
@@ -48,6 +48,7 @@ def activity_list_by_tag(request, context, tagname):
     """
     context['activities'] = ActivityPostModel.objects.published().by_tagname(tagname)
     context['activityTitle'] = tagname + u' 活動一覧'
+    context['activeTag'] = tagname
     return render_to_response(
         'activity/index.html',
         context, context_instance=RequestContext(request))
@@ -99,6 +100,7 @@ def activity_list_by_year_tag(request, context, year, tag):
                              .published()
                              .by_year(int(year))
                              .order_by('-publish_date'))
+    context['activeTag'] = tag
     return render_to_response(
         'activity/index.html',
         context, context_instance=RequestContext(request))

@@ -46,7 +46,11 @@ def activity_list_by_tag(request, context, tagname):
 
     @Error:
     """
-    context['activities'] = ActivityPostModel.objects.published().by_tagname(tagname)
+    context['activities'] = (ActivityPostModel
+                             .objects
+                             .published()
+                             .by_tagname(tagname)
+                             .order_by('-publish_date'))
     context['activityTitle'] = tagname + u' 活動一覧'
     context['activeTag'] = tagname
     return render_to_response(

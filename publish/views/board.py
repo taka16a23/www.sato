@@ -31,7 +31,7 @@ def board_view(request):
     context['year'] = year
     start = datetime.datetime(int(year), 1, 1)
     end = datetime.datetime.combine(
-        datetime.datetime(int(year) + 1, 12, 31), datetime.time.max)
+        datetime.datetime(int(year), 12, 31), datetime.time.max)
     context['board_list'] = (DocumentModel
                              .objects
                              .published()

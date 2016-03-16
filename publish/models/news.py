@@ -47,6 +47,25 @@ RECENT_DAYS = 7 # 最低表示する期間はここを編集(日数)
 MIN_NEWS_COUNTS = 8 # 最低表示する数はここを編集(個数)
 
 
+NEWS_IMPORTANT = 1
+NEWS_INFORMATION = 2
+NEWS_SECURITY = 3
+NEWS_ACTIVITY = 4
+NEWS_WANTED = 5
+NEWS_UPDATE = 6
+
+NEWS_CATEGORIES = (
+                   (NEWS_IMPORTANT, u'重要'),
+                   (NEWS_INFORMATION, u'お知らせ'),
+                   (NEWS_SECURITY, u'防犯'),
+                   (NEWS_ACTIVITY, u'ご報告'),
+                   (NEWS_WANTED, u'募集'),
+                   (NEWS_UPDATE, u'更新'),
+                   )
+
+NEWS_CATEGORIES_DIC = {integer: name for integer, name in NEWS_CATEGORIES}
+
+
 class NewsPostQuerySet(DisplayableQuerySet):
     r"""NewsPostQuerySet
 
@@ -113,6 +132,17 @@ class NewsPostModel(DisplayableModel):
 
     def __unicode__(self):
         return unicode(self.title)
+
+    def as_category_name(self, ):
+        r"""SUMMARY
+
+            as_category_name()
+
+            @Return:
+
+            @Error:
+        """
+        return NEWS_CATEGORIES_DIC.get(self.category, u'')
 
 
 

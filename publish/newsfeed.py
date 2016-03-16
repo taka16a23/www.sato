@@ -13,8 +13,8 @@ class NewsFeed(Feed):
     NewsFeed is a Feed.
     Responsibility:
     """
-    title = "Test"
-    description = "Test description"
+    title = u'里自治会'
+    description = "里自治会のお知らせRSS"
     link = "/news/feed/"
 
     def items(self, ):

@@ -170,6 +170,9 @@
 #agenda {
     width: 546px;
     float: left;
+    -moz-box-shadow: 1px 1px 3px #bbb;
+    -webkit-box-shadow: 1px 1px 3px #bbb;
+    box-shadow: 1px 1px 3px #bbb; 
 }
 
 #agenda h2 a {
@@ -227,6 +230,9 @@ input[type=submit]{
     border: 1px solid #1E6B39;
     padding-bottom: 5px;
     letter-spacing: 1px;
+    -moz-box-shadow: 1px 1px 3px #bbb;
+    -webkit-box-shadow: 1px 1px 3px #bbb;
+    box-shadow: 1px 1px 3px #bbb; 
 }
 
 #today > h2 {

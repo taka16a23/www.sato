@@ -27,7 +27,6 @@ def make_unpublish(modeladmin, request, queryset):
 make_unpublish.short_description = u'非公開にする'
 
 
-@admin.register(EmergencyEntryModel)
 class EmergencyEntryAdmin(admin.ModelAdmin):
     r"""EmergencyEntryAdmin
 

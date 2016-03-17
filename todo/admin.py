@@ -4,7 +4,6 @@ from django.contrib import admin
 from todo.models import TodoEntryModel
 
 
-@admin.register(TodoEntryModel)
 class TodoAdmin(admin.ModelAdmin):
     r"""TodoAdmin
 
@@ -15,6 +14,9 @@ class TodoAdmin(admin.ModelAdmin):
     # filter_horizontal = ('finished',)
     list_editable = ('finished', )
     list_filter = ('finished', )
+
+
+admin.site.register(TodoEntryModel, admin.ModelAdmin)
 
 
 

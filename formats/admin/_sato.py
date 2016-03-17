@@ -8,7 +8,7 @@ from django.contrib import admin
 from formats.models import SatoFormat
 from adminsortable2.admin import SortableAdminMixin
 
-@admin.register(SatoFormat)
+
 class SatoFormatAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""SatoFormatAdmin
 

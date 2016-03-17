@@ -4,15 +4,12 @@ r"""news -- DESCRIPTION
 
 """
 from django.contrib import admin
-from publish.models import NewsPostModel, NewsCategoryModel
 from adminsortable2.admin import SortableAdminMixin
-
 
 
 PRIMARY_CATEGORIES = [u'お知らせ', u'回覧']
 
 
-@admin.register(NewsCategoryModel)
 class NewsCategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""NewsCategoryAdmin
 
@@ -47,7 +44,6 @@ class NewsCategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
         return super(NewsCategoryAdmin, self).has_delete_permission(request, obj=None)
 
 
-@admin.register(NewsPostModel)
 class NewsPostAdmin(admin.ModelAdmin):
     r"""NewsPostAdmin
 

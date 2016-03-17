@@ -8,18 +8,16 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from publish.models import ActivityPostModel, TagModel
 from publish.models import NewsCategoryModel, NewsPostModel
-from django.db.models import ManyToOneRel
-from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.core import exceptions
 
 
-@admin.register(TagModel)
 class TagModelAdmin(admin.ModelAdmin):
     r"""TagModelAdmin
 
     TagModelAdmin is a admin.ModelAdmin.
     Responsibility:
     """
+
 
 def get_default_category():
     r"""SUMMARY
@@ -84,7 +82,6 @@ class ActivityPostForm(forms.ModelForm):
         exclude = ['description', 'news', ]
 
 
-@admin.register(ActivityPostModel)
 class ActivityPostAdmin(admin.ModelAdmin):
     r"""ActivityPostAdmin
 

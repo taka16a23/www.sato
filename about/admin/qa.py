@@ -4,11 +4,9 @@ r"""qa -- DESCRIPTION
 
 """
 from django.contrib import admin
-from about.models import QAModel
 from adminsortable2.admin import SortableAdminMixin
 
 
-@admin.register(QAModel)
 class QAAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""QAAdmin
 

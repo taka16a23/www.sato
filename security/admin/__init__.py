@@ -3,11 +3,18 @@
 r"""Name: __init__.py
 
 """
+from django.contrib import admin
+
 from security.admin.emergency import EmergencyEntryAdmin, make_unpublish
 from security.admin.knowledge import SecKnowledgeAdmin
+from security.models import SecKnowledgeModel, EmergencyEntryModel
 
 
 __all__ = ['EmergencyEntryAdmin', 'SecKnowledgeAdmin', 'make_unpublish', ]
+
+
+admin.site.register(SecKnowledgeModel, SecKnowledgeAdmin)
+admin.site.register(EmergencyEntryModel, EmergencyEntryAdmin)
 
 
 

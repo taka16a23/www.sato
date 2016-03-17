@@ -4,10 +4,8 @@ r"""contact -- DESCRIPTION
 
 """
 from django.contrib import admin
-from about.models import ContactReceiverModel, ContactedModel
 
 
-@admin.register(ContactReceiverModel)
 class ContactReceiverAdmin(admin.ModelAdmin):
     r"""ContactReceiverAdmin
 
@@ -20,19 +18,35 @@ class ContactReceiverAdmin(admin.ModelAdmin):
     # radio_fields = {"active": admin.HORIZONTAL}
 
 
-@admin.register(ContactedModel)
 class ContactedAdmin(admin.ModelAdmin):
     r"""ContactedAdmin
 
     ContactedAdmin is a admin.ModelAdmin.
     Responsibility:
     """
-    list_display = ('id', 'name', 'created', 'email', 'status')
+    list_display = ('_get_id', 'name', 'created', 'email', 'status')
     list_display_links = ('name', )
     list_editable = ('status', )
-    exclude = ('created', 'modified', )
+    exclude = ('modified', )
     readonly_fields = ('id', )
     # radio_fields = {"status": admin.HORIZONTAL}
+    list_filter = ('status', 'name', )
+
+    def _get_id(self, obj):
+        r"""SUMMARY
+
+        get_id()
+
+        @Return:
+
+        @Error:
+        """
+        return obj.id
+
+    _get_id.short_description = u'受付番号'
+
+    def has_add_permission(self, request):
+        return False
 
 
 

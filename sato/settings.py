@@ -46,6 +46,9 @@ ALLOWED_HOSTS = ['*']
 
 ADMINS = (('Atami', 'takahiroatsumi0517@gmail.com'), )
 
+from django.contrib import admin
+from sato.admin import admin_site
+admin.site = admin_site
 
 # Application definition
 

@@ -16,8 +16,8 @@ class TimeStampModel(models.Model):
     class Meta:
         abstract = True
 
-    created = models.DateTimeField(null=True, editable=False)
-    modified = models.DateTimeField(null=True, editable=False)
+    created = models.DateTimeField(u'作成日', null=True, editable=False)
+    modified = models.DateTimeField(u'編集日', null=True, editable=False)
 
     def save(self, *args, **kwargs):
         r"""SUMMARY
@@ -29,9 +29,9 @@ class TimeStampModel(models.Model):
         @Error:
         """
         now = datetime.datetime.now()
-        self.updated = now
+        self.modified = now
         if not self.id:
-            self.modified = now
+            self.created = now
         super(TimeStampModel, self).save(*args, **kwargs)
 
 

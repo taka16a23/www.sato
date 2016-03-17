@@ -13,7 +13,7 @@ import datetime
 
 # Create your views here.
 def formats_view(request):
-    r"""SUMMARY
+    """SUMMARY
 
     formats_view(request)
 
@@ -34,7 +34,7 @@ def formats_view(request):
 
 
 def form_hallbooking_view(request):
-    r"""SUMMARY
+    """SUMMARY
 
     form_hallbooking_view(request)
 

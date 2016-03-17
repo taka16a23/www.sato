@@ -31,6 +31,9 @@ from django.views.generic.base import RedirectView
 
 from filebrowser.sites import site
 
+from sato.admin import admin_site
+
+
 urlpatterns = [
     url(r'^$', home_view),
     url(r'^news/feed/', NewsFeed()),
@@ -43,7 +46,7 @@ urlpatterns = [
     url(r'^about/', include('about.urls')),
     url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin_site.urls),
     url(r'^lab/', include('lab.urls')),
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
@@ -58,10 +61,6 @@ if settings.DEBUG:
     urlpatterns += [
         url(r'^media/(?P<path>.*)$', static_serve,
             {'document_root': settings.MEDIA_ROOT}), ]
-
-admin.site.site_title = u'里自治会'
-admin.site.site_header = u'里自治会 ホームページ'
-admin.site.index_title = u'コントロールパネル'
 
 
 

@@ -12,7 +12,7 @@ from core.managers import ManagerAbstract
 
 
 class SecKnowledgeQuerySet(QuerySet):
-    r"""SecKnowledgeQuerySet
+    """SecKnowledgeQuerySet
 
     SecKnowledgeQuerySet is a QuerySet.
     Responsibility:
@@ -26,7 +26,7 @@ class SecKnowledgeQuerySet(QuerySet):
 
         @Error:
         """
-        return self.filter(published=True)
+        return self.filter(publish=True)
 
 
 class SecKnowledgeManager(ManagerAbstract):

@@ -3,12 +3,20 @@
 r"""Name: __init__.py
 
 """
-from formats.admin.sato import SatoFormatAdmin
+from django.contrib import admin
+
+from formats.admin._sato import SatoFormatAdmin
 from formats.admin.other import OtherFormatAdmin
 from formats.admin.staff import StaffFormatAdmin
+from formats.models import SatoFormat, OtherFormat, StaffFormat
 
 
 __all__ = ['SatoFormatAdmin', 'OtherFormatAdmin', 'StaffFormatAdmin', ]
+
+
+admin.site.register(SatoFormat, SatoFormatAdmin)
+admin.site.register(OtherFormat, OtherFormatAdmin)
+admin.site.register(StaffFormat, StaffFormatAdmin)
 
 
 

@@ -9,7 +9,6 @@ from formats.models import OtherFormat
 from adminsortable2.admin import SortableAdminMixin
 
 
-@admin.register(OtherFormat)
 class OtherFormatAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""OtherFormatAdmin
 

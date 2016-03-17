@@ -8,7 +8,6 @@ from security.models import SecKnowledgeModel
 from adminsortable2.admin import SortableAdminMixin
 
 
-@admin.register(SecKnowledgeModel)
 class SecKnowledgeAdmin(SortableAdminMixin, admin.ModelAdmin):
     r"""SecKnowledgeAdmin
 

@@ -11,11 +11,53 @@ from core.managers import ManagerAbstract
 from core.models import TimeStampModel
 
 from sato import settings
-from about import PHONE_NUMBER
+from about import PHONE_NUMBER, DEADLINE
+
+
+ACCEPT_MSG = u"""
+{0[name]} 様
+
+里自治会です。入力を受け付けました。
+受付番号は【{0[accept_num]}】です。
+内容を確認後、ご連絡いたします。
+{0[deadline]}以内にこちらから連絡がない場合は、電話番号: {0[phone]} にて、ご連絡をお願いいたします。
+
+○ 以下の内容で受付しました --
+
+お名前: {0[name]}
+メールアドレス: {0[email]}
+{0[body]}
+--------------------------------------------
+
+■本メールは自動配信しています。
+■本メールにお心当たりがない場合は、メールを削除いただきますようお願いいたします。
+
+◇電話でのお問合せ
+里自治会 {0[phone]}
+"""
+
+NOTIFY_MSG = u"""
+ホームページ訪問者から入力を受付ました。
+
+受付番号は【{0[accept_num]}】
+
+○ 以下の内容で受付しました --
+
+お名前: {0[name]}
+メールアドレス: {0[email]}
+{0[body]}
+--------------------------------------------
+
+※必ず入力者と連絡をとってください。
+  対応が遅れる場合はその旨の返答をしてください。
+
+以下の管理ページへアクセスしステータスを変更してください。
+http://taka16.no-ip.info/admin/about/contactedmodel/
+"""
 
 
 class ContactReceiverQuerySet(QuerySet):
-    r"""ContactReceiverQuerySet
+    """ContactReceiverQuerySet
 
     ContactReceiverQuerySet is a QuerySet.
     Responsibility:
@@ -103,6 +145,7 @@ class ContactedModel(TimeStampModel):
     email = models.EmailField(
         u'メールアドレス', blank=False, null=False)
     status = models.IntegerField(
+        u'処理状況',
         choices=CONTACT_STATUS, default=UNTREATED_STATUS)
     body = models.TextField(u'内容', blank=True, null=True, )
 
@@ -134,8 +177,13 @@ class ContactedModel(TimeStampModel):
         @Error:
         """
         emails = [x.email for x in ContactReceiverModel.objects.active()]
+        content = {}
+        content['accept_num'] = u'{0:05}'.format(self.id)
+        content['name'] = self.name
+        content['email'] = self.email
+        content['body'] = self.body
         msg = EmailMessage(
-            subject=subject, body=self.body,
+            subject=subject, body=NOTIFY_MSG.format(content),
             from_email=settings.EMAIL_HOST_USER, bcc=emails)
         return msg.send()
 
@@ -151,19 +199,15 @@ class ContactedModel(TimeStampModel):
 
         @Error:
         """
-        body = u''
-        body += u'受付番号【{}】\n'.format(self.id)
-        body += u'以下の内容で受付ました。\n'
-        body += u'３日以内にこちらから連絡がない場合は、電話番号: {} にて、ご連絡をお願いいたします。'.format(PHONE_NUMBER)
-        body += u'------------------------------------\n'
-        body += u'お名前: {}様'.format(self.name)
-        body += u'\n'
-        body += self.body
-        body += u'\n\n'
-        body += u'------------------------------------\n'
-        body += u'里自治会'
+        content = {}
+        content['accept_num'] = u'{0:05}'.format(self.id)
+        content['name'] = self.name
+        content['email'] = self.email
+        content['body'] = self.body
+        content['phone'] = PHONE_NUMBER
+        content['deadline'] = DEADLINE
         msg = EmailMessage(
-            subject=subject, body=body,
+            subject=subject, body=ACCEPT_MSG.format(content),
             from_email=settings.EMAIL_HOST_USER, to=[self.email, ])
         return msg.send()
 

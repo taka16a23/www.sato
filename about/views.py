@@ -61,8 +61,8 @@ def solve_view(request):
     if form.is_valid():
         obj = form.save()
         obj.send_notify(
-            u'受付番号:{}番,情報提供・お問合わせがありました'
-            .format(unicode(obj.id)))
+            u'受付番号:{0:05}番,情報提供・お問合わせがありました'
+            .format(obj.id))
         obj.send_accept(u'里自治会受付完了通知')
         return HttpResponseRedirect('/about/thankyou/', )
     if request.method == 'POST':

@@ -24,6 +24,25 @@ mysql> exit
 import os
 import socket
 
+from django.contrib import admin
+from adminplus.sites import AdminSitePlus
+
+
+class SatoAdminSite(AdminSitePlus):
+    # Text to put at the end of each page's <title>.
+    # site_title = u'里自治会'
+
+    # Text to put in each page's <h1>.
+    # site_header = u'里自治会ホームページ コントロールパネル'
+    # site_title = u'里自治会'
+    site_header = u'里自治会 ホームページ'
+    index_title = u'コントロールパネル'
+    # index_template = 'base/admin/index.html'
+    # Text to put at the top of the admin index page.
+    # index_title = u'里自治会ホームページ コントロールパネル'
+
+admin.site = SatoAdminSite()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = '/var/www'
@@ -46,9 +65,6 @@ ALLOWED_HOSTS = ['*']
 
 ADMINS = (('Atami', 'takahiroatsumi0517@gmail.com'), )
 
-from django.contrib import admin
-from sato.admin import admin_site
-admin.site = admin_site
 
 # Application definition
 

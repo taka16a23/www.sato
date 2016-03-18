@@ -8,7 +8,6 @@ from django import forms
 
 from publish.models import DocumentModel
 from publish.models import NewsCategoryModel, NewsPostModel
-from sato.admin import admin_site
 
 
 class DocumentForm(forms.ModelForm):

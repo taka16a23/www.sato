@@ -4,8 +4,10 @@ r"""admin -- DESCRIPTION
 
 """
 from django.contrib.admin import AdminSite
+from adminplus.sites import AdminSitePlus
 
-class SatoAdminSite(AdminSite):
+
+class SatoAdminSite(AdminSitePlus):
     # Text to put at the end of each page's <title>.
     # site_title = u'里自治会'
 

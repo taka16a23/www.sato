@@ -33,6 +33,7 @@ from filebrowser.sites import site
 
 from sato.admin import admin_site
 
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', home_view),
@@ -50,7 +51,7 @@ urlpatterns = [
     url(r'^lab/', include('lab.urls')),
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico'))
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,18 @@
+{% extends "admin/index.html" %}
+
+{% block sidebar %}
+  {{ block.super }}
+
+  {% if custom_list %}
+  <div class="Custom module">
+    <table style="width: 100%">
+      <caption>その他管理</caption>
+      <tbody>
+        {% for path, name in custom_list %}
+          <tr><td><a href="{{ path }}" target="_blank">{{ name }}</a></td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+{% endblock %}

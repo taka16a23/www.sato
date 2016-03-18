@@ -66,12 +66,13 @@ INSTALLED_APPS = [
     'grappelli',
     'filebrowser',
     'easy_thumbnails',
-    'filer',
     'mptt',
     'ckeditor',
     'ckeditor_uploader',
     'adminsortable2',
     'colorfield',
+    'adminplus',
+    'filer',
 
     # myapps
     'base',
@@ -165,6 +166,7 @@ TEMPLATES = [
                  '/var/www/sato/activity/templates',
                  '/var/www/sato/news/templates',
                  '/var/www/sato/security/templates',
+                 '/var/www/sato/base/templates',
                  # 'secportal/templates',
         ],
         'APP_DIRS': True,

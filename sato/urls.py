@@ -31,8 +31,6 @@ from django.views.generic.base import RedirectView
 
 from filebrowser.sites import site
 
-from sato.admin import admin_site
-
 admin.autodiscover()
 
 urlpatterns = [
@@ -47,7 +45,7 @@ urlpatterns = [
     url(r'^about/', include('about.urls')),
     url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^admin/', admin_site.urls),
+    url(r'^admin/', admin.site.urls),
     url(r'^lab/', include('lab.urls')),
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),

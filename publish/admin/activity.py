@@ -20,13 +20,14 @@ class TagModelAdmin(admin.ModelAdmin):
 
 
 def get_default_category():
-    r"""SUMMARY
+    """SUMMARY
 
     get_default_category()
 
     @Return:
 
     @Error:
+
     """
     try:
         return NewsCategoryModel.objects.get(name=u'お知らせ')
@@ -36,7 +37,7 @@ def get_default_category():
 
 
 class ActivityPostForm(forms.ModelForm):
-    r"""ActivityPostForm
+    """ActivityPostForm
 
     ActivityPostForm is a forms.Form.
     Responsibility:
@@ -129,6 +130,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
         @Return:
 
         @Error:
+
         """
         if row.news:
             return row.news.category
@@ -160,6 +162,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
         @Return:
 
         @Error:
+
         """
         form = super(ActivityPostAdmin, self).get_form(request, obj, **kwargs)
         if obj is None:
@@ -191,13 +194,14 @@ class ActivityPostAdmin(admin.ModelAdmin):
         @Return:
 
         @Error:
+
         """
         super(ActivityPostAdmin, self).save_model(request, obj, form, change)
-        if not change and form.cleaned_data['categories'] is None:
+        if not change and form.cleaned_data.get('categories', None) is None:
             # created and choiced empty
             return
         if change: # changed
-            if form.cleaned_data['categories'] is None: # choiced empty
+            if form.cleaned_data.get('categories', None) is None: # choiced empty
                 if obj.news:
                     obj.news.delete()
                 obj.news = None

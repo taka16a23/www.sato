@@ -4,11 +4,10 @@ r"""urls -- DESCRIPTION
 
 """
 from django.conf.urls import url, patterns, include
-from formats.views import form_hallbooking_view, formats_view
+from formats.views import formats_view
 
 
 urlpatterns = [
-    url('^form/hallbooking', form_hallbooking_view),
     url('^$', formats_view),
 ]
 

@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 
 from base.utils import get_context
 
-from about.forms import ContactPostForm
+from about.forms import ContactPostForm, HallBookingForm
 from about.models import QAModel
 
 
@@ -128,6 +128,31 @@ def greeding(request):
     context = get_context()
     return render_to_response(
         'about/index.html', context, context_instance=RequestContext(request))
+
+
+def form_hall_view(request):
+    """SUMMARY
+
+    form_hall_view(request)
+
+    @Arguments:
+    - `request`:
+
+    @Return:
+
+    @Error:
+    """
+    context = get_context()
+    if request.method == 'POST':
+        form = HallBookingForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/about/thankyou/')
+    else:
+        form = HallBookingForm()
+    context['hallBookingForm'] = form
+    return render_to_response(
+        'about/hall/index.html',
+        context, context_instance=RequestContext(request))
 
 
 

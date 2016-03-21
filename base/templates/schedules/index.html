@@ -1,0 +1,16 @@
+<html>
+  <head>
+<title>月別行事予定ファイル生成</title>
+</head>
+<body>
+<h1>月別行事予定ファイル</h1>
+<ul>
+  {% for fname in filenames %}
+  <li>
+    <a href="/media/schedules/{{fname}}">{{fname}}</a>
+  </li>
+  {% endfor %}
+  
+</ul>
+</body>
+</html>

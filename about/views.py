@@ -110,7 +110,7 @@ def rule(request):
     """
     context = get_context()
     return render_to_response(
-        'about/index.html', context, context_instance=RequestContext(request))
+        'about/rule/index.html', context, context_instance=RequestContext(request))
 
 
 def greeding(request):

@@ -1,0 +1,49 @@
+#main {
+    background-color: #E6F3EC;
+    border-radius: 20px;
+}
+
+#main > h2 {
+	position: relative;
+	padding: .75em 1em .75em 1.5em;
+	border: 1px solid #ccc;
+  background-color: white;
+  /* width: 667px; */
+  top: 20px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#main > h2::after {
+	position: absolute;
+	top: .5em;
+	left: .5em;
+	content: '';
+	width: 6px;
+	height: -webkit-calc(100% - 1em);
+	height: calc(100% - 1em);
+	background-color: #2c7046;
+	border-radius: 4px;
+}
+
+#main .mainContent {
+    margin-left: 20px;
+    margin-right: 20px;
+    letter-spacing: 1px;
+    padding-bottom: 20px;
+}
+
+#main a:hover {
+    text-decoration: underline;
+}
+
+#rule {
+    padding: 20px;
+}
+
+#rule th {
+    width: 6.5em;
+    text-align: left;
+    vertical-align: top;
+}

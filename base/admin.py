@@ -3,13 +3,14 @@
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.contrib.auth.admin import UserAdmin, User, Group, GroupAdmin
+from base.views import month_schedules_view
 
 
-@admin.site.register_view('pathname', u'プロバイダー契約　ユーザーID: ts773544　パスワード: ts773544@qj8')
-def provider_view(request, *args, **kwargs):
+@admin.site.register_view('xxx', u'プロバイダーメール　ID: ts773544@qj8　パスワード: pgy43crg')
+def provider_mail(request, *args, **kwargs):
     r"""SUMMARY
 
-    my_view(request, *args, **kwargs)
+    provider_mail(request, *args, **kwargs)
 
     @Arguments:
     - `request`:
@@ -20,7 +21,7 @@ def provider_view(request, *args, **kwargs):
 
     @Error:
     """
-    return redirect('http://www.so-net.ne.jp/mypage/')
+    return redirect('https://www.so-net.ne.jp/webmail/pc/login/auth.do')
 
 
 admin.site.register(User, UserAdmin)

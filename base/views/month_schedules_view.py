@@ -280,7 +280,7 @@ class ScheduleBuilder(object):
         self._sheet.write(self.row, 0, u'日', TOP_LEFT_STYLE)
         self._sheet.write(self.row, 1, u'曜日', TOP_MIDDLE_STYLE)
         self._sheet.write(self.row, 2, u'集合時間', TOP_MIDDLE_STYLE)
-        self._sheet.write(self.row, 3, u'行事時間', TOP_MIDDLE_STYLE)
+        self._sheet.write(self.row, 3, u'行事開始', TOP_MIDDLE_STYLE)
         self._sheet.write(self.row, 4, u'行事', TOP_MIDDLE_STYLE)
         self._sheet.write(self.row, 5, u'参加者', RIGHT_TOP_STYLE)
         self.row += 1
@@ -427,12 +427,12 @@ def align_column(sheet):
 
     @Error:
     """
-    sheet.col(0).width = 1425 # 日
-    sheet.col(1).width = 1700 # 曜日
-    sheet.col(2).width = 2750 # 集合時間
-    sheet.col(3).width = 2750 # 行事時間
-    sheet.col(4).width = 12000 # 行事
-    sheet.col(5).width = 7875 # 参加者
+    sheet.col(0).width = 1280 # 日
+    sheet.col(1).width = 1520 # 曜日
+    sheet.col(2).width = 2640 # 集合時間
+    sheet.col(3).width = 2640 # 行事開始
+    sheet.col(4).width = 10800 # 行事
+    sheet.col(5).width = 7100 # 参加者
 
 
 def insert_month(builder, year, month):
@@ -462,6 +462,7 @@ def insert_month(builder, year, month):
             start, end).confirmed().order_by('start'):
         builder.insert_event(event.start, event.summary)
     builder.insert_memo()
+    builder.insert_blank()
 
 
 def diff_month(d1, d2):
@@ -500,7 +501,7 @@ def create_sheet(book, first, second):
     sheet.col(0).width = 1425 # 日
     sheet.col(1).width = 1700 # 曜日
     sheet.col(2).width = 2750 # 集合時間
-    sheet.col(3).width = 2750 # 行事時間
+    sheet.col(3).width = 2750 # 行事開始
     sheet.col(4).width = 12000 # 行事
     sheet.col(5).width = 7875 # 参加者
 
@@ -508,13 +509,9 @@ def create_sheet(book, first, second):
     builder = ScheduleBuilder(sheet, 1)
 
     builder.insert_title(
-        u'平成{0}年度　里自治会行事予定表　【平成{1}年：{2}・{3}月】'
-        .format(num_to_wide_unicode(
-            get_heisei_fisical_year(datetime.datetime.now())),
-                num_to_wide_unicode(get_heisei_fisical_year(second)),
-                num_to_wide_unicode(first.month),
-                num_to_wide_unicode(second.month),
-        ))
+        u'平成○年度 里自治会行事予定表 【{0}・{1}月】'
+        .format(num_to_wide_unicode(first.month),
+                num_to_wide_unicode(second.month)))
     insert_schedules(builder, first, second)
     builder.insert_blank()
     builder.insert_notify()

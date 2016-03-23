@@ -132,7 +132,22 @@ ACCEPT_MSG = u"""
 NOTIFY_MSG = u"""
 ホームページ訪問者から公民館利用申込みがありました。
 
-受付番号は【{0[accept_num]}】
+受付番号は【{0}】
+
+※必ず入力者と連絡をとってください。
+  対応が遅れる場合はその旨の返答をしてください。
+
+使用責任者: {1.name}
+団体名: {1.orgname}
+住所: {1.address}
+TEL: {1.phone}
+Email: {1.email}
+日時: {1.startyear}年{1.startmonth}月{1.startday} {1.starthour}:{1.startminutes} から {1.endhour}:{1.endminutes}
+使用室名: {1.room}
+使用目的: {1.purpose}
+内容: {1.matter}
+備考:
+{1.body}
 
 """
 
@@ -166,7 +181,7 @@ class HallBookingForm(Form):
             attrs={'placeholder': u'里5丁目7-22', 'class': 'textinput',}))
     phone = forms.CharField(label=u'TEL', required=True,
         widget=forms.TextInput(
-            attrs={'placeholder': u'090-XXXX-XXXX', 'class': 'textinput',}))
+            attrs={'placeholder': u'077-XXX-XXXX', 'class': 'textinput',}))
     email = forms.EmailField(label=u'メールアドレス', required=True,
         widget=forms.EmailInput(
             attrs={'placeholder': u'example@example.com', 'class': 'textinput',}))

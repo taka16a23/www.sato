@@ -16,7 +16,7 @@ class TodoAdmin(admin.ModelAdmin):
     list_filter = ('finished', )
 
 
-admin.site.register(TodoEntryModel, admin.ModelAdmin)
+admin.site.register(TodoEntryModel, TodoAdmin)
 
 
 

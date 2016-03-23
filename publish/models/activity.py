@@ -14,7 +14,7 @@ from base.functions import get_plaintext
 
 
 class TagModel(models.Model):
-    r"""TagModel
+    """TagModel
 
     TagModel is a models.Model.
     Responsibility:
@@ -116,6 +116,19 @@ class ActivityPostModel(DisplayableModel):
             print(err)
         self.description = text[:300]
         super(ActivityPostModel, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        r"""SUMMARY
+
+        delete()
+
+        @Return:
+
+        @Error:
+        """
+        if self.news:
+            self.news.delete(*args, **kwargs)
+        super(ActivityPostModel, self).delete(*args, **kwargs)
 
     def __unicode__(self):
         return self.title

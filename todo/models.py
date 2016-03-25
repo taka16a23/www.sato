@@ -13,15 +13,15 @@ PRIORITIES = ((5, 'high'),
               (15, 'low'))
 
 
-class TodoEntryModel(models.Model):
-    r"""TodoEntryModel
+# class TodoEntryModel(models.Model):
+#     r"""TodoEntryModel
 
-    TodoEntryModel is a models.Model.
-    Responsibility:
-    """
-    title = models.CharField(max_length=200)
-    description = models.TextField(blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    category = models.IntegerField(choices=CATEGORIES, default=1)
-    priority = models.IntegerField(choices=PRIORITIES, default=10)
-    finished = models.BooleanField(default=False)
+#     TodoEntryModel is a models.Model.
+#     Responsibility:
+#     """
+#     title = models.CharField(max_length=200)
+#     description = models.TextField(blank=True)
+#     created = models.DateTimeField(auto_now_add=True)
+#     category = models.IntegerField(choices=CATEGORIES, default=1)
+#     priority = models.IntegerField(choices=PRIORITIES, default=10)
+#     finished = models.BooleanField(default=False)

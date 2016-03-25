@@ -57,7 +57,7 @@ def get_credentials():
         credentials = oauth2client.tools.run_flow(flow, store, flags)
         # else: # Needed only for compatibility with Python 2.6
             # credentials = tools.run(flow, store)
-        print('Storing credentials to ' + GOOGLE_CALENDAR_JSON_FILE_PATH)
+        # print('Storing credentials to ' + GOOGLE_CALENDAR_JSON_FILE_PATH)
     return credentials
 
 
@@ -162,9 +162,9 @@ def sync_garbage_calendar(start=None, counts=250):
         model, created = GarbageEvent.objects.get_or_create(
             gid=event['id'], defaults=defaults)
         if created:
-            print(u'created {0.gid} {0.date} {0.summary}'.format(model))
+            # print('created {0.gid} {0.date} {0.summary}'.format(model))
             continue
-        print(u'updating {0.gid} {0.date} {0.summary}'.format(model))
+        # print('updating {0.gid} {0.date} {0.summary}'.format(model))
         # update
         model.gid = defaults['gid']
         model.summary = defaults['summary']
@@ -238,9 +238,11 @@ def sync_main_calendar(start=None, counts=250):
         model, created = MainEvent.objects.get_or_create(
             gid=event['id'], defaults=defaults)
         if created:
-            print(u'created {0.gid} {0.start}:{0.end} {0.summary}'.format(model))
+            # print(u'created {0.gid} {0.start}:{0.end} {1}'
+                  # .format(model, model.summary.decode('utf-8')))
             continue
-        print(u'updating {0.gid} {0.start}:{0.end} {0.summary}'.format(model))
+        # print(u'updating {0.gid} {0.start}:{0.end} {1}'
+              # .format(model, model.summary.decode('utf-8')))
         # update
         model.gid = defaults['gid']
         model.summary = defaults['summary']
@@ -316,9 +318,9 @@ def sync_hall_calendar(start=None,counts=250):
         model, created = HallEvent.objects.get_or_create(
             gid=event['id'], defaults=defaults)
         if created:
-            print(u'created {0.gid} {0.start}:{0.end} {0.summary}'.format(model))
+            # print('created {0.gid} {0.start}:{0.end} {0.summary}'.format(model))
             continue
-        print(u'updating {0.gid} {0.start}:{0.end} {0.summary}'.format(model))
+        # print('updating {0.gid} {0.start}:{0.end} {0.summary}'.format(model))
         # update
         model.gid = defaults['gid']
         model.summary = defaults['summary']

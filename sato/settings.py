@@ -16,7 +16,7 @@ $ apt-get install mysql-server mysql-client libmysqlclient-dev
 $ pip install mysql-python
 $ mysql -u root -p
 Enret password:
-mysql> CREATE DATABASE sato;
+mysql> CREATE DATABASE sato DEFAULT CHARACTER SET utf8;
 Query OK, 1 row affected (0.00 sec)
 mysql> exit
 

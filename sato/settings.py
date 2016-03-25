@@ -98,7 +98,6 @@ INSTALLED_APPS = [
     'about',
     'security',
     'lab',
-    'todo',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

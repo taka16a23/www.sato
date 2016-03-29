@@ -54,7 +54,7 @@ DATA_DIR = '/var/www'
 SECRET_KEY = 'e#=uh+oj=vsk(az33dfjl%@=y7=4dekkjj^hubdha@4qimak5)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if socket.gethostname() in ('ki', ):
+if socket.gethostname() in ('sato', ):
     DEBUG = False
 else:
     DEBUG = True

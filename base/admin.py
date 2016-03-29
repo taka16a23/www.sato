@@ -6,7 +6,7 @@ from django.contrib.auth.admin import UserAdmin, User, Group, GroupAdmin
 from base.views import month_schedules_view # for register
 
 
-@admin.site.register_view('xxx', u'プロバイダー　ID: ts773544　パスワード: pgy43crg')
+@admin.site.register_view('xxx', u'プロバイダー　ID: ts773544@qj8　パスワード: pgy43crg')
 def provider_mail(request, *args, **kwargs):
     """SUMMARY
 

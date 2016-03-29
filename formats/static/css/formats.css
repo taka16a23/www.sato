@@ -63,7 +63,7 @@
 
 #main table td:nth-child(3) {
 	width: 7.7em;
-  text-align: center;
+    text-align: center;
 }
 
 #main table td:nth-child(4) {
@@ -85,4 +85,8 @@
 
 #formatETC a:hover {
     text-decoration: underline;
+}
+
+#formatETC > p {
+    margin-left: 20px;
 }

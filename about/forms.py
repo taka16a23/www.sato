@@ -192,7 +192,7 @@ class HallBookingForm(Form):
     matter = forms.CharField(
         label=u'内容', required=False,
         widget=forms.TextInput(
-            attrs={'placeholder': u'ごみステーションについての話し合い',
+            attrs={'placeholder': u'ごみ集積所についての話し合い',
             'class': 'textinput',}))
     room = forms.ChoiceField(
         label='使用室名',

@@ -153,7 +153,7 @@ def sync_garbage_calendar(start=None, counts=250):
     for event in events:
         defaults = {}
         defaults['gid'] = event['id']
-        defaults['summary'] = event['summary']
+        defaults['summary'] = event.get('summary', '')
         defaults['date'] = datetime.datetime.strptime(
             event['start']['date'], '%Y-%m-%d').date()
         defaults['url'] = event['htmlLink']
@@ -212,7 +212,7 @@ def sync_main_calendar(start=None, counts=250):
     for event in events:
         defaults = {}
         defaults['gid'] = event['id']
-        defaults['summary'] = event['summary']
+        defaults['summary'] = event.get('summary', '')
         defaults['description'] = event.get('description', '')
         defaults['url'] = event['htmlLink']
         try:
@@ -293,7 +293,7 @@ def sync_hall_calendar(start=None,counts=250):
     for event in events:
         defaults = {}
         defaults['gid'] = event['id']
-        defaults['summary'] = event['summary']
+        defaults['summary'] = event.get('summary', '')
         defaults['description'] = event.get('description', '')
         defaults['url'] = event['htmlLink']
         try:

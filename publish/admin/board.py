@@ -74,8 +74,16 @@ class DocumentAdmin(admin.ModelAdmin):
         @Error:
         """
         form = super(DocumentAdmin, self).get_form(request, obj=None, **kwargs)
-        if obj is not None and obj.news:
-            form.base_fields['news_title'].initial = obj.news.title
+        if obj is None:
+            # created
+            form.base_fields['news_title'].initial = None
+        else:
+            # change
+            if obj.news is None:
+                # don't have news
+                form.base_fields['news_title'].initial = obj.title
+            else:
+                form.base_fields['news_title'].initial = obj.news.title
         return form
 
     def save_model(self, request, obj, form, change):

@@ -26,7 +26,7 @@ def board_view(request):
     context = get_context()
     now = context['now']
     year = request.GET.get('year')
-    if year is None or not year.isdigit() or not 2010 <= int(year) <= 2050:
+    if year is None or not year.isdigit() or not 2000 <= int(year) <= 2050:
         year = now.year
     context['year'] = year
     start = datetime.datetime(int(year), 1, 1)

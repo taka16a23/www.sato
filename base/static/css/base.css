@@ -242,6 +242,11 @@ ol {
     margin-bottom: 35;
 }
 
+#links #counter {
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
 #securityPortal {
     width: 100%;
     height: 38px;

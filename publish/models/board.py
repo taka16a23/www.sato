@@ -114,6 +114,19 @@ class DocumentModel(DisplayableModel):
                 self.thumbnail.save('no_pdf_picture.jpg', File(fobj), save=False)
         super(DocumentModel, self).save(*args, **kwargs)
 
+    def delete(self, *args, **kwargs):
+        r"""SUMMARY
+
+        delete()
+
+        @Return:
+
+        @Error:
+        """
+        if self.news:
+            self.news.delete(*args, **kwargs)
+        super(DocumentModel, self).delete(*args, **kwargs)
+
     class Meta:
         verbose_name = u'回覧物'
         verbose_name_plural = u'回覧物'

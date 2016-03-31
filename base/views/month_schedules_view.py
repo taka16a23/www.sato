@@ -10,6 +10,7 @@ from django.template import RequestContext
 from django.contrib import admin
 
 import os
+import shutil
 import xlwt
 import glob
 from time import sleep
@@ -566,12 +567,16 @@ def shedule_view(request):
     """
     cmd = SynccalCommand()
     cmd.handle(counts='10', main=True, start='', garbage=False, hall=False)
+    if os.path.exists(SCHEDULE_PATH):
+        shutil.rmtree(SCHEDULE_PATH, ignore_errors=True)
     if not os.path.exists(SCHEDULE_PATH):
         os.mkdir(SCHEDULE_PATH)
-    create_shedule_book(
-        datetime.datetime(2016, 4, 1), datetime.datetime(2016, 5, 1))
-    create_shedule_book(
-        datetime.datetime(2016, 5, 1), datetime.datetime(2016, 6, 1))
+    now = datetime.datetime.now()
+    current_month = datetime.datetime(now.year, now.month, 1)
+    next_month = current_month + relativedelta(months=1)
+    next_2month = next_month + relativedelta(months=1)
+    create_shedule_book(current_month, next_month)
+    create_shedule_book(next_month, next_2month)
     sleep(2)
     files = [os.path.basename(f) for f in
              glob.glob(os.path.join(SCHEDULE_PATH, '*.xls'))]

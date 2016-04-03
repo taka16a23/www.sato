@@ -106,8 +106,8 @@ class ContactReceiverModel(TimeStampModel):
     active = models.BooleanField(u'受信する', default=True)
 
     class Meta(object):
-        verbose_name = u'フォーム受取人'
-        verbose_name_plural = u'フォーム受取人'
+        verbose_name = u'問い合わせ受取人'
+        verbose_name_plural = u'問い合わせ受取人'
 
     def __unicode__(self):
         return self.name

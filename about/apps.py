@@ -7,7 +7,7 @@ from django.apps import AppConfig
 
 class AboutConfig(AppConfig):
     name = 'about'
-    verbose_name = u'自治会案内'
+    verbose_name = u'3.自治会案内'
 
 
 

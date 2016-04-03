@@ -92,7 +92,7 @@ class QAModel(models.Model):
         """
         text = u''
         try:
-            text = get_plaintext(self.description)
+            text = get_plaintext(self.answer)
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)

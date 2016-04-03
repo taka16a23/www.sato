@@ -294,6 +294,7 @@ ol {
 
 #linkTree li {
     height: 30px;
+    letter-spacing: 1px;
     background-color: #f5f5f5;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#ededed));
     background-image: -webkit-linear-gradient(top, #f5f5f5, #ededed);

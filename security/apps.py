@@ -7,7 +7,7 @@ from django.apps import AppConfig
 
 class SecurityConfig(AppConfig):
     name = 'security'
-    verbose_name = u'防犯・防災'
+    verbose_name = u'0.防犯・防災'
 
 
 

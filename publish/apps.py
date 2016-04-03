@@ -7,7 +7,7 @@ from django.apps import AppConfig
 
 class PublishConfig(AppConfig):
     name = 'publish'
-    verbose_name = u'情報提供'
+    verbose_name = u'1.情報提供'
 
 
 

@@ -7,7 +7,7 @@ from django.apps import AppConfig
 
 class FormatsConfig(AppConfig):
     name = 'formats'
-    verbose_name = u'各種申請書式'
+    verbose_name = u'2.各種申請書式'
 
 
 

@@ -8,6 +8,7 @@ from base.utils import get_context
 
 from about.forms import ContactPostForm, HallBookingForm
 from about.models import QAModel
+import datetime
 
 
 def about_view(request):
@@ -61,7 +62,7 @@ def solve_view(request):
     if form.is_valid():
         obj = form.save()
         obj.send_notify(
-            u'受付番号:{0:05}番,情報提供・お問合わせがありました'
+            u'里自治会受付番号:{0:05}番,情報提供・お問合わせがありました'
             .format(obj.id))
         obj.send_accept(u'里自治会受付完了通知')
         return HttpResponseRedirect('/about/thankyou/', )
@@ -142,13 +143,17 @@ def form_hall_view(request):
 
     @Error:
     """
-    context = get_context()
+    form = HallBookingForm(request.POST)
+    if form.is_valid():
+        accept_num = datetime.datetime.now().strftime('%g%m%d%H%M%f')
+        if form.send_accept(accept_num) != 0:
+            if form.send_notify(accept_num) != 0:
+                return HttpResponseRedirect('/about/thankyou/')
     if request.method == 'POST':
         form = HallBookingForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/about/thankyou/')
     else:
         form = HallBookingForm()
+    context = get_context()
     context['hallBookingForm'] = form
     return render_to_response(
         'about/hall/index.html',

@@ -18,6 +18,17 @@ class ContactReceiverAdmin(admin.ModelAdmin):
     # radio_fields = {"active": admin.HORIZONTAL}
 
 
+class HallReceiverAdmin(admin.ModelAdmin):
+    r"""HallReceiverAdmin
+
+    HallReceiverAdmin is a admin.ModelAdmin.
+    Responsibility:
+    """
+    list_display = ('name', 'email', 'active', )
+    list_editable = ('active', )
+    exclude = ('created', 'modified', )
+
+
 class ContactedAdmin(admin.ModelAdmin):
     r"""ContactedAdmin
 

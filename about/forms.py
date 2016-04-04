@@ -5,9 +5,13 @@ r"""forms -- DESCRIPTION
 """
 from django.forms import ModelForm
 from django import forms
-from about.models import ContactedModel
 from django.forms import Form
 from django.utils.safestring import mark_safe
+from django.core.mail import EmailMessage
+
+from about.models import ContactedModel, HallReceiverModel
+from sato import settings
+from about import PHONE_NUMBER, DEADLINE
 
 import datetime
 
@@ -126,7 +130,33 @@ ROOMS = ((u'ホール', u'ホール'),
 
 
 ACCEPT_MSG = u"""
+{2[name]} 様
 
+里自治会です。公民館利用申込みを受け付けました。
+受付番号は【{0}】です。
+内容を確認後、ご連絡いたします。
+{1[deadline]}以内にこちらから連絡がない場合は、電話番号: {1[phone]} にて、ご連絡をお願いいたします。
+
+○ 以下の内容で受付しました --
+
+使用責任者: {2[name]}
+団体名: {2[orgname]}
+住所: {2[address]}
+TEL: {2[phone]}
+Email: {2[email]}
+日時: {2[startyear]}年{2[startmonth]}月{2[startday]}日 {2[starthour]:02}時{2[startminutes]:02}分 から {2[endhour]:02}時{2[endminutes]:02}分
+使用室名: {2[room]}
+使用目的: {2[purpose]}
+内容: {2[matter]}
+備考:
+{2[body]}
+--------------------------------------------
+
+■本メールは自動配信しています。
+■本メールにお心当たりがない場合は、メールを削除いただきますようお願いいたします。
+
+◇電話でのお問合せ
+里自治会 {1[phone]}
 """
 
 NOTIFY_MSG = u"""
@@ -137,17 +167,17 @@ NOTIFY_MSG = u"""
 ※必ず入力者と連絡をとってください。
   対応が遅れる場合はその旨の返答をしてください。
 
-使用責任者: {1.name}
-団体名: {1.orgname}
-住所: {1.address}
-TEL: {1.phone}
-Email: {1.email}
-日時: {1.startyear}年{1.startmonth}月{1.startday} {1.starthour}:{1.startminutes} から {1.endhour}:{1.endminutes}
-使用室名: {1.room}
-使用目的: {1.purpose}
-内容: {1.matter}
+使用責任者: {1[name]}
+団体名: {1[orgname]}
+住所: {1[address]}
+TEL: {1[phone]}
+Email: {1[email]}
+日時: {1[startyear]}年{1[startmonth]}月{1[startday]}日 {1[starthour]:02}:{1[startminutes]:02} から {1[endhour]:02}:{1[endminutes]:02}
+使用室名: {1[room]}
+使用目的: {1[purpose]}
+内容: {1[matter]}
 備考:
-{1.body}
+{1[body]}
 
 """
 
@@ -223,13 +253,73 @@ class HallBookingForm(Form):
         """
         cleaned_data = super(HallBookingForm, self).clean()
         now = datetime.datetime.now()
-        booking = datetime.datetime(
-            int(cleaned_data['startyear']), int(cleaned_data['startmonth']),
-            int(cleaned_data['startday']), int(cleaned_data['starthour']),
-            int(cleaned_data['startminutes']),)
+        try:
+            booking = datetime.datetime(
+                int(cleaned_data['startyear']), int(cleaned_data['startmonth']),
+                int(cleaned_data['startday']), int(cleaned_data['starthour']),
+                int(cleaned_data['startminutes']),)
+        except KeyError as err:
+            # for not POST
+            return cleaned_data
         if booking < now:
             raise forms.ValidationError(u'過去の日時は指定できません')
         return cleaned_data
+
+    def send_notify(self, accept_num):
+        r"""SUMMARY
+
+        send_notify(accept_num)
+
+        @Arguments:
+        - `accept_num`:
+
+        @Return:
+
+        @Error:
+        """
+        data = self.clean()
+        data['starthour'] = int(data['starthour'])
+        data['startminutes'] = int(data['startminutes'])
+        data['endhour'] = int(data['endhour'])
+        data['endminutes'] = int(data['endminutes'])
+        emails = [x.email for x in HallReceiverModel.objects.active()]
+        subject = u'里公民館の申込みがありました 受付番号:{0}番'.format(
+            accept_num)
+        msg = EmailMessage(
+            subject=subject,
+            body=NOTIFY_MSG.format(accept_num, data),
+            from_email=settings.EMAIL_HOST_USER, bcc=emails
+        )
+        return msg.send()
+
+    def send_accept(self, accept_num):
+        r"""SUMMARY
+
+        send_accept(accept_num)
+
+        @Arguments:
+        - `accept_num`:
+
+        @Return:
+
+        @Error:
+        """
+        data = self.clean()
+        data['starthour'] = int(data['starthour'])
+        data['startminutes'] = int(data['startminutes'])
+        data['endhour'] = int(data['endhour'])
+        data['endminutes'] = int(data['endminutes'])
+        content = {}
+        content['deadline'] = DEADLINE
+        content['phone'] = PHONE_NUMBER
+        subject = u'里公民館の申込みを受付しました'
+        print(data)
+        print(content)
+        print(ACCEPT_MSG.format(accept_num, content, data))
+        msg = EmailMessage(
+            subject=subject, body=ACCEPT_MSG.format(accept_num, content, data),
+            from_email=settings.EMAIL_HOST_USER, to=[data['email'], ])
+        return msg.send()
 
 
 

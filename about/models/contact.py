@@ -124,6 +124,39 @@ class ContactReceiverModel(TimeStampModel):
         super(ContactReceiverModel, self).save(*args, **kwargs)
 
 
+class HallReceiverModel(TimeStampModel):
+    r"""HallReceiverModel
+
+    HallReceiverModel is a models.Model.
+    Responsibility:
+    """
+    objects = ContactReceiverManager()
+
+    name = models.CharField(u'名前', max_length=50, blank=True, null=True)
+    email = models.EmailField(
+        u'メールアドレス', blank=False, null=False)
+    active = models.BooleanField(u'受信する', default=True)
+
+    class Meta(object):
+        verbose_name = u'公民館申込み受取人'
+        verbose_name_plural = u'公民館申込み受取人'
+
+    def __unicode__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        r"""SUMMARY
+
+        save()
+
+        @Return:
+
+        @Error:
+        """
+        super(HallReceiverModel, self).save(*args, **kwargs)
+
+
+
 UNTREATED_STATUS = 1
 CONFIRMED_STATUS = 2
 FINISHED_STATUS = 3

@@ -5,6 +5,7 @@ r"""board -- DESCRIPTION
 """
 from django.contrib import admin
 from django import forms
+from django.utils.safestring import mark_safe
 
 from publish.models import DocumentModel
 from publish.models import NewsCategoryModel, NewsPostModel
@@ -16,10 +17,16 @@ class DocumentForm(forms.ModelForm):
     DocumentForm is a form.ModelForm.
     Responsibility:
     """
+    title = forms.CharField(
+        label=u'題名',
+        widget=forms.TextInput(attrs={'placeholder': '4月15日号',}),
+        help_text=mark_safe(u'回覧ページで表示される題名です。<br>回覧版は1日と15日に出ます。')
+    )
+
     news_title = forms.CharField(
         label=u'おしらせ名',
         required=False,
-        help_text=u'入力がなかった場合、上記のタイトルで表示されます')
+        help_text=mark_safe(u'トップページで表示されるおしらせ名です。<br>入力がなかった場合、題名で表示されます'))
 
     class Meta(object):
         r"""Meta
@@ -38,7 +45,6 @@ class DocumentAdmin(admin.ModelAdmin):
     Responsibility:
     """
     form = DocumentForm
-
     list_display = ('title', 'status', 'publish_date', 'expiry_date')
     list_editable = ('status', )
     ordering = ('-publish_date', )

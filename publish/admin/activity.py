@@ -45,14 +45,14 @@ class ActivityPostForm(forms.ModelForm):
     news_title = forms.CharField(
         label=u'おしらせ名',
         required=False,
-        help_text=u'入力がなかった場合、活動の題名で表示されます')
+        help_text=u'入力がなかった場合、題名で表示されます')
     categories = forms.ModelChoiceField(
         label=u'カテゴリー',
         # initial=get_default_category,
         queryset=NewsCategoryModel.objects.all(),
         required=False,
         empty_label=u'作成しない',
-        help_text=mark_safe('お知らせを作成すると<br>公開日時にトップページで<br>おしらせが表示されます。')
+        help_text=mark_safe('トップページで表示される<br>おしらせです。')
     )
 
     def __init__(self, *args, **kwargs):
@@ -112,8 +112,9 @@ class ActivityPostAdmin(admin.ModelAdmin):
         (u'公開日/有効期限の設定',
          {'classes': ('collapse', ),
           'fields': [('publish_date', 'expiry_date'), ],}),
-        (u'お知らせ作成',
-         {'fields': [('categories', 'news_title'), ],})
+        (u'お知らせ名',
+         {'classes': ('collapse', ),
+          'fields': [('categories', 'news_title'), ],})
     )
 
     def _tags(self, row):

@@ -59,7 +59,7 @@ class DocumentModel(DisplayableModel):
     """
     objects = DisplayableManager()
 
-    title = models.CharField(u'タイトル', max_length=255)
+    title = models.CharField(u'題名', max_length=255)
     file = models.FileField('PDF',
         upload_to='boards/',
         validators=[validate_file_pdf],

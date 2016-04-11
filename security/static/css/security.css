@@ -2,3 +2,7 @@
     width: 750px;
     height: 600px;
 }
+
+#main a:hover {
+    text-decoration: underline;
+}

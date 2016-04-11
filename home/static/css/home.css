@@ -68,6 +68,9 @@
     top: 2px;
 }                   
 
+#news h2 .newslist a:hover {
+    text-decoration: underline;
+}
 
 #news > ol {
     display: block;
@@ -178,6 +181,26 @@
 #agenda h2 a {
     /* display: block; */
     color: white;
+}
+
+#agenda h2 > span {
+    font-size: 14px;
+    float: right;
+    position: relative;
+    top: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+#agenda h2 > span a:before {
+    position : relative;
+    content: url("/static/images/arrowWhite.png");
+    top: 2px;
+}                   
+
+#agenda h2 > span a:hover {
+    text-decoration: underline;
 }
 
 #agenda iframe {

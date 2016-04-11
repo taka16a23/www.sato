@@ -1,9 +1,10 @@
+{% load static %}
 <h2>里公民館</h2>
 <div id="hallbooking" class="subContent">
   <div id="descriptionHallBooking">
     <p>町内団体使用の場合は無料。</p>
     <p>その他団体の貸館料金は相談の上決定する。</p>
-    <p><a href="#">ガスの取扱いについて</a></p>
+    <p><a href="{% static "how_to_use_propane_gas.pdf" %}" target="_blank" title="PDF">ガスの取扱いについて</a></p>
   </div>
   <div id="hallBookingCalendar">
     <iframe src="https://calendar.google.com/calendar/embed?showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=6m5ne5kcfmkek4t0ba37o95olo%40group.calendar.google.com&amp;color=%23B1365F&amp;ctz=Asia%2FTokyo" style="border-width:0" frameborder="0" scrolling="no"></iframe>

@@ -1,5 +1,12 @@
 {% load staticfiles %}
 <h1>工事中</h1>
+<div id="seclinks">
+  <div class="seclink">
+    <a href="/security/knowledge">防災予備知識</a>
+  </div>
+</div>
 <div id="route">
-  <img src="{% static "images/route.jpg"%}"/>
+  <a href="{% static "images/route.jpg"%}" title="大きいサイズで表示" target="_blank">
+    <img src="{% static "images/route.jpg"%}" alt="町内巡回地図"/>
+  </a>
 </div>

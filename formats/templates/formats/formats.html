@@ -17,14 +17,14 @@
 		<td>{{ f.description|safe }}</td>
 		<td>
           {% if f.file %}
-          <a href="{{ f.file.url }}" target="_blank">
+          <a href="{{ f.file.url }}" target="_blank" title="書類をダウンロード">
             <i class="fa fa-download"></i>
           </a>
           {% endif %}
         </td>
         <td>
           {% if f.form %}
-          <a href="{{ f.form }}">
+          <a href="{{ f.form }}" title="申込みページへ">
             <i class="fa fa-pencil-square-o"></i>
           </a>
           {% endif%}

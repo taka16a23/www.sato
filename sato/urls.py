@@ -19,6 +19,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve as static_serve
+from django.contrib.sitemaps.views import sitemap
+from sato.sitemaps import StaticViewSitemap
+
 
 from sato import settings
 # from sato.admin import admin_site
@@ -32,6 +35,10 @@ from django.views.generic.base import RedirectView
 from filebrowser.sites import site
 
 admin.autodiscover()
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     url(r'^$', home_view),
@@ -50,6 +57,8 @@ urlpatterns = [
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

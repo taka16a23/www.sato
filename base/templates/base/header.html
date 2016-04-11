@@ -3,24 +3,20 @@
 <div id="header" class="clearfix">
   <div id="masthead">
     <div id="mastheadImage">
-      <a href="/" title="ホーム" alt="ホーム">
-        <img src="{{ STATIC_URL }}images/headerImage.jpg"/>
+      <a href="/" title="トップページへ">
+        <img src="{{ STATIC_URL }}images/headerImage.jpg" alt="笹間山の頂上八畳岩から撮影された里自治会町内"/>
       </a>
     </div>
   </div>
   <div id="menubar">
     <ul id="menubar_container" class="clearfix">
-      <li>
-        <a href="/" title="ホーム">
-          <i class="fa fa-home fa-2x"></i>
-        </a>
-      </li>
-      <li{% if request.path|startswith:"/news" %} class="active"{% endif %}><a href="/news"><span>おしらせ</span></a></li>
-      <li{% if request.path|startswith:"/activity" %} class="active"{% endif %}><a href="/activity"><span>活動報告</span></a></li>
-      <li{% if request.path|startswith:"/security" %} class="active"{% endif %}><a href="/security"><span>防犯・防災</span></a></li>
-      <li{% if request.path|startswith:"/board" %} class="active"{% endif %}><a href="/board"><span>回覧板</span></a></li>
-      <li{% if request.path|startswith:"/formats" %} class="active"{% endif %}><a href="/formats"><span>各種申請</span></a></li>
-      <li{% if request.path|startswith:"/about" %} class="active"{% endif %}><a href="/about"><span>自治会案内</span></a></li>
+      <li><a href="/" title="トップページへ"><i class="fa fa-home fa-2x"></i></a></li>
+      <li{% if request.path|startswith:"/news" %} class="active"{% endif %}><a href="/news/"><span>おしらせ</span></a></li>
+      <li{% if request.path|startswith:"/activity" %} class="active"{% endif %}><a href="/activity/"><span>活動報告</span></a></li>
+      <li{% if request.path|startswith:"/security" %} class="active"{% endif %}><a href="/security/"><span>防犯・防災</span></a></li>
+      <li{% if request.path|startswith:"/board" %} class="active"{% endif %}><a href="/board/"><span>回覧板</span></a></li>
+      <li{% if request.path|startswith:"/formats" %} class="active"{% endif %}><a href="/formats/"><span>各種申請</span></a></li>
+      <li{% if request.path|startswith:"/about" %} class="active"{% endif %}><a href="/about/"><span>自治会案内</span></a></li>
     </ul>
   </div>
 </div>

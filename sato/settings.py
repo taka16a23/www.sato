@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     # third party
     'captcha',
@@ -192,6 +193,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static', # for {{ STATIC_URL }}
+            ],
+            'builtins': [
+            'django.contrib.staticfiles.templatetags.staticfiles',
             ],
         },
     },

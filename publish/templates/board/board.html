@@ -2,22 +2,22 @@
 <div id="board" class="board_bucket clearfix">
   <div class="otherlink">
     <a href="http://www.city.otsu.lg.jp/shisei/koho/kohootsu/" target="_blank" title="大津市サイト">おおつ広報</a>
-    <a href="http://www.city.otsu.lg.jp/gikai/tayori/" target="_blank" title="大津市サイト">市議会だより</a>
+    <a href="http://www.city.otsu.lg.jp/gikai/tayori/" target="_blank" title="大津市議会サイト">市議会だより</a>
     <a href="http://www.pref.shiga.lg.jp/koho/" target="_blank" title="滋賀県サイト">滋賀プラスワン</a>
-    <a href="http://www.shigaken-gikai.jp/g07_Koho.asp" target="_blank" title="滋賀県サイト">滋賀県議会だより</a>
+    <a href="http://www.shigaken-gikai.jp/g07_Koho.asp" target="_blank" title="滋賀県議会サイト">滋賀県議会だより</a>
   </div>
   <h2>{{ year }}年 回覧板</h2>
   <ol>
     {% for board in board_list %}
     <li>
-      <a href="{{ board.file.url }}" title="{{ board.file.name }}" target="_blank">
+      <a href="{{ board.file.url }}" title="{{ board.title }}をダウンロード" target="_blank">
         {% if board.thumbnail %}
-        <img src="{{ board.thumbnail.url }}" alt="{{ board.thumbnail.url }}">
+        <img src="{{ board.thumbnail.url }}" alt="{{ board.file.name }}">
         {% else%}
-        <img src="{% static "images/no_pdf_picture.jpg" %}" alt="{% static "no_pdf_picture.jpg" %}">
+        <img src="{% static "images/no_pdf_picture.jpg" %}" alt="NoPicture">
         {% endif %}
       </a>
-      <h6><a href="{{ board.file.url }}" class="board_title" title="{{ board.title }}"  target="_blank">{{ board.title }}</a></h6> 
+      <h6><a href="{{ board.file.url }}" class="board_title" title="{{ board.title }}をダウンロード"  target="_blank">{{ board.title }}</a></h6> 
     </li>
     {% endfor %}
   </ol>

@@ -7,7 +7,7 @@
     <ol {% if request.path|startswith:"/news" %}style="display:block"{% endif %}>
       {% for news_year in news_uniq_years %}
       <li>
-        <p><a href="/news/?year={{ news_year }}">{{ news_year }}年</a></p>
+        <p><a href="/news/?year={{ news_year }}" title="{{ news_year }}年のおしらせを見る">{{ news_year }}年</a></p>
       </li>
       {% endfor %}
     </ol>
@@ -18,7 +18,7 @@
       {% for activity_year in activity_uniq_years %}
       <li>
         <p>
-          <a href="/activity/?year={{ activity_year }}">{{ activity_year }}年</a>
+          <a href="/activity/?year={{ activity_year }}" title="{{ activity_year }}年の活動を見る">{{ activity_year }}年</a>
         </p>
       </li>
       {% endfor %}
@@ -29,17 +29,17 @@
     <ol {% if request.path|startswith:"/security" %}style="display:block"{% endif %}>
       <li>
         <p>
-          <a href="/security/secportal/">防災統合情報</a>
+          <a href="/security/secportal/" title="防災ポータルサイトを見る">防災統合情報</a>
         </p>
       </li>
       <li>
         <p>
-          <a href="/security/secportal/#evacuationMapArea">避難地図</a>
+          <a href="/security/secportal/#evacuationMapArea" title="避難地図を見る">避難地図</a>
         </p>
       </li>
       <li>
         <p>
-          <a href="/security/knowledge/">防災予備知識</a>
+          <a href="/security/knowledge/" title="防災予備知識を見る">防災予備知識</a>
         </p>
       </li>
     </ol>
@@ -50,7 +50,7 @@
       {% for board_year in board_uniq_years %}
       <li>
         <p>
-          <a href="/board/?year={{ board_year }}">{{ board_year }}年</a>
+          <a href="/board/?year={{ board_year }}" title="{{ board_year }}年の回覧を表示する">{{ board_year }}年</a>
         </p>
       </li>
       {% endfor %}
@@ -61,27 +61,27 @@
     <ol {% if request.path|startswith:"/about" %}style="display:block"{% endif %}>
       <li>
         <p>
-          <a href="/about/rule/">会則</a>
+          <a href="/about/rule/" title="会則を見る">会則</a>
         </p>
       </li>
       <li {% if request.path|startswith:"/about/hall" %}class="active"{% endif %}>
         <p>
-          <a href="/about/hall/">公民館</a>
+          <a href="/about/hall/" title="里公民館のページを見る">里公民館(予定・申込み)</a>
         </p>
       </li>
       <li {% if request.path|startswith:"/about/group" %}class="active"{% endif %}>
         <p>
-          <a href="/about/group/">ブロックと組</a>
+          <a href="/about/group/" title="ブロックと組の地図を見る">ブロックと組</a>
         </p>
       </li>
       <li>
         <p>
-          <a href="/about/solve/#faq">よくある質問</a>
+          <a href="/about/solve/#faq" title="QAを見る">よくある質問</a>
         </p>
       </li>
       <li {% if request.path|startswith:"/about/contact" %}class="active"{% endif %}>
         <p>
-          <a href="/about/solve/#contact">情報提供・お問い合わせ</a>
+          <a href="/about/solve/#contact" title="情報提供・問い合わせをする">情報提供・お問い合わせ</a>
         </p>
       </li>
     </ol>

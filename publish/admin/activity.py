@@ -113,8 +113,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
          {'classes': ('collapse', ),
           'fields': [('publish_date', 'expiry_date'), ],}),
         (u'お知らせ名',
-         {'classes': ('collapse', ),
-          'fields': [('categories', 'news_title'), ],})
+         {'fields': [('categories', 'news_title'), ],})
     )
 
     def _tags(self, row):

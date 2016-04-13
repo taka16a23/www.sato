@@ -15,7 +15,7 @@ ZIP = u'520-2276'
 ADDRESS = u'滋賀県大津市里5丁目7-22'
 PHONE_NUMBER = u'077-546-6905'
 FAX = u'077-546-6905'
-DEADLINE = u'5日'
+DEADLINE = u'7日'
 
 
 

@@ -47,3 +47,8 @@
     margin-left: 20px;
     margin-right: 20px;
 }
+
+#main p,
+#main h1 {
+    margin-left: 20px;
+}

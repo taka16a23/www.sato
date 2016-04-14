@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve as static_serve
 from django.contrib.sitemaps.views import sitemap
-from sato.sitemaps import StaticViewSitemap
+from sato.sitemaps import StaticViewSitemap, ActivityPostSitemap
 
 
 from sato import settings
@@ -38,6 +38,7 @@ admin.autodiscover()
 
 sitemaps = {
     'static': StaticViewSitemap,
+    'activity': ActivityPostSitemap,
 }
 
 urlpatterns = [

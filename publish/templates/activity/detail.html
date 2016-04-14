@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 {% load staticfiles %}
+{% block title %}{{ activity_post.title|safe }} | {% endblock %}
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static "css/activityPage.css" %}">
 {% endblock %}

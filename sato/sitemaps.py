@@ -4,6 +4,7 @@ r"""sitemaps -- DESCRIPTION
 
 """
 from django.contrib import sitemaps
+from publish.models import ActivityPostModel
 
 
 class StaticViewSitemap(sitemaps.Sitemap):
@@ -17,6 +18,55 @@ class StaticViewSitemap(sitemaps.Sitemap):
 
     def location(self, item):
         return '/' + item + '/'
+
+
+class ActivityPostSitemap(sitemaps.Sitemap):
+    r"""ActivityPostSitemap
+
+    ActivityPostSitemap is a sitemaps.Sitemap.
+    Responsibility:
+    """
+    changefreq = "monthly"
+    priority = 0.5
+
+    def items(self, ):
+        r"""SUMMARY
+
+        items()
+
+        @Return:
+
+        @Error:
+        """
+        return ActivityPostModel.objects.published()
+
+    def lastmod(self, obj):
+        r"""SUMMARY
+
+        lastmod(obj)
+
+        @Arguments:
+        - `obj`:
+
+        @Return:
+
+        @Error:
+        """
+        return obj.modified
+
+    def location(self, item):
+        r"""SUMMARY
+
+        location(item)
+
+        @Arguments:
+        - `item`:
+
+        @Return:
+
+        @Error:
+        """
+        return '/activity/' + str(item.id)
 
 
 

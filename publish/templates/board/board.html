@@ -10,14 +10,14 @@
   <ol>
     {% for board in board_list %}
     <li>
-      <a href="{{ board.file.url }}" title="{{ board.title }}をダウンロード" target="_blank" onclick="ga('send','event','board_image','download')">
+      <a href="{{ board.file.url }}" title="{{ board.title }}をダウンロード" target="_blank" onclick="ga('send','event','board_image','download','{{ board.file.url }}')">
         {% if board.thumbnail %}
         <img src="{{ board.thumbnail.url }}" alt="{{ board.file.name }}">
         {% else%}
         <img src="{% static "images/no_pdf_picture.jpg" %}" alt="NoPicture">
         {% endif %}
       </a>
-      <h6><a href="{{ board.file.url }}" class="board_title" title="{{ board.title }}をダウンロード"  target="_blank" onclick="ga('send','event','board_title','download')">{{ board.title }}</a></h6> 
+      <h6><a href="{{ board.file.url }}" class="board_title" title="{{ board.title }}をダウンロード"  target="_blank" onclick="ga('send','event','board_title','download','{{ board.file.url }}')">{{ board.title }}</a></h6> 
     </li>
     {% endfor %}
   </ol>

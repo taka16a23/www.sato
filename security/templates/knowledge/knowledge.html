@@ -5,12 +5,12 @@
     <li>
       <div class="imageBox">
         <div class="imageInner">
-          <a href="{{ knowledge.url }}" target="_blank" title="「{{knowledge.title}}」の掲載ページへ移動"><img src="{{ knowledge.thumbnail.url }}" class="{% if knowledge.is_vertical_image %}vertical{% else %}horizon{% endif %}" alt="{{ knowledge.title }}"/></a>
+          <a href="{{ knowledge.url }}" target="_blank" title="「{{knowledge.title}}」の掲載サイトへ移動" onclick="ga('send','event','knowledge_imagebox','click')"><img src="{{ knowledge.thumbnail.url }}" class="{% if knowledge.is_vertical_image %}vertical{% else %}horizon{% endif %}" alt="{{ knowledge.title }}"/></a>
         </div>
       </div>
       <div class="descriptionBox">
         <div class="descriptionInner">
-          <h3><a href="{{ knowledge.url }}" target="_blank">{{ knowledge.title }}</a></h3>
+          <h3><a href="{{ knowledge.url }}" target="_blank" title="掲載サイトへ移動" onclick="ga('send','event','knowledge_title','click')">{{ knowledge.title }}</a></h3>
           <p>{{ knowledge.description|safe }}</p>
         </div>
       </div>

@@ -17,7 +17,7 @@
 		<td>{{ f.description|safe }}</td>
 		<td>
           {% if f.file %}
-          <a href="{{ f.file.url }}" target="_blank" title="書類をダウンロード">
+          <a href="{{ f.file.url }}" target="_blank" title="書類をダウンロード" onclick="ga('send','event','sato_format_download','download')">
             <i class="fa fa-download"></i>
           </a>
           {% endif %}
@@ -46,7 +46,7 @@
 	<tbody>
       {% for f in otherformats %}
 	  <tr>
-		<th><a href="{{ f.url }}" target="_blank" title="掲載サイトへ移動">{{ f.title }}</a></th>
+		<th><a href="{{ f.url }}" target="_blank" title="掲載サイトへ移動" onclick="ga('send','event','other_format_title','click')">{{ f.title }}</a></th>
 		<td>{{ f.description|safe }}</td>
 	  </tr>
       {% endfor %}

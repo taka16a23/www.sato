@@ -9,6 +9,7 @@ from django.http import Http404
 
 from publish.models import ActivityPostModel, TagModel
 from base.utils import get_context
+from core.models import DISPLAY_STATUS_DRAFT
 
 
 def activity_view(request, postid):
@@ -26,6 +27,9 @@ def activity_view(request, postid):
     context = get_context()
     # example "/activity/1"
     context['activity_post'] = get_object_or_404(ActivityPostModel, id=postid)
+    if (context['activity_post'].status == DISPLAY_STATUS_DRAFT
+        and not request.user.is_authenticated()):
+        raise Http404
     tags = TagModel.objects.all()
     context['tags'] = context['activity_post'].tags.all()
     return render_to_response(

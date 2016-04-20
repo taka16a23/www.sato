@@ -114,7 +114,7 @@ class ActivityPostModel(DisplayableModel):
         except Exception as err:
             # TODO: (Atami) [2016/02/17]
             print(err)
-        self.description = text[:300]
+        self.description = text[:100]
         super(ActivityPostModel, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):

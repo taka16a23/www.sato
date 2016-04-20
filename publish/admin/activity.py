@@ -94,7 +94,7 @@ class ActivityPostAdmin(admin.ModelAdmin):
     filter_horizontal = ['tags', ]
 
     list_display = ('title', 'publish_date', 'expiry_date',
-                    'description', '_tags', 'status', )
+                    'description', 'status', )
     list_display_links = ("title", )
     list_editable = ('status', )
     ordering = ('-modified', )

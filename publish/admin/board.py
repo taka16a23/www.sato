@@ -20,7 +20,7 @@ class DocumentForm(forms.ModelForm):
     title = forms.CharField(
         label=u'題名',
         widget=forms.TextInput(attrs={'placeholder': '4月15日号',}),
-        help_text=mark_safe(u'回覧ページで表示される題名です。<br>回覧版は1日と15日に出ます。')
+        help_text=mark_safe(u'回覧ページで表示される題名です。')
     )
 
     news_title = forms.CharField(

@@ -108,7 +108,7 @@ class DocumentAdmin(admin.ModelAdmin):
         @Error:
         """
         super(DocumentAdmin, self).save_model(request, obj, form, change)
-        newstitle = newstitle = form.cleaned_data['news_title'] or form.cleaned_data['title']
+        newstitle = newstitle = form.cleaned_data.get('news_title', None) or form.cleaned_data.get('title', None)
         url = '/board/?year=' + str(obj.publish_date.year)
         if obj.news is None: # update
             obj.news = NewsPostModel.objects.create(

@@ -50,6 +50,8 @@ class DocumentAdmin(admin.ModelAdmin):
     ordering = ('-publish_date', )
     exclude = ('thumbnail', 'news', )
     radio_fields = {"status": admin.HORIZONTAL}
+    date_hierarchy = 'publish_date'
+    list_filter = ('status', 'publish_date', 'expiry_date', )
 
     class Media:
         css = {'all': ('css/admin_sato.css', ),}

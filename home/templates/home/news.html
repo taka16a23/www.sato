@@ -8,7 +8,7 @@
   <ol>
     {% for news in newsList %}
     <li>
-      <a href="{{ news.url }}" title="「{{ news.title }}」の詳細を見る">
+      <a href="{{ news.url }}" title="「{{ news.title }}」の詳細を見る" {% if news.category.name == "回覧" %}target="_blank"{% endif %}>
         <span class="Category" style="color:{{news.category.fgcolor}};background-color:{{news.category.bgcolor}}">{{ news.category.name }}</span>
         <span class="Date">{{ news.publish_date|date:'Y/m/d' }}</span>
         <span class="Title">{{ news.title }}</span>

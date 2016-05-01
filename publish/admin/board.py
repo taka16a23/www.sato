@@ -111,13 +111,12 @@ class DocumentAdmin(admin.ModelAdmin):
         """
         super(DocumentAdmin, self).save_model(request, obj, form, change)
         newstitle = form.cleaned_data.get('news_title', None) or form.cleaned_data.get('title', None)
-        url = '/board/?year=' + str(obj.publish_date.year)
         if obj.news is None: # update
             if newstitle is None:
                 newstitle = obj.title
             obj.news = NewsPostModel.objects.create(
                 title=newstitle,
-                url=url,
+                url=obj.file.url,
                 category=NewsCategoryModel.objects.get(name=u'回覧'),
                 publish_date=obj.publish_date,
                 expiry_date=obj.expiry_date,
@@ -125,7 +124,7 @@ class DocumentAdmin(admin.ModelAdmin):
         else:
             if newstitle is not None:
                 obj.news.title = newstitle
-            obj.news.url = url
+            obj.news.url = obj.file.url
             obj.news.category = NewsCategoryModel.objects.get(name=u'回覧')
             obj.news.publish_date = obj.publish_date
             obj.news.expiry_date = obj.expiry_date

@@ -1,8 +1,146 @@
+#main {
+    background-color: #E6F3EC;
+    border-radius: 20px;
+}
+
+#main h2 {
+	position: relative;
+	padding: .75em 1em .75em 1.5em;
+	border: 1px solid #ccc;
+    background-color: white;
+    /* width: 667px; */
+    top: 20px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#main h2::after {
+	  position: absolute;
+	  top: .5em;
+	  left: .5em;
+	  content: '';
+	  width: 6px;
+	  height: -webkit-calc(100% - 1em);
+	  height: calc(100% - 1em);
+	  background-color: #2c7046;
+	  border-radius: 4px;
+}
+
+#main .subContent {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#news .subContent > ol {
+    display: block;
+    list-style-type: none;
+    overflow: hidden;
+}
+#news .subContent > ol > li {
+    overflow: hidden;
+    padding: 0;
+    border-bottom: dotted 1px #ccc;
+}
+#news .subContent > ol > li a {
+    display: block;
+    padding: 5px 10px;
+    overflow: hidden;
+    position: relative;
+}
+#news .subContent > ol > li .Category {
+    display: table-cell;
+    width: 6em;
+    vertical-align: middle;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 3px 10px;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    
+}
+#news .subContent > ol > li .Date {
+    display: table-cell;
+    width: 7em;
+    padding-left: 10px;
+    vertical-align: middle;
+    color: #0B5426;
+}
+#news .subContent > ol > li .Title {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #0B5426;
+}
+#news .subContent > ol > li:hover {
+    background-color: #EAEDEA !important;
+}
+#news .subContent > ol > li:hover .Title {
+    text-decoration: underline !important;
+}
+
+/* .infoList li:nth-child(odd) { */
+/*     background-color: #fff1e1; */
+/* } */
+
+#news .subContent > ol > li:nth-child(even) {
+    background-color: #fff;
+}
+
+.categoryInfo {
+    background-color: #EF8694 !important;
+}
+
+.categoryReport {
+    background-color: #B7912B !important;
+}
+
+.categoryUpdate {
+    background-color: #9A40B1 !important;
+}
+
+.categoryImportant {
+    background-color: #8B2210 !important;
+}
+
+.categoryWanted {
+    background-color: #0081CC !important;
+}
+
+.categorySecurity {
+    background-color: #EA6E56 !important;
+}
+
+.categoryEvent {
+    background-color: #19AB40 !important;
+}
+
 #route img {
-    width: 750px;
+    width: 730px;
     height: 600px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
 }
 
 #main a:hover {
     text-decoration: underline;
+}
+
+#seclinks img {
+    margin: 10px;
+}
+
+#seclinks img:hover {
+    opacity: 0.8;
+    margin: 7px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #CCC; gray    
 }

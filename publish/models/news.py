@@ -6,6 +6,7 @@ r"""news -- DESCRIPTION
 import datetime
 
 from django.db import models
+from django.db.models import Q
 
 from core.models import DisplayableModel
 from core.managers import DisplayableQuerySet, ManagerAbstract
@@ -93,6 +94,19 @@ class NewsPostQuerySet(DisplayableQuerySet):
         if len(news) < len(rangenews):
             return rangenews
         return news
+
+    def list_security(self, ):
+        r"""SUMMARY
+
+        list_security()
+
+        @Return:
+
+        @Error:
+        """
+        bouhan = NewsCategoryModel.objects.get(name=u'防犯')
+        security = NewsCategoryModel.objects.get(name=u'防災')
+        return self.filter(Q(category=bouhan)|Q(category=security))
 
 
 class NewsPostManager(ManagerAbstract):

@@ -1,8 +1,23 @@
 {% load staticfiles %}
-<h1>工事中</h1>
+<h2>防犯・防災</h2>
+<div id="news" class="mainContent">
+  <div class="subContent">
+    <ol>
+      {% for news in newsList %}
+      <li>
+        <a href="{{ news.url }}" target="_blank" title="詳細を見る">
+          <span class="Category" style="color:{{news.category.fgcolor}};background-color:{{news.category.bgcolor}}">{{ news.category.name }}</span>
+          <span class="Date">{{ news.publish_date|date:'m月d日' }}</span>
+          <span class="Title">{{ news.title }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
 <div id="seclinks">
   <div class="seclink">
-    <a href="/security/knowledge">防災予備知識</a>
+    <a href="/security/knowledge/"><img src="{% static "images/secknowledge_invite.png"%}" alt="防災予備知識ページへの招待画像"/></a>
   </div>
 </div>
 <div id="route">

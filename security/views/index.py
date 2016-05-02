@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from base.utils import get_context
+from publish.models import NewsPostModel
 
 
 def security_view(request):
@@ -22,6 +23,11 @@ def security_view(request):
     @Error:
     """
     context = get_context()
+    context['newsList'] = (NewsPostModel
+                           .objects
+                           .published()
+                           .list_security()
+                           .list_security())
     return render_to_response(
         'security/index.html', context, context_instance=RequestContext(request))
 

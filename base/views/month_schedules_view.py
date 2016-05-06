@@ -25,6 +25,9 @@ SCHEDULE_PATH = os.path.join(settings.MEDIA_ROOT, 'schedules',)
 
 ALIGN_CENTER = xlwt.Alignment()
 ALIGN_CENTER.horz = 2
+ALIGN_RIGHT = xlwt.Alignment()
+ALIGN_RIGHT.horz = 3
+
 FONT = xlwt.Font()
 FONT.height = 11 * 20 # for 11point
 
@@ -39,6 +42,12 @@ SUBTITLE_FONT.bold = True
 SUBTITLE_FONT.height = 11 * 20 # for 11point
 SUBTITLE_STYLE = xlwt.XFStyle()
 SUBTITLE_STYLE.font = SUBTITLE_FONT
+
+TODAY_FONT = xlwt.Font()
+TODAY_FONT.height = 11 * 20 # for 11point
+TODAY_STYLE = xlwt.XFStyle()
+TODAY_STYLE.font = SUBTITLE_FONT
+TODAY_STYLE.alignment = ALIGN_RIGHT
 
 TOP_LEFT_BORDER = xlwt.Borders()
 TOP_LEFT_BORDER.top = xlwt.Borders.THICK
@@ -251,7 +260,7 @@ class ScheduleBuilder(object):
 
         @Error:
         """
-        self._sheet.write_merge(self.row, 1, 0, 5, title, TITLE_STYLE)
+        self._sheet.write_merge(self.row, 1, 0, 4, title, TITLE_STYLE)
         self.row += 1
 
     def insert_subtitle(self, subtitle):
@@ -267,6 +276,8 @@ class ScheduleBuilder(object):
         @Error:
         """
         self._sheet.write(self.row, 0, subtitle, SUBTITLE_STYLE)
+        self._sheet.write(
+            self.row, 4, datetime.date.today().strftime('%Y/%m/%d'), TODAY_STYLE)
         self.row += 1
 
     def insert_header(self, ):
@@ -279,11 +290,10 @@ class ScheduleBuilder(object):
         @Error:
         """
         self._sheet.write(self.row, 0, u'日', TOP_LEFT_STYLE)
-        self._sheet.write(self.row, 1, u'曜日', TOP_MIDDLE_STYLE)
-        self._sheet.write(self.row, 2, u'集合時間', TOP_MIDDLE_STYLE)
-        self._sheet.write(self.row, 3, u'行事開始', TOP_MIDDLE_STYLE)
-        self._sheet.write(self.row, 4, u'行事', TOP_MIDDLE_STYLE)
-        self._sheet.write(self.row, 5, u'参加者', RIGHT_TOP_STYLE)
+        self._sheet.write(self.row, 1, u'集合時間', TOP_MIDDLE_STYLE)
+        self._sheet.write(self.row, 2, u'行事開始', TOP_MIDDLE_STYLE)
+        self._sheet.write(self.row, 3, u'行事', TOP_MIDDLE_STYLE)
+        self._sheet.write(self.row, 4, u'参加者', RIGHT_TOP_STYLE)
         self.row += 1
 
     def insert_event(self, day, eventname):
@@ -295,14 +305,17 @@ class ScheduleBuilder(object):
 
         @Error:
         """
-        self._sheet.write(self.row, 0, unicode(day.day), LEFT_BOTTOM_STYLE)
+
+        self._sheet.write(self.row,
+                          0,
+                          u'{0}月{1}日({2})'.format(
+                              day.month, day.day, WEEKDAY.get(day.weekday())),
+                          LEFT_BOTTOM_STYLE)
+        self._sheet.write(self.row, 1, u'', BOTTOM_MIDDLE_STYLE) # 集合時間
         self._sheet.write(
-            self.row, 1, WEEKDAY.get(day.weekday()), BOTTOM_MIDDLE_STYLE)
-        self._sheet.write(self.row, 2, u'', BOTTOM_MIDDLE_STYLE) # 集合時間
-        self._sheet.write(
-            self.row, 3, unicode(day.strftime('%H:%M')), BOTTOM_MIDDLE_STYLE) # 開始時間
-        self._sheet.write(self.row, 4, eventname, BOTTOM_MIDDLE_STYLE)
-        self._sheet.write(self.row, 5, u'',RIGHT_BOTTOM_STYLE)
+            self.row, 2, unicode(day.strftime('%H:%M')), BOTTOM_MIDDLE_STYLE)
+        self._sheet.write(self.row, 3, eventname, BOTTOM_MIDDLE_STYLE)
+        self._sheet.write(self.row, 4, u'',RIGHT_BOTTOM_STYLE)
         self.row += 1
 
     def insert_memo(self, ):
@@ -318,29 +331,25 @@ class ScheduleBuilder(object):
         self._sheet.write(self.row, 1, u'', MEMO_TOP_MIDDLE_STYLE)
         self._sheet.write(self.row, 2, u'', MEMO_TOP_MIDDLE_STYLE)
         self._sheet.write(self.row, 3, u'', MEMO_TOP_MIDDLE_STYLE)
-        self._sheet.write(self.row, 4, u'', MEMO_TOP_MIDDLE_STYLE)
-        self._sheet.write(self.row, 5, u'', MEMO_RIGHT_TOP_STYLE)
+        self._sheet.write(self.row, 4, u'', MEMO_RIGHT_TOP_STYLE)
         self.row += 1
         self._sheet.write(self.row, 0, u'', MEMO_LEFT_MIDDLE_STYLE)
         self._sheet.write(self.row, 1, u'', MEMO_MIDDLE_MIDDLE_STYLE)
         self._sheet.write(self.row, 2, u'', MEMO_MIDDLE_MIDDLE_STYLE)
         self._sheet.write(self.row, 3, u'', MEMO_MIDDLE_MIDDLE_STYLE)
-        self._sheet.write(self.row, 4, u'', MEMO_MIDDLE_MIDDLE_STYLE)
-        self._sheet.write(self.row, 5, u'', MEMO_RIGHT_MIDDLE_STYLE)
+        self._sheet.write(self.row, 4, u'', MEMO_RIGHT_MIDDLE_STYLE)
         self.row += 1
         self._sheet.write(self.row, 0, u'', MEMO_LEFT_MIDDLE_STYLE)
         self._sheet.write(self.row, 1, u'', MEMO_MIDDLE_MIDDLE_STYLE)
         self._sheet.write(self.row, 2, u'', MEMO_MIDDLE_MIDDLE_STYLE)
         self._sheet.write(self.row, 3, u'', MEMO_MIDDLE_MIDDLE_STYLE)
-        self._sheet.write(self.row, 4, u'', MEMO_MIDDLE_MIDDLE_STYLE)
-        self._sheet.write(self.row, 5, u'', MEMO_RIGHT_MIDDLE_STYLE)
+        self._sheet.write(self.row, 4, u'', MEMO_RIGHT_MIDDLE_STYLE)
         self.row += 1
         self._sheet.write(self.row, 0, u'', MEMO_LEFT_BOTTOM_STYLE)
         self._sheet.write(self.row, 1, u'', MEMO_BOTTOM_MIDDLE_STYLE)
         self._sheet.write(self.row, 2, u'', MEMO_BOTTOM_MIDDLE_STYLE)
         self._sheet.write(self.row, 3, u'', MEMO_BOTTOM_MIDDLE_STYLE)
-        self._sheet.write(self.row, 4, u'', MEMO_BOTTOM_MIDDLE_STYLE)
-        self._sheet.write(self.row, 5, u'', MEMO_RIGHT_BOTTOM_STYLE)
+        self._sheet.write(self.row, 4, u'', MEMO_RIGHT_BOTTOM_STYLE)
         self.row += 1
 
     def insert_notify(self, ):
@@ -359,9 +368,6 @@ class ScheduleBuilder(object):
         self._sheet.write(self.row, 2, u'', CANCELL_STYLE)
         self._sheet.write(self.row, 3, u'', CANCELL_STYLE)
         self._sheet.write(self.row, 4, u'', CANCELL_STYLE)
-        self._sheet.write(self.row, 5, u'', CANCELL_STYLE)
-
-
 
 def get_heisei_fisical_year(day):
     r"""SUMMARY
@@ -428,12 +434,11 @@ def align_column(sheet):
 
     @Error:
     """
-    sheet.col(0).width = 1280 # 日
-    sheet.col(1).width = 1520 # 曜日
-    sheet.col(2).width = 2640 # 集合時間
-    sheet.col(3).width = 2640 # 行事開始
-    sheet.col(4).width = 10800 # 行事
-    sheet.col(5).width = 7100 # 参加者
+    sheet.col(0).width = 3500 # 日
+    sheet.col(1).width = 2740 # 集合時間
+    sheet.col(2).width = 2740 # 行事開始
+    sheet.col(3).width = 11000 # 行事
+    sheet.col(4).width = 7100 # 参加者
 
 
 def insert_month(builder, year, month):
@@ -499,12 +504,11 @@ def create_sheet(book, first, second):
     """
     sheet = book.add_sheet(u'{},{}月'.format(first.month, second.month))
 
-    sheet.col(0).width = 1425 # 日
-    sheet.col(1).width = 1700 # 曜日
-    sheet.col(2).width = 2750 # 集合時間
-    sheet.col(3).width = 2750 # 行事開始
-    sheet.col(4).width = 12000 # 行事
-    sheet.col(5).width = 7875 # 参加者
+    sheet.col(0).width = 3000 # 日
+    sheet.col(1).width = 2850 # 集合時間
+    sheet.col(2).width = 2850 # 行事開始
+    sheet.col(3).width = 11000 # 行事
+    sheet.col(4).width = 7875 # 参加者
 
     align_column(sheet)
     builder = ScheduleBuilder(sheet, 1)
@@ -566,7 +570,7 @@ def shedule_view(request):
     @Error:
     """
     cmd = SynccalCommand()
-    cmd.handle(counts='10', main=True, start='', garbage=False, hall=False)
+    cmd.handle(counts='40', main=True, start='', garbage=False, hall=False)
     if os.path.exists(SCHEDULE_PATH):
         shutil.rmtree(SCHEDULE_PATH, ignore_errors=True)
     if not os.path.exists(SCHEDULE_PATH):

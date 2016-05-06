@@ -570,7 +570,7 @@ def shedule_view(request):
     @Error:
     """
     cmd = SynccalCommand()
-    cmd.handle(counts='40', main=True, start='', garbage=False, hall=False)
+    cmd.handle(counts='100', main=True, start='', garbage=False, hall=False)
     if os.path.exists(SCHEDULE_PATH):
         shutil.rmtree(SCHEDULE_PATH, ignore_errors=True)
     if not os.path.exists(SCHEDULE_PATH):

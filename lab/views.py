@@ -34,6 +34,23 @@ def server_view(request):
     return render_to_response('lab/server.html', context)
 
 
+def weather_view(request):
+    """SUMMARY
+
+    weather_view(request)
+
+    @Arguments:
+    - `request`:
+
+    @Return:
+
+    @Error:
+    """
+    context = {}
+    return render_to_response('lab/weather.html', context)
+
+
+
 
 # For Emacs
 # Local Variables:

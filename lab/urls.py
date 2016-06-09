@@ -11,6 +11,7 @@ urlpatterns = [
     # url(r'^$', views.index, name='index'),
     # (r'^$', 'lab.views.lab_view'),
     url('^server/', views.server_view),
+    url('^weather/', views.weather_view),
 ]
 
 

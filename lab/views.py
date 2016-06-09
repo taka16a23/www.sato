@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
+from datetime import datetime
+
 
 # Create your views here.
 def lab_view(request):
@@ -47,8 +49,12 @@ def weather_view(request):
     @Error:
     """
     context = {}
+    now = datetime.now()
+    if now.month in (2, 3, 4):
+        context['weather_urls'] = ['http://weathernews.jp/pollen/#//c=0', ]
+    if now.month in (7, 8, 9, 10):
+        context['weather_urls'] = ['http://weathernews.jp/typhoon/']
     return render_to_response('lab/weather.html', context)
-
 
 
 

@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>detail</title>
+  </head>
+  <body style="background-color:#F2F2F2">
+    <h1>公開予約を設定する</h1>
+    <ul>
+      <li>
+        <h3>手順</h3>
+        <ol>
+          <li>
+            <h4><a href="#status">ステータスを公開に設定する。</a></h4>
+          </li>
+          <li>
+            <h4><a href="#calendar_icon">公開日を設定する</a></h4>
+          </li>
+          <li>
+            <h4><a href="#time">公開時間を設定する</a></h4>
+          </li>
+        </ol>
+        <hr />
+        <ol>
+          <li>
+            <h4 id="status">ステータスを公開に設定する。</h4>
+            <img src={% static "docs/publish_calendar/board_add_status.png"%}/>
+          </li>
+          <li>
+            <h4 id="calendar_icon">公開日を設定する。</h4>
+            <p>設定する項目を表示する。</p>
+            <img src={% static "docs/publish_calendar/board_add_expand_date.png"%}/>
+            <p>アイコンをクリックする。</p>
+            <img src={% static "docs/publish_calendar/publish_date_line_cal.png"%}/>
+            <p>公開したい日付をクリックする。</p>
+            <img src={% static "docs/publish_calendar/cal_click.png"%}/>
+          </li>
+          <li>
+            <h4 id="time">公開時間を設定する。</h4>
+            <p>公開する時間をクリックする。</p>
+            <img src={% static "docs/publish_calendar/clock_click.png"%}/>
+            <p></p>
+            <img src={% static "docs/publish_calendar/clock.png"%}/>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </body>
+</html>

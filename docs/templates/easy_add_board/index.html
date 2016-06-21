@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>回覧板　追加　(簡易版)</title>
+  </head>
+  <body style="background-color:#F2F2F2">
+    <h1>回覧板　追加　(簡易版)</h1>
+    <h3>手順は以下の通りです</h3>
+    <ol>
+      <li>
+        <h4><a href="#add">回覧追加ページを開く</a></h4>
+      </li>
+      <li>
+        <h4><a href="#inputTitle">題名を入力</a></h4>
+      </li>
+      <li>
+        <h4><a href="#selectPDF">追加する回覧物のPDFを選択する</a></h4>
+      </li>
+      <li>
+        <h4><a href="#save">保存する</a></h4>
+      </li>
+    </ol>
+    <hr />
+    <ol>
+      <li>
+        <h2 id="add">回覧追加ページを開く</h2>
+        <img src="{% static "docs/easy_add_board/board_add_top_page.png"%}"/>
+      </li>
+      <li>
+        <h2 id="inputTitle">題名を入力</h2>
+        <p>回覧のページに表示される題名を入力します。</p>
+        <img src="{% static "docs/easy_add_board/board_add_title.png"%}"/>
+        <p>題名は以下のように表示されます。</p>
+        <img src="{% static "docs/easy_add_board/board_add_title_preview.png"%}" style="width:400"/>
+      </li>
+      <li>
+        <h3 id="selectPDF">追加する回覧物のPDFを選択する</h3>
+        <img src="{% static "docs/easy_add_board/board_add_pdf.png"%}"/>
+      </li>
+      <li>
+        <h3 id="save">保存する</h3>
+        <img src="{% static "docs/easy_add_board/board_add_save.png"%}"/>
+      </li>
+    </ol>
+    <p>簡易版は以上です</p>
+    <hr />
+    <h1>応用</h1>
+    <ul>
+      <li>
+        <h4><a href="/docs/publish_calendar/">公開日を設定し公開予約をする</a></h4>        
+      </li>      
+    </ul>
+  </body>
+</html>

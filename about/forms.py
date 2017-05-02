@@ -125,8 +125,9 @@ MINUTES = ((0, '00分'),
            (50, '50分'),
 )
 
-ROOMS = ((u'ホール', u'ホール'),
-         (u'2階和室', u'2階和室'))
+ROOMS = ((u'大ホール', u'大ホール'),
+         (u'2階和室', u'2階和室'),
+         (u'自治会館2F', '自治会館2F'))
 
 
 ACCEPT_MSG = u"""
@@ -226,7 +227,7 @@ class HallBookingForm(Form):
             'class': 'textinput',}))
     room = forms.ChoiceField(
         label='使用室名',
-        initial=u'ホール',
+        initial=u'大ホール',
         choices=ROOMS,
         required=False,
         widget=forms.RadioSelect(renderer=HorizRadioRenderer),

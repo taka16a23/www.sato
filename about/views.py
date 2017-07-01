@@ -23,9 +23,7 @@ def about_view(request):
 
     @Error:
     """
-    context = get_context()
-    return render_to_response(
-        'about/index.html', context, context_instance=RequestContext(request))
+    return HttpResponseRedirect("/about/solve")
 
 
 def group_view(request):

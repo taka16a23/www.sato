@@ -57,6 +57,27 @@ def weather_view(request):
     return render_to_response('lab/weather.html', context)
 
 
+def weatherokazaki_view(request):
+    """SUMMARY
+
+    weather_view(request)
+
+    @Arguments:
+    - `request`:
+
+    @Return:
+
+    @Error:
+    """
+    context = {}
+    now = datetime.now()
+    if now.month in (2, 3, 4):
+        context['weather_urls'] = ['http://weathernews.jp/pollen/#//c=0', ]
+    if now.month in (7, 8, 9, 10):
+        context['weather_urls'] = ['http://weathernews.jp/typhoon/']
+    return render_to_response('lab/weather_okazaki.html', context)
+
+
 
 # For Emacs
 # Local Variables:

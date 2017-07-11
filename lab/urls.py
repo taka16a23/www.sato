@@ -12,6 +12,7 @@ urlpatterns = [
     # (r'^$', 'lab.views.lab_view'),
     url('^server/', views.server_view),
     url('^weather/', views.weather_view),
+    url('^weatherokazaki/', views.weatherokazaki_view),
 ]
 
 

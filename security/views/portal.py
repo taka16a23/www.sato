@@ -185,8 +185,14 @@ def secportal_view(request):
             context['warnings'] = get_weather_warnings(soup)
     except StandardError as err:
         print(err)
-    context['rainGraph'] = url_rain_graph()
-    context['riverGraph'] = url_river_graph()
+    try:
+        context['rainGraph'] = url_rain_graph()
+    except StandardError as err:
+        context['rainGraph'] = ''
+    try:
+        context['riverGraph'] = url_river_graph()
+    except StandardError as err:
+        context['riverGraph'] = ''
     return render_to_response(
         'secportal/index.html', context,
         context_instance=RequestContext(request))

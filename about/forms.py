@@ -347,6 +347,87 @@ class ChildrenPostForm(Form):
     body = forms.CharField(
         label=u'内容', required=True, widget=forms.Textarea())
 
+    def clean(self, ):
+        r"""SUMMARY
+
+        clean()
+
+        @Return:
+
+        @Error:
+        """
+        cleaned_data = super(ChildrenPostForm, self).clean()
+        now = datetime.datetime.now()
+        try:
+            booking = datetime.datetime(
+                int(cleaned_data['startyear']), int(cleaned_data['startmonth']),
+                int(cleaned_data['startday']), int(cleaned_data['starthour']),
+                int(cleaned_data['startminutes']),)
+        except KeyError as err:
+            # for not POST
+            return cleaned_data
+        if booking < now:
+            raise forms.ValidationError(u'過去の日時は指定できません')
+        return cleaned_data
+
+    def send_notify(self, accept_num):
+        r"""SUMMARY
+
+        send_notify(accept_num)
+
+        @Arguments:
+        - `accept_num`:
+
+        @Return:
+
+        @Error:
+        """
+        data = self.clean()
+        data['starthour'] = int(data['starthour'])
+        data['startminutes'] = int(data['startminutes'])
+        data['endhour'] = int(data['endhour'])
+        data['endminutes'] = int(data['endminutes'])
+        emails = [x.email for x in HallReceiverModel.objects.active()]
+        subject = u'里公民館の申込みがありました 受付番号:{0}番'.format(
+            accept_num)
+        msg = EmailMessage(
+            subject=subject,
+            body=NOTIFY_MSG.format(accept_num, data),
+            from_email=settings.EMAIL_HOST_USER, bcc=emails
+        )
+        # return msg.send()
+        return 1 # temporary
+
+    def send_accept(self, accept_num):
+        r"""SUMMARY
+
+        send_accept(accept_num)
+
+        @Arguments:
+        - `accept_num`:
+
+        @Return:
+
+        @Error:
+        """
+        data = self.clean()
+        data['starthour'] = int(data['starthour'])
+        data['startminutes'] = int(data['startminutes'])
+        data['endhour'] = int(data['endhour'])
+        data['endminutes'] = int(data['endminutes'])
+        content = {}
+        content['deadline'] = DEADLINE
+        content['phone'] = PHONE_NUMBER
+        subject = u'里公民館の申込みを受付しました'
+        # print(data)
+        # print(content)
+        # print(ACCEPT_MSG.format(accept_num, content, data))
+        # msg = EmailMessage(
+            # subject=subject, body=ACCEPT_MSG.format(accept_num, content, data),
+            # from_email=settings.EMAIL_HOST_USER, to=[data['email'], ])
+        # return msg.send()
+        return 1 # temporary
+
 
 
 # For Emacs

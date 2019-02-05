@@ -323,6 +323,31 @@ class HallBookingForm(Form):
         return msg.send()
 
 
+class ChildrenPostForm(Form):
+    r"""ChildrenPostForm
+
+    ChildrenPostForm is a Form.
+    Responsibility:
+    """
+    # もしスパムがひどい用ならコメントアウト
+    # captcha = CaptchaField()
+    error_css_class = 'error'
+    required_css_class = 'required'
+
+    name = forms.CharField(label=u'使用責任者', required=True,
+        widget=forms.TextInput(
+            attrs={'placeholder': u'田中美里', 'class': 'textinput',}))
+    address = forms.CharField(label=u'住所', required=True,
+        widget=forms.TextInput(
+            attrs={'placeholder': u'里5丁目7-22', 'class': 'textinput',}))
+    phone = forms.CharField(label=u'TEL', required=True,
+        widget=forms.TextInput(
+            attrs={'placeholder': u'077-XXX-XXXX', 'class': 'textinput',}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'size': 40,}))
+    body = forms.CharField(
+        label=u'内容', required=True, widget=forms.Textarea())
+
+
 
 # For Emacs
 # Local Variables:

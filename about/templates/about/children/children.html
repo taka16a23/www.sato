@@ -1,0 +1,142 @@
+{% load static %}
+<h2>里公民館</h2>
+<div id="hallBookingForm">
+  <h2>子供会入会申込(仮)</h2>
+  <div class="form">
+    <p>『*』は必須項目です。</p>
+    <p>{{about.DEADLINE}}以内にこちらから連絡がない場合は、電話番号 {{about.PHONE_NUMBER}} にて、ご連絡をお願いいたします。</p>
+    <form method="POST" id="" action="#hallBookingForm">
+      {% csrf_token %}
+      <table>
+        <tbody>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.orgname.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.orgname }}
+		    </td>
+            <td>
+              {{ hallBookingForm.orgname.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.name.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.name }}
+		    </td>
+            <td>
+              {{ hallBookingForm.name.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.address.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.address }}
+		    </td>
+            <td>
+              {{ hallBookingForm.address.errors }}
+            </td>
+		  </tr>          
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.phone.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.phone }}
+		    </td>
+            <td>
+              {{ hallBookingForm.phone.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.email.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.email }}
+		    </td>
+            <td>
+              {{ hallBookingForm.email.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*{{ hallBookingForm.purpose.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.purpose }}
+		    </td>
+            <td>
+              {{ hallBookingForm.purpose.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>*使用日時</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.startyear }}{{hallBookingForm.startmonth}}{{hallBookingForm.startday}}{{hallBookingForm.starthour}}{{hallBookingForm.startminutes}} から
+		    </td>
+            <td>
+              {{hallBookingForm.non_field_errors}}
+
+              <!-- {{hallBookingForm.startyear.errors}}{{hallBookingForm.startmonth.errors}}{{hallBookingForm.startday.errors}}{{hallBookingForm.starthour.errors}}{{hallBookingForm.startminutes.errors}} -->
+            </td>
+		  </tr>          
+		  <tr>
+		    <th>
+		    </th>
+		    <td>
+              {{hallBookingForm.endhour}}{{hallBookingForm.endminutes}} まで
+		    </td>
+            <td>
+              <!-- {{hallBookingForm.endhour.errors}}{{hallBookingForm.endminutes.errors}} -->
+            </td>
+		  </tr>          
+		  <tr>
+		    <th>
+              <p>{{ hallBookingForm.room.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.room }}
+		    </td>
+            <td>
+              {{ hallBookingForm.room.errors }}
+            </td>
+		  </tr>
+		  <tr>
+		    <th>
+              <p>{{ hallBookingForm.matter.label }}</p>
+		    </th>
+		    <td>
+              {{ hallBookingForm.matter }}
+		    </td>
+            <td>
+              {{ hallBookingForm.matter.errors }}
+            </td>
+		  </tr>
+          <tr>
+            <th>
+              <p>{{ hallBookingForm.body.label }}</p>
+            </th>
+            <td>
+              {{ hallBookingForm.body }}
+            </td>
+            <td>
+              {{ hallBookingForm.body.errors }}
+            </td>
+          </tr>
+	    </tbody>
+      </table>
+      <div id="inputButton">
+        <input type="submit" value="送信" />
+        <input type="reset" name="reset" value="リセット">
+      </div>
+    </form>
+  </div>
+</div>

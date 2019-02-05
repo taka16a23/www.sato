@@ -1,0 +1,12 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block title %}子供会入会 | {% endblock %}
+{% block description %}
+<meta name="Description" content="子供会に関するページです。子供会入会の申し込みをここから申込みができます。">
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static "css/hall.css" %}">
+{% endblock %}
+{% block main %}
+{% include "about/children/children.html" %}
+{% endblock %}

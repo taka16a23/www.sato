@@ -158,6 +158,21 @@ def form_hall_view(request):
         context, context_instance=RequestContext(request))
 
 
+def children(request):
+    """SUMMARY
+
+    children()
+
+    @Return:
+
+    @Error:
+    """
+    context = get_context()
+    return render_to_response(
+        'about/children/index.html', context,
+        context_instance=RequestContext(request))
+
+
 
 # For Emacs
 # Local Variables:

@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^rule/', views.rule),
     url(r'^greeding/', views.greeding),
     url(r'^hall/', views.form_hall_view),
+    url(r'^children/', views.children),
     url(r'^$', views.about_view),
 ]
 

@@ -167,7 +167,18 @@ def children(request):
 
     @Error:
     """
+    form = HallBookingForm(request.POST)
+    if form.is_valid():
+        accept_num = datetime.datetime.now().strftime('%g%m%d%H%M%f')
+        if form.send_accept(accept_num) != 0:
+            if form.send_notify(accept_num) != 0:
+                return HttpResponseRedirect('/about/thankyou/')
+    if request.method == 'POST':
+        form = HallBookingForm(request.POST)
+    else:
+        form = HallBookingForm()
     context = get_context()
+    context['hallBookingForm'] = form
     return render_to_response(
         'about/children/index.html', context,
         context_instance=RequestContext(request))

@@ -141,7 +141,7 @@ def form_hall_view(request):
 
     @Error:
     """
-    form = ChildrenPostForm(request.POST)
+    form = HallBookingForm(request.POST)
     if form.is_valid():
         accept_num = datetime.datetime.now().strftime('%g%m%d%H%M%f')
         if form.send_accept(accept_num) != 0:

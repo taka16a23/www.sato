@@ -279,7 +279,7 @@ THUMBNAIL_HIGH_RESOLUTION = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'satotanakami@gmail.com'
-EMAIL_HOST_PASSWORD = 'Mochihi..'
+EMAIL_HOST_PASSWORD = 'rnteerjemzmaqvyh'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
